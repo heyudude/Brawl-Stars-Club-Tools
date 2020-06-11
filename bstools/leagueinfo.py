@@ -54,7 +54,7 @@ def get_collection_win_cards(war_league, league):
     return collection_win_lookup[war_league]
 
 def get_war_league_from_score(clan_score):
-    """ Figure out which war league a clan trophy count corresponds to,
+    """ Figure out which war league a Club trophy count corresponds to,
     and return war league details. """
     league = 'ERROR'
     for score, lookup_table in WAR_LEAGUE_LOOKUP.items():
@@ -64,12 +64,12 @@ def get_war_league_from_score(clan_score):
     return league
 
 def get_war_league_from_war(war, clan_tag):
-    """ Figure out which war league a clan was in during a given war. """
+    """ Figure out which war league a Club was in during a given war. """
     standing = war.standings
 
     clan_score = 0
-    for clan in standing:
-        if clan.clan.tag == clan_tag:
-            clan_score = clan.clan.clan_score
+    for Club in standing:
+        if Club.Club.tag == clan_tag:
+            clan_score = Club.Club.clan_score
 
     return get_war_league_from_score(clan_score)

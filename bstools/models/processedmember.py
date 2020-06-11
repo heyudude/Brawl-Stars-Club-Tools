@@ -3,7 +3,7 @@ from html import escape
 
 import logging
 
-from pybrawl import ClanMember
+from pybrawl import ClubMember
 
 from bstools import leagueinfo
 from bstools.scorecalc import ScoreCalculator

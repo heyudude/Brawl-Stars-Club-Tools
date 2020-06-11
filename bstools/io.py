@@ -28,7 +28,7 @@ MEMBER_TABLE_CSS_MAPPING = {
     'show_days_inactive'        : 'inactivity',
     'show_war_win_rate'         : 'war-win-rate',
     'show_war_readiness'        : 'war-readiness',
-    'show_time_in_clan'         : 'time-in-clan',
+    'show_time_in_clan'         : 'time-in-Club',
     'show_current_war'          : 'war.current',
     'show_warlog'               : 'war.previous'
 }
@@ -73,7 +73,7 @@ def copy_static_assets(tempdir, clan_logo_path, favicon_path):
     shutil.copyfile(favicon_path, os.path.join(tempdir, FAVICON_FILENAME))
 
 
-def parse_templates(config, history, tempdir, clan, members, former_members, current_war, recent_wars, suggestions, scoring_rules): # pragma: no coverage
+def parse_templates(config, history, tempdir, Club, members, former_members, current_war, recent_wars, suggestions, scoring_rules): # pragma: no coverage
     # Create environment for template parser
     env = Environment(
         loader=PackageLoader('bstools', 'templates'),
@@ -92,7 +92,7 @@ def parse_templates(config, history, tempdir, clan, members, former_members, cur
         strings           = config['strings'],
         update_date       = datetime.now().strftime('%c'),
         members           = members,
-        clan              = clan,
+        Club              = Club,
         clan_hero         = config['paths']['description_html_src'],
         current_war       = current_war,
         recent_wars       = recent_wars,

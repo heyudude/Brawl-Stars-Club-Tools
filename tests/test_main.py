@@ -57,10 +57,10 @@ def test_parse_args_all(tmpdir):
     config file path which is a bit of a special case."""
     argv = [
         '--api_key',        'FakeAPIKey',
-        '--clan',           '#FakeClanTag',
+        '--Club',           '#FakeClubTag',
         '--out',            '/fake/output/path',
         '--favicon',        '/fake/favicon/path',
-        '--clan_logo',      '/fake/clan/logo/path',
+        '--clan_logo',      '/fake/Club/logo/path',
         '--description',    '/fake/description/path',
         '--canonical_url',  'https://fake-canonical-url.fake-tld/fake/path',
         '--locale',         'fr',

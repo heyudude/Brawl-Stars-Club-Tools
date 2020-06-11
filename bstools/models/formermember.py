@@ -1,4 +1,4 @@
-from pybrawl import Clan
+from pybrawl import Club
 
 from bstools.models import Demerit
 

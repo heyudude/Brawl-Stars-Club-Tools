@@ -17,7 +17,7 @@ class ApiWrapper:
         if config['api']['proxy_headers']:
             api_config.proxy_headers = config['api']['proxy_headers']
 
-        self.clans = pybrawl.ClansApi(pybrawl.ApiClient(api_config))
+        self.clans = pybrawl.ClubsApi(pybrawl.ApiClient(api_config))
         self.players = pybrawl.PlayersApi(pybrawl.ApiClient(api_config))
 
 
@@ -25,7 +25,7 @@ class ApiWrapper:
 
         logger.debug("Getting card for player {}".format(member_tag))
         try:
-            # Get clan data and war log from API.
+            # Get Club data and war log from API.
             player = self.players.get_player(member_tag)
 
             war_league = leagueinfo.get_war_league_from_score(war_trophies)
@@ -68,14 +68,14 @@ class ApiWrapper:
 
     def get_data_from_api(self): # pragma: no coverage
         try:
-            # Get clan data and war log from API.
-            clan = self.clans.get_clan(self.config['api']['clan_id'])
+            # Get Club data and war log from API.
+            Club = self.clans.get_clan(self.config['api']['clan_id'])
             warlog = self.clans.get_clan_war_log(self.config['api']['clan_id'])
             current_war = self.clans.get_current_war(self.config['api']['clan_id'])
 
-            logger.info('- clan: {} ({})'.format(clan.name, clan.tag))
+            logger.info('- Club: {} ({})'.format(Club.name, Club.tag))
 
-            return (clan, warlog, current_war)
+            return (Club, warlog, current_war)
         except pybrawl.ApiException as e:
             if e.body:
                 body = json.loads(e.body)

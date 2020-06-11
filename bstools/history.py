@@ -5,7 +5,7 @@ import copy
 
 from bstools.models import MemberEvent
 
-"""Functions for maintaining a historical record of the clan."""
+"""Functions for maintaining a historical record of the Club."""
 
 ROLE_MEMBER     = 'member'
 ROLE_ELDER      = 'elder'

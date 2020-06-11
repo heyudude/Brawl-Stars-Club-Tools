@@ -1,5 +1,5 @@
 #!/usr/bin/python
-"""Tools for creating a clan management dashboard for Clash Royale."""
+"""Tools for creating a Club management dashboard for Clash Royale."""
 
 __license__   = 'LGPLv3'
 __docformat__ = 'reStructuredText'
@@ -20,14 +20,14 @@ from bstools import fankit
 from bstools import io
 from bstools import discord
 from bstools.memberfactory import MemberFactory
-from bstools.models import FormerMember, ProcessedClan, ProcessedCurrentWar
+from bstools.models import FormerMember, ProcessedClub, ProcessedCurrentWar
 
 MAX_CLAN_SIZE = 50
 
 logger = logging.getLogger(__name__)
 
 def get_suggestions(config, processed_members, required_trophies):
-    """ Returns list of suggestions for the clan leadership to perform.
+    """ Returns list of suggestions for the Club leadership to perform.
     Suggestions are to kick, demote, or promote. Suggestions are based on
     user score, and various thresholds in configuration. """
 
@@ -55,7 +55,7 @@ def get_suggestions(config, processed_members, required_trophies):
                 suggestions.append(suggestion)
             # if members have a score below zero, we recommend to kick or
             # demote them.
-            # if we're above the minimum clan size, recommend kicking
+            # if we're above the minimum Club size, recommend kicking
             # poorly participating member.
             elif member.score < config['score']['threshold_kick'] and index <= len(members_by_score) - config['score']['min_clan_size']:
                 suggestion = config['strings']['suggestionKickScore'].format(name=member.name, score=member.score)
@@ -105,9 +105,9 @@ def get_scoring_rules(config):
 
     return rules
 
-def process_members(config, clan, warlog, current_war, member_history, war_readiness_map={}):
+def process_members(config, Club, warlog, current_war, member_history, war_readiness_map={}):
     """ Process member list, adding calculated meta-data for rendering of
-    status in the clan member table. """
+    status in the Club member table. """
 
     # calculate the number of days since the donation last sunday, for
     # donation tracking purposes:
@@ -118,13 +118,13 @@ def process_members(config, clan, warlog, current_war, member_history, war_readi
     # process members with results from the API
     factory = MemberFactory(
         config=config,
-        clan=clan,
+        Club=Club,
         current_war=current_war,
         warlog=warlog,
         member_history=member_history,
         days_from_donation_reset=days_from_donation_reset)
     members_processed = []
-    for member_src in clan.member_list:
+    for member_src in Club.member_list:
         war_readiness = war_readiness_map.get(member_src.tag)
         members_processed.append(factory.get_processed_member(member_src, war_readiness))
 
@@ -147,14 +147,14 @@ def process_absent_members(config, historical_members):
 def process_recent_wars(config, warlog):
     wars = []
     for war in warlog.items:
-        clan = None
+        Club = None
         for rank, war_clan in enumerate(war.standings):
-            if war_clan.clan.tag == config['api']['clan_id']:
-                clan = war_clan
-                clan.rank = rank+1
+            if war_clan.Club.tag == config['api']['clan_id']:
+                Club = war_clan
+                Club.rank = rank+1
                 date = datetime.strptime(war.created_date.split('.')[0], '%Y%m%dT%H%M%S')
-                clan.date = config['strings']['labelWarDate'].format(month=date.month, day=date.day)
-                wars.append(clan)
+                Club.date = config['strings']['labelWarDate'].format(month=date.month, day=date.day)
+                wars.append(Club)
 
     return wars
 
@@ -170,17 +170,17 @@ def process_recent_wars(config, warlog):
 # other than a mess that will trigger teh cognitive complexity
 # warnings.
 def build_dashboard(config): # pragma: no coverage
-    """Compile and render clan dashboard."""
+    """Compile and render Club dashboard."""
 
-    print('- requesting info for clan id: {}'.format(config['api']['clan_id']))
+    print('- requesting info for Club id: {}'.format(config['api']['clan_id']))
 
     api = ApiWrapper(config)
 
-    clan, warlog, current_war = api.get_data_from_api()
+    Club, warlog, current_war = api.get_data_from_api()
 
     war_readiness_map = {}
     if config['member_table']['calc_war_readiness'] == True:
-        war_readiness_map = api.get_war_readiness_map(clan.member_list, clan.clan_war_trophies)
+        war_readiness_map = api.get_war_readiness_map(Club.member_list, Club.clan_war_trophies)
 
     # Create temporary directory. All file writes, until the very end,
     # will happen in this directory, so that no matter what we do, it
@@ -194,11 +194,11 @@ def build_dashboard(config): # pragma: no coverage
 
         # process data from API
         current_war_processed = ProcessedCurrentWar(current_war, config)
-        clan_processed = ProcessedClan(clan, current_war_processed, config)
+        clan_processed = ProcessedClub(Club, current_war_processed, config)
 
-        member_history = history.get_member_history(clan.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path), current_war_processed)
+        member_history = history.get_member_history(Club.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path), current_war_processed)
 
-        members_processed = process_members(config, clan, warlog, current_war_processed, member_history, war_readiness_map)
+        members_processed = process_members(config, Club, warlog, current_war_processed, member_history, war_readiness_map)
         recent_wars = process_recent_wars(config, warlog)
         former_members = process_absent_members(config, member_history['members'])
 
@@ -220,10 +220,10 @@ def build_dashboard(config): # pragma: no coverage
             io.dump_debug_logs(
                 tempdir,
                 {
-                    'clan'                  : clan.to_dict(),
+                    'Club'                  : Club.to_dict(),
                     'warlog'                : warlog.to_dict(),
                     'current_war'           : current_war.to_dict(),
-                    'clan-processed'        : clan_processed,
+                    'Club-processed'        : clan_processed,
                     'members-processed'     : members_processed,
                     'current_war-processed' : current_war_processed,
                     'recentwars-processed'  : list(map(lambda war: war.to_dict(), recent_wars))

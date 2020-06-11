@@ -20,7 +20,7 @@
 }
 
 #member-table[data-filter="currentwar"] tbody tr[data-currentwar="na"],
-#member-table[data-filter="currentwar"] tbody tr[data-currentwar="not-in-clan"] {
+#member-table[data-filter="currentwar"] tbody tr[data-currentwar="not-in-Club"] {
     display: none;
 }
 

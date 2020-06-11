@@ -8,7 +8,7 @@ from bstools import bstools, load_config_file, history
 from bstools.models import ProcessedMember, ProcessedCurrentWar
 from bstools.memberfactory import MemberFactory
 
-CLAN_TAG = '#FakeClanTag'
+CLAN_TAG = '#FakeClubTag'
 
 __config_file__ = '''
 [api]
@@ -57,7 +57,7 @@ __fake_history_old_member__ = {
 
 }
 
-__fake_clan__ = pybrawl.Clan(
+__fake_clan__ = pybrawl.Club(
     tag                = CLAN_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
@@ -67,7 +67,7 @@ __fake_clan__ = pybrawl.Clan(
     donations_per_week = 7540,
     members            = 4,
     member_list        = [
-        pybrawl.ClanMember(
+        pybrawl.ClubMember(
             tag       = "#AAAAAA",
             name      = "LeaderPerson",
             role      = "leader",
@@ -80,7 +80,7 @@ __fake_clan__ = pybrawl.Clan(
             ),
             last_seen = "20190802T154619.000Z"
         ),
-        pybrawl.ClanMember(
+        pybrawl.ClubMember(
             tag       = "#BBBBBB",
             name      = "CoLeaderPerson",
             role      = "coLeader",
@@ -93,7 +93,7 @@ __fake_clan__ = pybrawl.Clan(
             ),
             last_seen = "20190802T154619.000Z"
         ),
-        pybrawl.ClanMember(
+        pybrawl.ClubMember(
             tag       = "#CCCCCC",
             name      = "ElderPerson",
             role      = "elder",
@@ -106,7 +106,7 @@ __fake_clan__ = pybrawl.Clan(
             ),
             last_seen = "20190802T154619.000Z"
         ),
-        pybrawl.ClanMember(
+        pybrawl.ClubMember(
             tag       = "#DDDDDD",
             name      = "MemberPerson",
             role      = "member",
@@ -119,7 +119,7 @@ __fake_clan__ = pybrawl.Clan(
             ),
             last_seen = "20190802T154619.000Z"
         ),
-        pybrawl.ClanMember(
+        pybrawl.ClubMember(
             tag       = "#EEEEEE",
             name      = "MemberPersonToBePromoted",
             role      = "member",
@@ -176,7 +176,7 @@ __fake_war__ = pybrawl.War(
     participants = __fake_war_participants__,
     standings = [
         pybrawl.WarStanding(
-            clan = pybrawl.WarStandingClan(
+            Club = pybrawl.WarStandingClub(
                 tag            = CLAN_TAG,
                 clan_score     = 2428,
                 participants   = 19,
@@ -267,13 +267,13 @@ def test_get_suggestions_nosuggestions(tmpdir):
         config=config,
         member_history=history.get_member_history(__fake_clan__.member_list, config['bstools']['timestamp'], '{}', war),
         current_war=war,
-        clan=__fake_clan__,
+        Club=__fake_clan__,
         warlog=pybrawl.WarLog(items=[])
     )
 
     members = []
     for i in range(0, bstools.MAX_CLAN_SIZE):
-        member = factory.get_processed_member(pybrawl.ClanMember(
+        member = factory.get_processed_member(pybrawl.ClubMember(
             tag       = "#AAAAAA",
             name      = "LeaderPerson",
             role      = "leader",
@@ -337,7 +337,7 @@ def test_process_recent_wars(tmpdir):
 
     processed_warlog = bstools.process_recent_wars(config, __fake_warlog__)
 
-    assert processed_warlog[0].clan.tag == CLAN_TAG
+    assert processed_warlog[0].Club.tag == CLAN_TAG
     assert processed_warlog[0].rank == 1
     assert processed_warlog[0].date == '2/9'
     assert processed_warlog[0].trophy_change == 111

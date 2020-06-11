@@ -19,12 +19,12 @@ msgstr ""
 "Generated-By: Babel 2.8.0\n"
 
 #: bstools/config.py:154
-msgid "{clan_name} Clan Dashboard"
-msgstr "{clan_name} Clan Dashboard"
+msgid "{clan_name} Club Dashboard"
+msgstr "{clan_name} Club Dashboard"
 
 #: bstools/config.py:156
-msgid "Looking for a clan?"
-msgstr "Suchst du nach einem Clan?"
+msgid "Looking for a Club?"
+msgstr "Suchst du nach einem Club?"
 
 #: bstools/config.py:157
 msgid "Join us!"
@@ -63,16 +63,16 @@ msgid "Leaderboard"
 msgstr "Rangliste"
 
 #: bstools/config.py:168
-msgid "Clan Stats"
-msgstr "Clanstatistiken"
+msgid "Club Stats"
+msgstr "Clubstatistiken"
 
 #: bstools/config.py:169
-msgid "Clan Name"
-msgstr "Clanname"
+msgid "Club Name"
+msgstr "Clubname"
 
 #: bstools/config.py:170
-msgid "Clan Score"
-msgstr "Clanpunkte"
+msgid "Club Score"
+msgstr "Clubpunkte"
 
 #: bstools/config.py:171
 msgid "Country"
@@ -95,11 +95,11 @@ msgid "War Trophies"
 msgstr "Kriegstrophäen"
 
 #: bstools/config.py:176
-msgid "Clan Tag"
-msgstr "Clan Tag"
+msgid "Club Tag"
+msgstr "Club Tag"
 
 #: bstools/config.py:177
-msgid "Clan Role"
+msgid "Club Role"
 msgstr "Rolle"
 
 #: bstools/config.py:178
@@ -232,9 +232,9 @@ msgstr "Stunden"
 
 #: bstools/config.py:210
 #, fuzzy
-#| msgid "Not in clan"
-msgid "Time in Clan"
-msgstr "Nicht im Clan"
+#| msgid "Not in Club"
+msgid "Time in Club"
+msgstr "Nicht im Club"
 
 #: bstools/config.py:211
 msgid "Last Seen"
@@ -245,16 +245,16 @@ msgid "Current War"
 msgstr "Laufender Krieg"
 
 #: bstools/config.py:213
-msgid "Not in clan"
-msgstr "Nicht im Clan"
+msgid "Not in Club"
+msgstr "Nicht im Club"
 
 #: bstools/config.py:214
 msgid "N/A"
 msgstr "N/A"
 
 #: bstools/config.py:215
-msgid "The clan is not currently engaged in a war."
-msgstr "Der Clan ist momentan nicht in einem Krieg"
+msgid "The Club is not currently engaged in a war."
+msgstr "Der Club ist momentan nicht in einem Krieg"
 
 #: bstools/config.py:216
 msgid "Score from donations"
@@ -368,16 +368,16 @@ msgid "Old Members"
 msgstr "Ehemalige Mitglieder"
 
 #: bstools/config.py:243
-msgid "Joined clan"
-msgstr "Clan beigetreten"
+msgid "Joined Club"
+msgstr "Club beigetreten"
 
 #: bstools/config.py:244
 msgid "Changed role to {}"
 msgstr "Beförderung zu {}"
 
 #: bstools/config.py:245
-msgid "Departed clan"
-msgstr "Clan verlassen"
+msgid "Departed Club"
+msgstr "Club verlassen"
 
 #: bstools/config.py:247
 msgid "Member Details"
@@ -437,8 +437,8 @@ msgid "<strong>{name}</strong> was not in this war."
 msgstr "<strong>{name}</strong> war nicht am Krieg beteiligt."
 
 #: bstools/config.py:261
-msgid "<strong>{name}</strong> was not in the clan at the time of this war."
-msgstr "<strong>{name}</strong> war zum Zeitpunkt des Krieges nicht im Clan."
+msgid "<strong>{name}</strong> was not in the Club at the time of this war."
+msgstr "<strong>{name}</strong> war zum Zeitpunkt des Krieges nicht im Club."
 
 #: bstools/config.py:262
 msgid "NOTE: current war <strong>does not</strong> affect score."
@@ -454,7 +454,7 @@ msgstr "Ohne"
 
 #: bstools/config.py:266
 msgid "Leadership"
-msgstr "Clanleitung"
+msgstr "Clubleitung"
 
 #: bstools/config.py:267
 msgid "Role: Elder"
@@ -515,18 +515,18 @@ msgstr ""
 
 #: bstools/config.py:279
 msgid ""
-"Members must be in the clan for a at least <strong>{} days</strong> to be"
+"Members must be in the Club for a at least <strong>{} days</strong> to be"
 " promoted."
 msgstr ""
 
 #: bstools/config.py:280
 msgid "<strong>Recruit new members!</strong> The team needs some fresh blood."
 msgstr ""
-"<strong>Rekrutiere neue Mitglieder!</strong> Der Clan braucht frisches "
+"<strong>Rekrutiere neue Mitglieder!</strong> Der Club braucht frisches "
 "Blut."
 
 #: bstools/config.py:281
-msgid "No suggestions at this time. The clan is in good order."
+msgid "No suggestions at this time. The Club is in good order."
 msgstr "Keine Vorschläge zur Zeit. Es scheint gut zu laufen!"
 
 #: bstools/config.py:282
@@ -749,8 +749,8 @@ msgstr ""
 "Kämpfe abgeschlossen."
 
 #: bstools/config.py:335
-msgid "Members who have quit the clan and are now blacklisted:"
-msgstr "Mitglieder, welche den Clan verlassen haben, sind nun auf der Blacklist:"
+msgid "Members who have quit the Club and are now blacklisted:"
+msgstr "Mitglieder, welche den Club verlassen haben, sind nun auf der Blacklist:"
 
 #: bstools/config.py:336
 msgid "war"

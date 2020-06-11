@@ -1,9 +1,9 @@
 import pybrawl
 from bstools import load_config_file
-from bstools.models import ProcessedClan
+from bstools.models import ProcessedClub
 from bstools.models import ProcessedCurrentWar
 
-CLAN_TAG = '#FakeClanTag'
+CLAN_TAG = '#FakeClubTag'
 
 __config_file_score__ = '''
 [activity]
@@ -21,7 +21,7 @@ war_participation=0
 war_non_participation=-1
 '''
 
-__fake_clan__ = pybrawl.Clan(
+__fake_clan__ = pybrawl.Club(
     tag                = CLAN_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
@@ -31,7 +31,7 @@ __fake_clan__ = pybrawl.Clan(
     donations_per_week = 7540,
     members            = 4,
     member_list        = [
-        pybrawl.ClanMember(
+        pybrawl.ClubMember(
             tag       = "#AAAAAA",
             name      = "LeaderPerson",
             role      = "leader",
@@ -43,7 +43,7 @@ __fake_clan__ = pybrawl.Clan(
     ]
 )
 
-__fake_war_clan__ = pybrawl.WarClan(
+__fake_war_clan__ = pybrawl.WarClub(
         tag = CLAN_TAG,
         name = "Agrassar",
         clan_score = 1813,
@@ -57,7 +57,7 @@ __fake_war_clan__ = pybrawl.WarClan(
 __fake_current_war__ = pybrawl.WarCurrent(
     state        = 'warDay',
     war_end_time = '20190209T212846.354Z',
-    clan         = __fake_war_clan__,
+    Club         = __fake_war_clan__,
     participants = [
         pybrawl.WarParticipant(
             tag                           =  '#AAAAAA',
@@ -76,13 +76,13 @@ def test_process_clan(tmpdir):
     config_file.write(__config_file_score__)
     config = load_config_file(config_file.realpath())
 
-    clan = ProcessedClan(
+    Club = ProcessedClub(
         config=config,
-        clan=__fake_clan__,
+        Club=__fake_clan__,
         current_war=ProcessedCurrentWar(config=config, current_war=__fake_current_war__)
     )
 
-    assert clan.war_league == 'gold'
-    assert clan.war_league_name == 'Gold League'
-    assert clan.current_war_state == 'warDay'
+    assert Club.war_league == 'gold'
+    assert Club.war_league_name == 'Gold League'
+    assert Club.current_war_state == 'warDay'
 
