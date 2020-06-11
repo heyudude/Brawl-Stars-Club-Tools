@@ -1,4 +1,4 @@
-from crtools import leagueinfo
+from bstools import leagueinfo
 
 def test_get_arena_league_from_trophies():
     assert leagueinfo.get_arena_league_from_trophies(200)['id'] == 'arena-1'

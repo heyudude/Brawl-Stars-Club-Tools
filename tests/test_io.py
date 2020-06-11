@@ -1,6 +1,6 @@
 import json
 
-from crtools import io
+from bstools import io
 
 def test_write_object_to_file(tmpdir):
     config_file = tmpdir.mkdir('test_write_object_to_file').join('testfile')

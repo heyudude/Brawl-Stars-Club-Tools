@@ -1,7 +1,7 @@
-import crtools
+import bstools
 
 __config_debug =  '''
-[crtools]
+[bstools]
 debug=True
 '''
 
@@ -15,9 +15,9 @@ def test_parse_args_config_file(tmpdir):
         '--config', str(config_file.realpath())
     ]
 
-    config = crtools.get_config_from_args(crtools.parse_args(argv), False)
+    config = bstools.get_config_from_args(bstools.parse_args(argv), False)
 
-    assert config['crtools']['debug'] == True
+    assert config['bstools']['debug'] == True
 
 def test_parse_args_config_file_not_found():
     """Checks that missing file is properly handled when a config
@@ -27,7 +27,7 @@ def test_parse_args_config_file_not_found():
     ]
 
     try:
-        config = crtools.get_config_from_args(crtools.parse_args(argv))
+        config = bstools.get_config_from_args(bstools.parse_args(argv))
     except SystemExit as e:
         assert e.code != 0
         return
@@ -41,12 +41,12 @@ def test_parse_args_version(capsys):
     ]
 
     try:
-        config = crtools.get_config_from_args(crtools.parse_args(argv))
+        config = bstools.get_config_from_args(bstools.parse_args(argv))
     except SystemExit as e:
         #
         assert e.code == 0
         captured = capsys.readouterr()
-        assert captured.out == "{}\n".format(crtools.__version__)
+        assert captured.out == "{}\n".format(bstools.__version__)
         return
 
     # Fail if we didn't catch a SystemExit
@@ -66,7 +66,7 @@ def test_parse_args_all(tmpdir):
         '--locale',         'fr',
         '--debug'
     ]
-    config = crtools.get_config_from_args(crtools.parse_args(argv), False, '~/fake/path/that/does/not/exist')
+    config = bstools.get_config_from_args(bstools.parse_args(argv), False, '~/fake/path/that/does/not/exist')
     assert config['api']['api_key'] == argv[1]
     assert config['api']['clan_id'] == argv[3]
     assert config['paths']['out'] == argv[5]
@@ -74,5 +74,5 @@ def test_parse_args_all(tmpdir):
     assert config['paths']['clan_logo'] == argv[9]
     assert config['paths']['description_html'] == argv[11]
     assert config['www']['canonical_url'] == argv[13]
-    assert config['crtools']['debug'] == True
-    assert config['crtools']['locale'] == 'fr'
+    assert config['bstools']['debug'] == True
+    assert config['bstools']['locale'] == 'fr'

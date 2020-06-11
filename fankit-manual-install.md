@@ -1,6 +1,6 @@
 # Fan Kit Manual Install
 
-If you've had issues with crtools downloading and extracting the fan kit, try
+If you've had issues with bstools downloading and extracting the fan kit, try
 the following:
 
 1. In your config file, add line `use_fankit=True` to the `[Paths]` section
@@ -14,7 +14,7 @@ the following:
 	- `ui`
 6. Make sure the folder, subfolders, and files have the correct permissions the be
    read by the web server. If not, correct them.
-7. Run `crtools`
+7. Run `bstools`
 
 You're know you are successful if the site renders using the official Clash
 Royale font
@@ -29,5 +29,5 @@ and world readable. To do that, assuming the path to your document root is
 chmod -R chmod -R g+r,o+r /var/www/html/fankit
 ```
 
-Each time crtools runs, it will copy the old fan kit including the permissions,
+Each time bstools runs, it will copy the old fan kit including the permissions,
 so you should only need to do this once.

@@ -1,7 +1,7 @@
-Building crtools
+Building bstools
 ================
 
-To build crtools, you will need:
+To build bstools, you will need:
 
 - python 3.6+
 - pip3
@@ -23,7 +23,7 @@ make develop
 ```
 
 Then you should be able to just update the Python code in /src, and run
-`crtools` on the command line as normal.
+`bstools` on the command line as normal.
 
 To do a regular install:
 
@@ -31,7 +31,7 @@ To do a regular install:
 make install
 ```
 
-To update crtools.pot with new strings from the Python source:
+To update bstools.pot with new strings from the Python source:
 
 ```
 make translate-update

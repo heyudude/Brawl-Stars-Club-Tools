@@ -1,24 +1,24 @@
 from datetime import datetime
 import copy
 
-import pyroyale
-from crtools import history, load_config_file
-from crtools.models import ProcessedCurrentWar
+import pybrawl
+from bstools import history, load_config_file
+from bstools.models import ProcessedCurrentWar
 
 __fake_members__ = [
-    pyroyale.ClanMember(
+    pybrawl.ClanMember(
         name      = 'Player A',
         tag       = '#AAAAAA',
         role      = 'leader',
         donations = 100
     ),
-    pyroyale.ClanMember(
+    pybrawl.ClanMember(
         name      = 'Player C',
         tag       = '#CCCCCC',
         role      = 'member',
         donations = 10
     ),
-    pyroyale.ClanMember(
+    pybrawl.ClanMember(
         name      = 'Player D',
         tag       = '#DDDDDD',
         role      = 'elder',
@@ -88,10 +88,10 @@ __fake_history__ = {
     }
 }
 
-__fake_currentwar__ = ProcessedCurrentWar(config=load_config_file(False), current_war=pyroyale.WarCurrent(
+__fake_currentwar__ = ProcessedCurrentWar(config=load_config_file(False), current_war=pybrawl.WarCurrent(
         state               = 'collectionDay',
         collection_end_time = '20190209T212846.354Z',
-        participants        = [pyroyale.WarParticipant(tag='#AAAAAA', cards_earned=0)]
+        participants        = [pybrawl.WarParticipant(tag='#AAAAAA', cards_earned=0)]
     ))
 
 def test_get_role_change_status():

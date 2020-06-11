@@ -1,11 +1,11 @@
 from datetime import datetime
 
-import crtools
-from crtools import crtools, load_config_file, history
-from crtools import MemberFactory
-from crtools.models import ProcessedCurrentWar, ProcessedMember, WarParticipation
-from crtools.scorecalc import ScoreCalculator
-import pyroyale
+import bstools
+from bstools import bstools, load_config_file, history
+from bstools import MemberFactory
+from bstools.models import ProcessedCurrentWar, ProcessedMember, WarParticipation
+from bstools.scorecalc import ScoreCalculator
+import pybrawl
 
 __config_file_score__ = '''
 [activity]
@@ -26,66 +26,66 @@ war_non_participation=-1
 CLAN_TAG = '#FakeClanTag'
 
 __fake_member_list__ = [
-    pyroyale.ClanMember(
+    pybrawl.ClanMember(
         tag       = "#AAAAAA",
         name      = "LeaderPerson",
         role      = "leader",
         exp_level = 12,
         trophies  = 4153,
         donations = 300,
-        arena     = pyroyale.Arena(
+        arena     = pybrawl.Arena(
             id    = 54000012,
             name  = 'Legendary Arena'
         ),
         last_seen = "20190802T154619.000Z"
     ),
-    pyroyale.ClanMember(
+    pybrawl.ClanMember(
         tag       = "#BBBBBB",
         name      = "CoLeaderPerson",
         role      = "coLeader",
         exp_level = 12,
         trophies  = 4418,
         donations = 150,
-        arena     = pyroyale.Arena(
+        arena     = pybrawl.Arena(
             id    = 54000013,
             name  = 'Arena 12'
         ),
         last_seen = "20190802T154619.000Z"
     ),
-    pyroyale.ClanMember(
+    pybrawl.ClanMember(
         tag       = "#CCCCCC",
         name      = "ElderPerson",
         role      = "elder",
         exp_level = 12,
         trophies  = 4224,
         donations = 0,
-        arena     = pyroyale.Arena(
+        arena     = pybrawl.Arena(
             id    = 54000012,
             name  = 'Legendary Arena'
         ),
         last_seen = "20190802T154619.000Z"
     ),
-    pyroyale.ClanMember(
+    pybrawl.ClanMember(
         tag       = "#DDDDDD",
         name      = "MemberPerson",
         role      = "member",
         exp_level = 8,
         trophies  = 3100,
         donations = 0,
-        arena     = pyroyale.Arena(
+        arena     = pybrawl.Arena(
             id    = 54000008,
             name  = 'Arena 7'
         ),
         last_seen = "20190802T154619.000Z"
     ),
-    pyroyale.ClanMember(
+    pybrawl.ClanMember(
         tag       = "#EEEEEE",
         name      = "MemberPersonToBePromoted",
         role      = "member",
         exp_level = 8,
         trophies  = 3144,
         donations = 100000000,
-        arena     = pyroyale.Arena(
+        arena     = pybrawl.Arena(
             id    = 54000008,
             name  = 'Arena 7'
         ),
@@ -94,7 +94,7 @@ __fake_member_list__ = [
 
 ]
 
-__fake_clan__ = pyroyale.Clan(
+__fake_clan__ = pybrawl.Clan(
     tag                = CLAN_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
@@ -106,7 +106,7 @@ __fake_clan__ = pyroyale.Clan(
     member_list        = __fake_member_list__
 )
 
-__fake_war_clan__ = pyroyale.WarClan(
+__fake_war_clan__ = pybrawl.WarClan(
         tag = CLAN_TAG,
         name = "Agrassar",
         clan_score = 1813,
@@ -118,7 +118,7 @@ __fake_war_clan__ = pyroyale.WarClan(
     )
 
 __fake_war_participants__ = [
-    pyroyale.WarParticipant(
+    pybrawl.WarParticipant(
         tag                           =  '#AAAAAA',
         cards_earned                  = 1120,
         battles_played                = 1,
@@ -126,7 +126,7 @@ __fake_war_participants__ = [
         number_of_battles             = 1,
         collection_day_battles_played = 3
     ),
-    pyroyale.WarParticipant(
+    pybrawl.WarParticipant(
         tag                           =  '#BBBBBB',
         cards_earned                  = 1120,
         battles_played                = 1,
@@ -134,7 +134,7 @@ __fake_war_participants__ = [
         number_of_battles             = 1,
         collection_day_battles_played = 1
     ),
-    pyroyale.WarParticipant(
+    pybrawl.WarParticipant(
         tag                           =  '#CCCCCC',
         cards_earned                  = 1120,
         battles_played                = 0,
@@ -144,7 +144,7 @@ __fake_war_participants__ = [
     )
 ]
 
-__fake_current_war__ = pyroyale.WarCurrent(
+__fake_current_war__ = pybrawl.WarCurrent(
         state        = 'warDay',
         war_end_time = '20190209T212846.354Z',
         clan         = __fake_war_clan__,
@@ -152,7 +152,7 @@ __fake_current_war__ = pyroyale.WarCurrent(
         clans        = [__fake_war_clan__]
     )
 
-__fake_war__ = pyroyale.War(
+__fake_war__ = pybrawl.War(
         created_date = '20190209T212846.354Z',
         participants = __fake_war_participants__,
         standings = []
@@ -198,13 +198,13 @@ def test_donations_score(tmpdir):
 
     calc = ScoreCalculator(config)
 
-    war = ProcessedCurrentWar(config=config, current_war=pyroyale.WarCurrent(state='notInWar'))
-    member_history = history.get_member_history(__fake_member_list__, config['crtools']['timestamp'], '{}', war)
+    war = ProcessedCurrentWar(config=config, current_war=pybrawl.WarCurrent(state='notInWar'))
+    member_history = history.get_member_history(__fake_member_list__, config['bstools']['timestamp'], '{}', war)
     date = datetime(2019, 2, 12, 7, 32, 1, 0)
 
-    member_6 = MemberFactory(config=config, current_war=war, clan=__fake_clan__, member_history=member_history, warlog=pyroyale.WarLog(items=[]), days_from_donation_reset=6).get_processed_member(__fake_member_list__[0])
-    member_3 = MemberFactory(config=config, current_war=war, clan=__fake_clan__, member_history=member_history, warlog=pyroyale.WarLog(items=[]), days_from_donation_reset=3).get_processed_member(__fake_member_list__[0])
-    member_0 = MemberFactory(config=config, current_war=war, clan=__fake_clan__, member_history=member_history, warlog=pyroyale.WarLog(items=[]), days_from_donation_reset=0).get_processed_member(__fake_member_list__[0])
+    member_6 = MemberFactory(config=config, current_war=war, clan=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=6).get_processed_member(__fake_member_list__[0])
+    member_3 = MemberFactory(config=config, current_war=war, clan=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=3).get_processed_member(__fake_member_list__[0])
+    member_0 = MemberFactory(config=config, current_war=war, clan=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=0).get_processed_member(__fake_member_list__[0])
 
     assert calc.get_member_donations_score(member_6) == 11
     assert calc.get_member_donations_score(member_3) == 18

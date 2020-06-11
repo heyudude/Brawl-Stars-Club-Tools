@@ -1,8 +1,8 @@
-# Contributor Code of Conduct for crtools
+# Contributor Code of Conduct for bstools
 
 ## Standards
 
-The crtools team requests the following from all contributors:
+The bstools team requests the following from all contributors:
 
 - Write good code
 

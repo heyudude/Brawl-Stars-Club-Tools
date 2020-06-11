@@ -1,0 +1,747 @@
+# Translations template for bstools.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the bstools project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bstools 2.15.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-02-27 09:02-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: bstools/config.py:154
+msgid "{clan_name} Clan Dashboard"
+msgstr ""
+
+#: bstools/config.py:156
+msgid "Looking for a clan?"
+msgstr ""
+
+#: bstools/config.py:157
+msgid "Join us!"
+msgstr ""
+
+#: bstools/config.py:159
+msgid "Current war"
+msgstr ""
+
+#: bstools/config.py:160
+msgid "Standings"
+msgstr ""
+
+#: bstools/config.py:161
+msgid "Recent wars"
+msgstr ""
+
+#: bstools/config.py:162
+msgid "Member list and stats"
+msgstr ""
+
+#: bstools/config.py:163
+msgid "Members"
+msgstr ""
+
+#: bstools/config.py:164
+msgid "Suggestions"
+msgstr ""
+
+#: bstools/config.py:165
+msgid "Score explanation"
+msgstr ""
+
+#: bstools/config.py:166
+msgid "Leaderboard"
+msgstr ""
+
+#: bstools/config.py:168
+msgid "Clan Stats"
+msgstr ""
+
+#: bstools/config.py:169
+msgid "Clan Name"
+msgstr ""
+
+#: bstools/config.py:170
+msgid "Clan Score"
+msgstr ""
+
+#: bstools/config.py:171
+msgid "Country"
+msgstr ""
+
+#: bstools/config.py:172
+msgid "International"
+msgstr ""
+
+#: bstools/config.py:173
+msgid "Donations/week"
+msgstr ""
+
+#: bstools/config.py:174
+msgid "Required Trophies"
+msgstr ""
+
+#: bstools/config.py:175
+msgid "War Trophies"
+msgstr ""
+
+#: bstools/config.py:176
+msgid "Clan Tag"
+msgstr ""
+
+#: bstools/config.py:177
+msgid "Clan Role"
+msgstr ""
+
+#: bstools/config.py:178
+msgid "Last update"
+msgstr ""
+
+#: bstools/config.py:179
+msgid "Yes"
+msgstr ""
+
+#: bstools/config.py:180
+msgid "No"
+msgstr ""
+
+#: bstools/config.py:181
+msgid "No wars in war log"
+msgstr ""
+
+#: bstools/config.py:182
+msgid "State"
+msgstr ""
+
+#: bstools/config.py:183
+msgid "Collection Day End"
+msgstr ""
+
+#: bstools/config.py:184
+msgid "War End"
+msgstr ""
+
+#: bstools/config.py:185
+msgid "Participants"
+msgstr ""
+
+#: bstools/config.py:186
+msgid "Crowns"
+msgstr ""
+
+#: bstools/config.py:187
+msgid "Victories"
+msgstr ""
+
+#: bstools/config.py:188
+msgid "Cards Earned"
+msgstr ""
+
+#: bstools/config.py:189 bstools/config.py:303
+msgid "Member"
+msgstr ""
+
+#: bstools/config.py:190
+msgid "Previous"
+msgstr ""
+
+#: bstools/config.py:191
+msgid "Member Name"
+msgstr ""
+
+#: bstools/config.py:192
+msgid "Member Tag"
+msgstr ""
+
+#: bstools/config.py:193
+msgid "Join Date"
+msgstr ""
+
+#: bstools/config.py:194
+msgid "Last Active"
+msgstr ""
+
+#: bstools/config.py:195
+msgid "Before recorded history"
+msgstr ""
+
+#: bstools/config.py:196
+msgid "Arena"
+msgstr ""
+
+#: bstools/config.py:197
+msgid "XP Level"
+msgstr ""
+
+#: bstools/config.py:198
+msgid "Score"
+msgstr ""
+
+#: bstools/config.py:199
+msgid "Rank"
+msgstr ""
+
+#: bstools/config.py:200
+msgid "Trophies"
+msgstr ""
+
+#: bstools/config.py:201
+msgid "Dona&shy;tions"
+msgstr ""
+
+#: bstools/config.py:202
+msgid "Donations received"
+msgstr ""
+
+#: bstools/config.py:203
+msgid "Days Inactive"
+msgstr ""
+
+#: bstools/config.py:204
+msgid "Days"
+msgstr ""
+
+#: bstools/config.py:205
+msgid "Months"
+msgstr ""
+
+#: bstools/config.py:206
+msgid "Years"
+msgstr ""
+
+#: bstools/config.py:207
+msgid "Day"
+msgstr ""
+
+#: bstools/config.py:208
+msgid "Minutes"
+msgstr ""
+
+#: bstools/config.py:209
+msgid "Hours"
+msgstr ""
+
+#: bstools/config.py:210
+msgid "Time in Clan"
+msgstr ""
+
+#: bstools/config.py:211
+msgid "Last Seen"
+msgstr ""
+
+#: bstools/config.py:212
+msgid "Current War"
+msgstr ""
+
+#: bstools/config.py:213
+msgid "Not in clan"
+msgstr ""
+
+#: bstools/config.py:214
+msgid "N/A"
+msgstr ""
+
+#: bstools/config.py:215
+msgid "The clan is not currently engaged in a war."
+msgstr ""
+
+#: bstools/config.py:216
+msgid "Score from donations"
+msgstr ""
+
+#: bstools/config.py:217
+msgid "Score from war participation"
+msgstr ""
+
+#: bstools/config.py:218
+msgid "Cards given"
+msgstr ""
+
+#: bstools/config.py:219
+msgid "Cards received"
+msgstr ""
+
+#: bstools/config.py:220
+msgid "Cards given last week"
+msgstr ""
+
+#: bstools/config.py:221
+msgid "Collection day battles"
+msgstr ""
+
+#: bstools/config.py:222
+msgid "Collection day wins"
+msgstr ""
+
+#: bstools/config.py:223
+msgid "Cards earned"
+msgstr ""
+
+#: bstools/config.py:224
+msgid "War day battles"
+msgstr ""
+
+#: bstools/config.py:225
+msgid "War day wins"
+msgstr ""
+
+#: bstools/config.py:226
+msgid "War win rate"
+msgstr ""
+
+#: bstools/config.py:227
+msgid "War readiness"
+msgstr ""
+
+#: bstools/config.py:228
+#, python-format
+msgid "Must complete at least %d battles of the last %d"
+msgstr ""
+
+#: bstools/config.py:229
+msgid "Collection win rate"
+msgstr ""
+
+#: bstools/config.py:230
+msgid "Collection cards won"
+msgstr ""
+
+#: bstools/config.py:231
+msgid "War score average"
+msgstr ""
+
+#: bstools/config.py:232
+msgid "War score"
+msgstr ""
+
+#: bstools/config.py:233
+msgid "War league"
+msgstr ""
+
+#: bstools/config.py:234
+msgid "{month}/{day}"
+msgstr ""
+
+#: bstools/config.py:235
+msgid "{} hours"
+msgstr ""
+
+#: bstools/config.py:236
+msgid "Complete"
+msgstr ""
+
+#: bstools/config.py:237
+msgid "1 day, {} hours"
+msgstr ""
+
+#: bstools/config.py:238
+msgid "Collection Day"
+msgstr ""
+
+#: bstools/config.py:239
+msgid "War Day"
+msgstr ""
+
+#: bstools/config.py:240
+msgid "View List of Old Members"
+msgstr ""
+
+#: bstools/config.py:241
+msgid "Old Members"
+msgstr ""
+
+#: bstools/config.py:243
+msgid "Joined clan"
+msgstr ""
+
+#: bstools/config.py:244
+msgid "Changed role to {}"
+msgstr ""
+
+#: bstools/config.py:245
+msgid "Departed clan"
+msgstr ""
+
+#: bstools/config.py:247
+msgid "Member Details"
+msgstr ""
+
+#: bstools/config.py:248
+msgid "Player Stats and Info"
+msgstr ""
+
+#: bstools/config.py:249
+msgid "See on StatsRoyale"
+msgstr ""
+
+#: bstools/config.py:250
+msgid "See on RoyaleAPI"
+msgstr ""
+
+#: bstools/config.py:251
+msgid "Player History"
+msgstr ""
+
+#: bstools/config.py:252
+msgid "Member is on the blacklist. Kick member immediately."
+msgstr ""
+
+#: bstools/config.py:253
+msgid ""
+"Member has been tagged on the \"No Promote\" list for abusing privileges in "
+"the past. Never promote to Elder or higher."
+msgstr ""
+
+#: bstools/config.py:254
+msgid "Former Members"
+msgstr ""
+
+#: bstools/config.py:255
+msgid "Name / tag"
+msgstr ""
+
+#: bstools/config.py:256
+msgid "Events"
+msgstr ""
+
+#: bstools/config.py:257
+msgid "Links"
+msgstr ""
+
+#: bstools/config.py:258
+msgid "Close"
+msgstr ""
+
+#: bstools/config.py:260
+msgid "<strong>{name}</strong> was not in this war."
+msgstr ""
+
+#: bstools/config.py:261
+msgid "<strong>{name}</strong> was not in the clan at the time of this war."
+msgstr ""
+
+#: bstools/config.py:262
+msgid "NOTE: current war <strong>does not</strong> affect score."
+msgstr ""
+
+#: bstools/config.py:264
+msgid "Filter"
+msgstr ""
+
+#: bstools/config.py:265
+msgid "None"
+msgstr ""
+
+#: bstools/config.py:266
+msgid "Leadership"
+msgstr ""
+
+#: bstools/config.py:267
+msgid "Role: Elder"
+msgstr ""
+
+#: bstools/config.py:268
+msgid "Role: Member"
+msgstr ""
+
+#: bstools/config.py:269
+msgid "New Members"
+msgstr ""
+
+#: bstools/config.py:270
+msgid "In current war"
+msgstr ""
+
+#: bstools/config.py:271
+msgid "Inactive"
+msgstr ""
+
+#: bstools/config.py:272
+msgid "In danger"
+msgstr ""
+
+#: bstools/config.py:273
+msgid "War"
+msgstr ""
+
+#: bstools/config.py:274
+msgid "Donations"
+msgstr ""
+
+#: bstools/config.py:276
+msgid ""
+"Members with a <strong class=\"bad\">score below 0</strong> will be "
+"recommended for kicking or demotion."
+msgstr ""
+
+#: bstools/config.py:277
+msgid ""
+"Members inactive for <strong class=\"bad\">{days_inactive} days</strong> will"
+" be kicked."
+msgstr ""
+
+#: bstools/config.py:278
+msgid ""
+"A member who achieves <strong class=\"good\">{points} points</strong> is "
+"elegible for promotion to <strong>Elder</strong> at the discretion of "
+"leadership."
+msgstr ""
+
+#: bstools/config.py:279
+msgid ""
+"Members must be in the clan for a at least <strong>{} days</strong> to be "
+"promoted."
+msgstr ""
+
+#: bstools/config.py:280
+msgid "<strong>Recruit new members!</strong> The team needs some fresh blood."
+msgstr ""
+
+#: bstools/config.py:281
+msgid "No suggestions at this time. The clan is in good order."
+msgstr ""
+
+#: bstools/config.py:282
+msgid "Kick <strong>{name}</strong>. Member is blacklisted."
+msgstr ""
+
+#: bstools/config.py:283
+msgid ""
+"Kick <strong>{name}</strong> <strong class=\"bad\">{days} days "
+"inactive</strong>"
+msgstr ""
+
+#: bstools/config.py:284
+msgid "Kick <strong>{name}</strong> <strong class=\"bad\">{score}</strong>"
+msgstr ""
+
+#: bstools/config.py:285
+msgid "Demote <strong>{name}</strong> <strong class=\"bad\">{score}</strong>"
+msgstr ""
+
+#: bstools/config.py:286
+msgid ""
+"Promote <strong>{name}</strong> to <strong>Elder</strong> <strong "
+"class=\"good\">{score}</strong>"
+msgstr ""
+
+#: bstools/config.py:288
+msgid ""
+"Score is made of two components: <strong>donation score</strong> and "
+"<strong>war participation score</strong>."
+msgstr ""
+
+#: bstools/config.py:289
+msgid "Donation Score"
+msgstr ""
+
+#: bstools/config.py:290
+msgid ""
+"You are expected to donate <strong>{min_donations_daily} cards per "
+"day</strong>, on average. If you make more, you will gain points. If you make"
+" fewer, you will lose points. If you have zero, you will be penalized <strong"
+" class=\"bad\">{donations_zero} points</strong>"
+msgstr ""
+
+#: bstools/config.py:292
+msgid "War Participation Score"
+msgstr ""
+
+#: bstools/config.py:293
+msgid "For each of the last 10 wars, did member..."
+msgstr ""
+
+#: bstools/config.py:294
+msgid "...participate in the war?"
+msgstr ""
+
+#: bstools/config.py:295
+msgid "...complete each collection battle? (per battle)"
+msgstr ""
+
+#: bstools/config.py:296
+msgid "...win each collection battle? (per battle)"
+msgstr ""
+
+#: bstools/config.py:297
+msgid "...complete war day battle?"
+msgstr ""
+
+#: bstools/config.py:298
+msgid "...win war day battle? (per battle)"
+msgstr ""
+
+#: bstools/config.py:300
+msgid "Leader"
+msgstr ""
+
+#: bstools/config.py:301
+msgid "Co-Leader"
+msgstr ""
+
+#: bstools/config.py:302
+msgid "Elder"
+msgstr ""
+
+#: bstools/config.py:304
+msgid "Blacklisted. Kick!"
+msgstr ""
+
+#: bstools/config.py:305
+msgid "On vacation"
+msgstr ""
+
+#: bstools/config.py:306
+msgid "Vacation until {}"
+msgstr ""
+
+#: bstools/config.py:307
+msgid "Inactive {days} days"
+msgstr ""
+
+#: bstools/config.py:308
+msgid "Never Promote"
+msgstr ""
+
+#: bstools/config.py:310
+msgid "Arena Unknown"
+msgstr ""
+
+#: bstools/config.py:311
+msgid "Goblin Stadium"
+msgstr ""
+
+#: bstools/config.py:312
+msgid "Bone Pit"
+msgstr ""
+
+#: bstools/config.py:313
+msgid "Barbarian Bowl"
+msgstr ""
+
+#: bstools/config.py:314
+msgid "P.E.K.K.A's Playhouse"
+msgstr ""
+
+#: bstools/config.py:315
+msgid "Spell Valley"
+msgstr ""
+
+#: bstools/config.py:316
+msgid "Builder's Workshop"
+msgstr ""
+
+#: bstools/config.py:317
+msgid "Royal Arena"
+msgstr ""
+
+#: bstools/config.py:318
+msgid "Frozen Peak"
+msgstr ""
+
+#: bstools/config.py:319
+msgid "Jungle Arena"
+msgstr ""
+
+#: bstools/config.py:320
+msgid "Hog Mountain"
+msgstr ""
+
+#: bstools/config.py:321
+msgid "Electro Valley"
+msgstr ""
+
+#: bstools/config.py:322
+msgid "Spooky Town"
+msgstr ""
+
+#: bstools/config.py:323
+msgid "Legendary Arena"
+msgstr ""
+
+#: bstools/config.py:324
+msgid "Challenger II"
+msgstr ""
+
+#: bstools/config.py:325
+msgid "Challenger III"
+msgstr ""
+
+#: bstools/config.py:326
+msgid "Master I"
+msgstr ""
+
+#: bstools/config.py:327
+msgid "Master II"
+msgstr ""
+
+#: bstools/config.py:328
+msgid "Master III"
+msgstr ""
+
+#: bstools/config.py:329
+msgid "Champion"
+msgstr ""
+
+#: bstools/config.py:330
+msgid "Grand Champion"
+msgstr ""
+
+#: bstools/config.py:331
+msgid "Royal Champion"
+msgstr ""
+
+#: bstools/config.py:332
+msgid "Ultimate Champion"
+msgstr ""
+
+#: bstools/config.py:334
+msgid "**{} hours** left on {} day. Members have **not** completed all battles:"
+msgstr ""
+
+#: bstools/config.py:335
+msgid "Members who have quit the clan and are now blacklisted:"
+msgstr ""
+
+#: bstools/config.py:336
+msgid "war"
+msgstr ""
+
+#: bstools/config.py:337
+msgid "collection"
+msgstr ""
+
+#: bstools/config.py:339
+msgid "Bronze League"
+msgstr ""
+
+#: bstools/config.py:340
+msgid "Silver League"
+msgstr ""
+
+#: bstools/config.py:341
+msgid "Gold League"
+msgstr ""
+
+#: bstools/config.py:342
+msgid "Legendary League"
+msgstr ""
+
+#: bstools/config.py:344
+msgid ""
+"This content is not affiliated with, endorsed, sponsored, or specifically "
+"approved by Supercell and Supercell is not responsible for it."
+msgstr ""
+
+#: bstools/config.py:345
+msgid "For more information see Supercell's Fan Content Policy."
+msgstr ""
+

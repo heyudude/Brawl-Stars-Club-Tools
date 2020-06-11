@@ -1,7 +1,7 @@
 # Define required macros here
 SHELL = /bin/sh
 
-SRCDIR = ./crtools
+SRCDIR = ./bstools
 TESTDIR = ./tests
 
 clean:
@@ -28,7 +28,7 @@ coverage-html: coverage
 	coverage html
 
 sonar: coverage
-	sonar-scanner -Dsonar.projectVersion=`python -c "import sys; from crtools import __version__; sys.stdout.write(__version__)"`
+	sonar-scanner -Dsonar.projectVersion=`python -c "import sys; from bstools import __version__; sys.stdout.write(__version__)"`
 
 translate-update:
 	python3 setup.py extract_messages

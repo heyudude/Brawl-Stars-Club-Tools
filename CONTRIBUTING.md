@@ -1,4 +1,4 @@
-# How to contribute to crtools
+# How to contribute to bstools
 
 ## Did you find a bug?
 
@@ -21,4 +21,4 @@
 - Suggest your change in the [community discord](https://discord.gg/K2UDCXU) and start writing code.
 - When finished, submit a pull request
 
-Crtools is a volunteer effort. We encourage you to pitch in!
+bstools is a volunteer effort. We encourage you to pitch in!
