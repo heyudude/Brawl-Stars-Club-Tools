@@ -72,7 +72,7 @@ WEBHOOK_DATA='{
       },
       {
         "name": "Static Analysis",
-        "value": "'"[Sonarcloud.io](https://sonarcloud.io/dashboard?id=AaronTraas_Clash-Royale-Clan-Tools)"'",
+        "value": "'"[Sonarcloud.io](https://sonarcloud.io/dashboard?id=AaronTraas_Clash-Royale-Club-Tools)"'",
         "inline": true
       }
     ],

@@ -19,11 +19,11 @@ msgstr ""
 "Generated-By: Babel 2.8.0\n"
 
 #: bstools/config.py:154
-msgid "{clan_name} Clan Dashboard"
+msgid "{clan_name} Club Dashboard"
 msgstr "{clan_name} 部落情报板"
 
 #: bstools/config.py:156
-msgid "Looking for a clan?"
+msgid "Looking for a Club?"
 msgstr "正在寻找合适的部落？"
 
 #: bstools/config.py:157
@@ -63,15 +63,15 @@ msgid "Leaderboard"
 msgstr "排行榜"
 
 #: bstools/config.py:168
-msgid "Clan Stats"
+msgid "Club Stats"
 msgstr "部落详情"
 
 #: bstools/config.py:169
-msgid "Clan Name"
+msgid "Club Name"
 msgstr "部落名称"
 
 #: bstools/config.py:170
-msgid "Clan Score"
+msgid "Club Score"
 msgstr "部落积分"
 
 #: bstools/config.py:171
@@ -95,11 +95,11 @@ msgid "War Trophies"
 msgstr "部落战奖杯"
 
 #: bstools/config.py:176
-msgid "Clan Tag"
+msgid "Club Tag"
 msgstr "部落标签"
 
 #: bstools/config.py:177
-msgid "Clan Role"
+msgid "Club Role"
 msgstr "部落身份"
 
 #: bstools/config.py:178
@@ -232,8 +232,8 @@ msgstr "小时"
 
 #: bstools/config.py:210
 #, fuzzy
-#| msgid "Not in clan"
-msgid "Time in Clan"
+#| msgid "Not in Club"
+msgid "Time in Club"
 msgstr "未在部落"
 
 #: bstools/config.py:211
@@ -245,7 +245,7 @@ msgid "Current War"
 msgstr "当前"
 
 #: bstools/config.py:213
-msgid "Not in clan"
+msgid "Not in Club"
 msgstr "未在部落"
 
 #: bstools/config.py:214
@@ -253,7 +253,7 @@ msgid "N/A"
 msgstr "N/A"
 
 #: bstools/config.py:215
-msgid "The clan is not currently engaged in a war."
+msgid "The Club is not currently engaged in a war."
 msgstr "当前未参加部落战。"
 
 #: bstools/config.py:216
@@ -362,7 +362,7 @@ msgid "Old Members"
 msgstr "过往成员"
 
 #: bstools/config.py:243
-msgid "Joined clan"
+msgid "Joined Club"
 msgstr "加入部落"
 
 #: bstools/config.py:244
@@ -370,7 +370,7 @@ msgid "Changed role to {}"
 msgstr "身份变更为 {}"
 
 #: bstools/config.py:245
-msgid "Departed clan"
+msgid "Departed Club"
 msgstr "离开部落"
 
 #: bstools/config.py:247
@@ -428,7 +428,7 @@ msgid "<strong>{name}</strong> was not in this war."
 msgstr "<strong>{name}</strong> 未参与本战。"
 
 #: bstools/config.py:261
-msgid "<strong>{name}</strong> was not in the clan at the time of this war."
+msgid "<strong>{name}</strong> was not in the Club at the time of this war."
 msgstr "<strong>{name}</strong> 本战时未在部落。"
 
 #: bstools/config.py:262
@@ -502,7 +502,7 @@ msgstr ""
 
 #: bstools/config.py:279
 msgid ""
-"Members must be in the clan for a at least <strong>{} days</strong> to be"
+"Members must be in the Club for a at least <strong>{} days</strong> to be"
 " promoted."
 msgstr ""
 
@@ -511,7 +511,7 @@ msgid "<strong>Recruit new members!</strong> The team needs some fresh blood."
 msgstr "<strong>招募新成员吧！</strong> 团队需要新鲜血液。"
 
 #: bstools/config.py:281
-msgid "No suggestions at this time. The clan is in good order."
+msgid "No suggestions at this time. The Club is in good order."
 msgstr "当前没有操作建议。部落运作正常。"
 
 #: bstools/config.py:282
@@ -722,7 +722,7 @@ msgid "**{} hours** left on {} day. Members have **not** completed all battles:"
 msgstr "**{} 小时** 后  {} 日即将结束。 成员仍**未完成**所有战斗:"
 
 #: bstools/config.py:335
-msgid "Members who have quit the clan and are now blacklisted:"
+msgid "Members who have quit the Club and are now blacklisted:"
 msgstr "已离开部落且处在黑名单中的成员:"
 
 #: bstools/config.py:336

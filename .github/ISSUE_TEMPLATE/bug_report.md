@@ -39,6 +39,6 @@ DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): pypi.org:443
 DEBUG:urllib3.connectionpool:https://pypi.org:443 "GET /pypi/bstools/json HTTP/1.1" 200 31317
 bstools v2.10.3
 DEBUG:bstools.config:specified locale: "en"
-- requesting info for clan id: #JY8YVV
-- clan: Agrassar (#JY8YVV)
+- requesting info for Club id: #JY8YVV
+- Club: Agrassar (#JY8YVV)
 ```]

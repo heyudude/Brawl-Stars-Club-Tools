@@ -1,12 +1,12 @@
 ==================================================
-bstools - Clash Royale Clan Dashboard generator
+bstools - Clash Royale Club Dashboard generator
 ==================================================
 
-This is a tool for creating a dashboard for clan participation in ClashRoyale.
+This is a tool for creating a dashboard for Club participation in ClashRoyale.
 See https://developer.clashroyale.com to sign up for a developer account and
 create an API key to use with this.
 
-For an example dashboard created for the clan Agrassar (#JY8YVV), see: https://agrassar.com/
+For an example dashboard created for the Club Agrassar (#JY8YVV), see: https://agrassar.com/
 
 This tool is a static site generator -- it generates static HTML, JavaScript,
 and CSS used to render the dashboard. If you wish to use this, you should set
@@ -38,7 +38,7 @@ Usage:
 .. code::
 
   bstools [-h] [--locale LOCALE] [--config CONFIG-FILE] [--api_key KEY]
-          [--clan TAG] [--out PATH] [--favicon PATH] [--clan_logo PATH]
+          [--Club TAG] [--out PATH] [--favicon PATH] [--clan_logo PATH]
           [--description PATH] [--canonical_url URL] [--debug]
           [--version]
 
@@ -47,11 +47,11 @@ optional arguments:
   --locale LOCALE      Locale if language other than English is desired (see `Other languages/locales`_).
   --config FILE        configuration file for this app.
   --api_key KEY        API key for developer.clashroyale.com
-  --clan CLAN          Clan ID from Clash Royale. If it starts with a '#', clan ID must be quoted.
+  --Club Club          Club ID from Clash Royale. If it starts with a '#', Club ID must be quoted.
   --out PATH           Output path for HTML.
   --favicon PATH       Source path for favicon.ico. If provided, we will copy to the output directory.
-  --clan_logo PATH     Source path for clan logo PNG. Recommended at least 64x64 pizels. If provided, we will copy to the output directory.
-  --description PATH   Source path snippet of HTML to replace the clan description. Should not be a complete HTML document. Sample here: https://github.com/AaronTraas/bstools-agrassar-assets/blob/master/description.html If provided, we will copy to the output directory.
+  --clan_logo PATH     Source path for Club logo PNG. Recommended at least 64x64 pizels. If provided, we will copy to the output directory.
+  --description PATH   Source path snippet of HTML to replace the Club description. Should not be a complete HTML document. Sample here: https://github.com/AaronTraas/bstools-agrassar-assets/blob/master/description.html If provided, we will copy to the output directory.
   --canonical_url URL  Canonical URL for this site. Used for setting the rel=canonical link in the web site, as well as generating the robots.txt and sitemap.xml
   --debug              Turns on debug mode
   --version            List the version of bstools.
@@ -72,7 +72,7 @@ parameter: api_key. The file should look like:
   # Note that the key is limited to a specific list of public IP addresses
   api_key=<YOUR-API-KEY>
 
-  # Your clan tag
+  # Your Club tag
   clan_id=#JY8YVV
 
   # Proxy URL -- URL for proxy server, if needed
@@ -85,7 +85,7 @@ parameter: api_key. The file should look like:
   # your output path. Where you want the static website to live.
   out=/var/www/html
 
-  # Path to the logo artwork for clan. Must be PNG. Recommended at
+  # Path to the logo artwork for Club. Must be PNG. Recommended at
   # least 64x64 pixels.
   clan_logo=~/myclan/logo.png
 
@@ -101,7 +101,7 @@ parameter: api_key. The file should look like:
   # and sitemap.xml
   canonical_url=https://yourclan.com/
 
-For more details, see `samples/bstools.ini <https://github.com/AaronTraas/Clash-Royale-Clan-Tools/blob/master/samples/bstools.ini>`_
+For more details, see `samples/bstools.ini <https://github.com/AaronTraas/Clash-Royale-Club-Tools/blob/master/samples/bstools.ini>`_
 
 ===================================================================
 Optional blacklist and vacation management using Google Sheets
@@ -112,7 +112,7 @@ and vacations. If you want that info to be integrated with bstools, you
 need to copy the
 `bstools member log template <https://docs.google.com/spreadsheets/d/1_8YKfJf-2HVZOgtuosVaGM_50kB8q7YYR3H2d8p0Wzw>`_
 to your Google Docs account and use that. Fill in with info about your
-clan. Be sure not to re-name any of the tabs, or add/remove any columns.
+Club. Be sure not to re-name any of the tabs, or add/remove any columns.
 
 You will also need to sign up for a `Google Cloud API key <https://developers.google.com/sheets/api/guides/authorizing#APIKey>`_.
 
@@ -147,7 +147,7 @@ bstools runs on. It will take 10-15 minutes to download and extract, but only
 the first time you run with the fankit enabled.
 
 If you have problems, you can manually install the fan kit. See
-`Fan Kit Manual Install Instructions <https://github.com/AaronTraas/Clash-Royale-Clan-Tools/blob/master/fankit-manual-install.md>`_
+`Fan Kit Manual Install Instructions <https://github.com/AaronTraas/Clash-Royale-Club-Tools/blob/master/fankit-manual-install.md>`_
 
 ==================================================
 Other languages/locales
@@ -195,7 +195,7 @@ Assuming root is going to be running the script:
 3. Find your document root (e.g., :code:`/var/www/html`)
 4. Create :code:`/root/.bstools` file as specified above, and add your
    API key (from https://developer.clashroyale.com), output path (the
-   document root), and clan tag
+   document root), and Club tag
 5. Create the following entry in your crontab:
 
 .. code::
@@ -207,7 +207,7 @@ Development links
 ==================================================
 
 This project uses SonarQube for static analysis. The results of analysis
-are at `SonarCloud <https://sonarcloud.io/dashboard?id=AaronTraas_Clash-Royale-Clan-Tools>`_.
+are at `SonarCloud <https://sonarcloud.io/dashboard?id=AaronTraas_Clash-Royale-Club-Tools>`_.
 The code quality and test coverage are a work in progress.
 
 ==================================================
@@ -227,7 +227,7 @@ Contributors
 ==================================================
 
 All of the non-code contributors are listed in
-`CONTRIBUTORS.rst <https://github.com/AaronTraas/Clash-Royale-Clan-Tools/blob/master/CONTRIBUTORS.rst>`_
+`CONTRIBUTORS.rst <https://github.com/AaronTraas/Clash-Royale-Club-Tools/blob/master/CONTRIBUTORS.rst>`_
 
 ==================================================
 Image rights

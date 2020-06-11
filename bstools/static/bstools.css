@@ -462,7 +462,7 @@ body > header h1 em {
 #war-stats table tr:last-child td {
     border-bottom: none;
 }
-#war-stats table tr.this-clan {
+#war-stats table tr.this-Club {
     background-color: #F1EAF4;
     border-color: #BB89CC;
     font-weight: bold;
@@ -492,7 +492,7 @@ table td.battles {
 }
 
 td.last-seen,
-td.time-in-clan {
+td.time-in-Club {
     font-size: 12px;
     text-align: center;
 }
@@ -760,7 +760,7 @@ table tr[data-blacklist=true] td {
     font-weight: normal;
 }
 
-#info table .not-in-clan {
+#info table .not-in-Club {
     background-color: #EEE;
     color: #999;
     font-weight: normal;

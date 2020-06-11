@@ -17,9 +17,6 @@ should_not_exist=True
 __config_file_booleans__ = '''
 [score]
 min_clan_size=False
-war_battle_played=false
-war_battle_incomplete=True
-war_battle_won=true
 '''
 
 __config_file_list__ = '''
@@ -69,18 +66,6 @@ def test_config_boolean(tmpdir):
     # input was 'False'
     assert config['score']['min_clan_size'] == False
     assert type(config['score']['min_clan_size']) == type(False)
-
-    # input was 'false'
-    assert config['score']['war_battle_played'] == False
-    assert type(config['score']['war_battle_played']) == type(False)
-
-    # input was 'True'
-    assert config['score']['war_battle_incomplete'] == True
-    assert type(config['score']['war_battle_incomplete']) == type(True)
-
-    # input was 'true'
-    assert config['score']['war_battle_won'] == True
-    assert type(config['score']['war_battle_won']) == type(True)
 
 def test_config_list(tmpdir):
     """ If the template property contains a list, parse the contents as a list """

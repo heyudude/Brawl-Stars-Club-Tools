@@ -23,10 +23,10 @@ war_participation=0
 war_non_participation=-1
 '''
 
-CLAN_TAG = '#FakeClanTag'
+CLAN_TAG = '#FakeClubTag'
 
 __fake_member_list__ = [
-    pybrawl.ClanMember(
+    pybrawl.ClubMember(
         tag       = "#AAAAAA",
         name      = "LeaderPerson",
         role      = "leader",
@@ -39,7 +39,7 @@ __fake_member_list__ = [
         ),
         last_seen = "20190802T154619.000Z"
     ),
-    pybrawl.ClanMember(
+    pybrawl.ClubMember(
         tag       = "#BBBBBB",
         name      = "CoLeaderPerson",
         role      = "coLeader",
@@ -52,7 +52,7 @@ __fake_member_list__ = [
         ),
         last_seen = "20190802T154619.000Z"
     ),
-    pybrawl.ClanMember(
+    pybrawl.ClubMember(
         tag       = "#CCCCCC",
         name      = "ElderPerson",
         role      = "elder",
@@ -65,7 +65,7 @@ __fake_member_list__ = [
         ),
         last_seen = "20190802T154619.000Z"
     ),
-    pybrawl.ClanMember(
+    pybrawl.ClubMember(
         tag       = "#DDDDDD",
         name      = "MemberPerson",
         role      = "member",
@@ -78,7 +78,7 @@ __fake_member_list__ = [
         ),
         last_seen = "20190802T154619.000Z"
     ),
-    pybrawl.ClanMember(
+    pybrawl.ClubMember(
         tag       = "#EEEEEE",
         name      = "MemberPersonToBePromoted",
         role      = "member",
@@ -94,7 +94,7 @@ __fake_member_list__ = [
 
 ]
 
-__fake_clan__ = pybrawl.Clan(
+__fake_clan__ = pybrawl.Club(
     tag                = CLAN_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
@@ -106,7 +106,7 @@ __fake_clan__ = pybrawl.Clan(
     member_list        = __fake_member_list__
 )
 
-__fake_war_clan__ = pybrawl.WarClan(
+__fake_war_clan__ = pybrawl.WarClub(
         tag = CLAN_TAG,
         name = "Agrassar",
         clan_score = 1813,
@@ -147,7 +147,7 @@ __fake_war_participants__ = [
 __fake_current_war__ = pybrawl.WarCurrent(
         state        = 'warDay',
         war_end_time = '20190209T212846.354Z',
-        clan         = __fake_war_clan__,
+        Club         = __fake_war_clan__,
         participants = __fake_war_participants__,
         clans        = [__fake_war_clan__]
     )
@@ -188,7 +188,7 @@ def test_war_score(tmpdir):
     assert calc.get_war_score(war_na)         == -1
 
     war_new = WarParticipation(config=config, member=ProcessedMember(__fake_member_list__[4]), war=__fake_war__)
-    war_new.status = 'not-in-clan'
+    war_new.status = 'not-in-Club'
     assert calc.get_war_score(war_new)        == 0
 
 def test_donations_score(tmpdir):
@@ -202,9 +202,9 @@ def test_donations_score(tmpdir):
     member_history = history.get_member_history(__fake_member_list__, config['bstools']['timestamp'], '{}', war)
     date = datetime(2019, 2, 12, 7, 32, 1, 0)
 
-    member_6 = MemberFactory(config=config, current_war=war, clan=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=6).get_processed_member(__fake_member_list__[0])
-    member_3 = MemberFactory(config=config, current_war=war, clan=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=3).get_processed_member(__fake_member_list__[0])
-    member_0 = MemberFactory(config=config, current_war=war, clan=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=0).get_processed_member(__fake_member_list__[0])
+    member_6 = MemberFactory(config=config, current_war=war, Club=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=6).get_processed_member(__fake_member_list__[0])
+    member_3 = MemberFactory(config=config, current_war=war, Club=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=3).get_processed_member(__fake_member_list__[0])
+    member_0 = MemberFactory(config=config, current_war=war, Club=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=0).get_processed_member(__fake_member_list__[0])
 
     assert calc.get_member_donations_score(member_6) == 11
     assert calc.get_member_donations_score(member_3) == 18

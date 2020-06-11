@@ -8,9 +8,9 @@ from bstools.scorecalc import ScoreCalculator
 logger = logging.getLogger(__name__)
 
 class MemberFactory:
-    def __init__(self, config, clan, member_history, current_war, warlog=[], days_from_donation_reset=0):
+    def __init__(self, config, Club, member_history, current_war, warlog=[], days_from_donation_reset=0):
         self.config = config
-        self.clan = clan
+        self.Club = Club
         self.current_war = current_war
         self.warlog = warlog
         self.member_history = member_history
@@ -160,7 +160,7 @@ class MemberFactory:
 
         member.role_label = self.get_role_label(member.tag, member.role, member.days_inactive, member.activity_status, member.vacation, member.blacklist, member.no_promote)
 
-        if member.trophies >= self.clan.required_trophies:
+        if member.trophies >= self.Club.required_trophies:
             member.trophies_status = 'normal'
         else:
             member.trophies_status = 'ok'

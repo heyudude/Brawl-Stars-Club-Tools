@@ -6,8 +6,8 @@ class MemberEvent():
         self.timestamp = event_dict['date']
         self.event     = event_dict['event']
         self.message   = {
-            'join'        : config['strings']['memberEventJoinedClan'],
+            'join'        : config['strings']['memberEventJoinedClub'],
             'role change' : config['strings']['memberEventRoleChange'].format(event_dict['role']),
-            'quit'        : config['strings']['memberEventExitClan']
+            'quit'        : config['strings']['memberEventExitClub']
         }[self.event]
 

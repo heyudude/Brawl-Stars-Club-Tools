@@ -1,6 +1,6 @@
 /* If the fankit isn't being used, here we use open-source replacements */
 
-h1, h2, h3, h4, h5, h6, .button, #clan-stats thead th, figure > figcaption {
+h1, h2, h3, h4, h5, h6, .button, #Club-stats thead th, figure > figcaption {
   font-family: 'Roboto Slab', sans-serif;
 }
 

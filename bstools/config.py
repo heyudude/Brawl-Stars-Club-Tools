@@ -152,9 +152,9 @@ def __localize_strings(locale_id):
     _ = translate.gettext
 
     return {
-        'mainHeader'                : _('{clan_name} Clan Dashboard'),
+        'mainHeader'                : _('{clan_name} Club Dashboard'),
 
-        'ctaLookingForClan'         : _('Looking for a clan?'),
+        'ctaLookingForClub'         : _('Looking for a Club?'),
         'buttonJoinUs'              : _('Join us!'),
 
         'sectionCurrentWar'         : _('Current war'),
@@ -164,18 +164,18 @@ def __localize_strings(locale_id):
         'sectionMemberTableMobile'  : _('Members'),
         'sectionSuggestions'        : _('Suggestions'),
         'sectionScoring'            : _('Score explanation'),
-        'sectionClanLeaderboard'    : _('Leaderboard'),
+        'sectionClubLeaderboard'    : _('Leaderboard'),
 
-        'labelClanStats'            : _('Clan Stats'),
-        'labelClanName'             : _('Clan Name'),
-        'labelClanScore'            : _('Clan Score'),
+        'labelClubStats'            : _('Club Stats'),
+        'labelClubName'             : _('Club Name'),
+        'labelClubScore'            : _('Club Score'),
         'labelCountry'              : _('Country'),
         'labelInternational'        : _('International'),
         'labelDonationsPerWeek'     : _('Donations/week'),
         'labelRequiredTrophies'     : _('Required Trophies'),
         'labelWarTrophies'          : _('War Trophies'),
-        'labelClanTag'              : _('Clan Tag'),
-        'labelClanRole'             : _('Clan Role'),
+        'labelClubTag'              : _('Club Tag'),
+        'labelClubRole'             : _('Club Role'),
         'labelLastUpdate'           : _('Last update'),
         'labelYes'                  : _('Yes'),
         'labelNo'                   : _('No'),
@@ -208,12 +208,12 @@ def __localize_strings(locale_id):
         'labelDay'                  : _('Day'),
         'labelMinutes'              : _('Minutes'),
         'labelHours'                : _('Hours'),
-        'labelTimeInClan'           : _('Time in Clan'),
+        'labelTimeInClub'           : _('Time in Club'),
         'labelLastSeen'             : _('Last Seen'),
         'labelCurrentWar'           : _('Current War'),
-        'labelNotInClan'            : _('Not in clan'),
+        'labelNotInClub'            : _('Not in Club'),
         'labelNA'                   : _('N/A'),
-        'LabelNotInWar'             : _('The clan is not currently engaged in a war.'),
+        'LabelNotInWar'             : _('The Club is not currently engaged in a war.'),
         'labelScoreDonations'       : _('Score from donations'),
         'labelScoreWar'             : _('Score from war participation'),
         'labelCardsGiven'           : _('Cards given'),
@@ -241,9 +241,9 @@ def __localize_strings(locale_id):
         'labelViewOldMembers'       : _('View List of Old Members'),
         'labelOldMembers'           : _('Old Members'),
 
-        'memberEventJoinedClan'     : _('Joined clan'),
+        'memberEventJoinedClub'     : _('Joined Club'),
         'memberEventRoleChange'     : _('Changed role to {}'),
-        'memberEventExitClan'       : _('Departed clan'),
+        'memberEventExitClub'       : _('Departed Club'),
 
         'dialogTitleMemberDetails'  : _('Member Details'),
         'dialogLabelPlayerStats'    : _('Player Stats and Info'),
@@ -259,7 +259,7 @@ def __localize_strings(locale_id):
         'dialogButtonClose'         : _('Close'),
 
         'tooltipMemberNotInWar'     : _('<strong>{name}</strong> was not in this war.'),
-        'tooltipMemberNotInClan'    : _('<strong>{name}</strong> was not in the clan at the time of this war.'),
+        'tooltipMemberNotInClub'    : _('<strong>{name}</strong> was not in the Club at the time of this war.'),
         'tooltipCurrentWarNoScore'  : _('NOTE: current war <strong>does not</strong> affect score.'),
 
         'labelFilter'               : _('Filter'),
@@ -277,9 +277,9 @@ def __localize_strings(locale_id):
         'suggestionKick'            : _('Members with a <strong class="bad">score below 0</strong> will be recommended for kicking or demotion.'),
         'suggestionInactive'        : _('Members inactive for <strong class="bad">{days_inactive} days</strong> will be kicked.'),
         'suggestionPromote'         : _('A member who achieves <strong class="good">{points} points</strong> is elegible for promotion to <strong>Elder</strong> at the discretion of leadership.'),
-        'suggestionPromoteMinDays'  : _('Members must be in the clan for a at least <strong>{} days</strong> to be promoted.'),
+        'suggestionPromoteMinDays'  : _('Members must be in the Club for a at least <strong>{} days</strong> to be promoted.'),
         'suggestionRecruit'         : _('<strong>Recruit new members!</strong> The team needs some fresh blood.'),
-        'suggestionNone'            : _('No suggestions at this time. The clan is in good order.'),
+        'suggestionNone'            : _('No suggestions at this time. The Club is in good order.'),
         'suggestionKickBlacklist'   : _('Kick <strong>{name}</strong>. Member is blacklisted.'),
         'suggestionKickInactivity'  : _('Kick <strong>{name}</strong> <strong class="bad">{days} days inactive</strong>'),
         'suggestionKickScore'       : _('Kick <strong>{name}</strong> <strong class="bad">{score}</strong>'),
@@ -333,7 +333,7 @@ def __localize_strings(locale_id):
         'league-ultimate-champion'  : _('Ultimate Champion'),
 
         'discord-header-war-nag'    : _('**{} hours** left on {} day. Members have **not** completed all battles:'),
-        'discord-header-war-quit'   : _('Members who have quit the clan and are now blacklisted:'),
+        'discord-header-war-quit'   : _('Members who have quit the Club and are now blacklisted:'),
         'discord-war-label'         : _('war'),
         'discord-collection-label'  : _('collection'),
 
@@ -379,8 +379,8 @@ def __validate_paths(config):
             logger.warn('custom favicon file "{}" not found. Using default instead.'.format(favicon_src_path_test))
     config['paths']['favicon'] = favicon_src_path
 
-    # if external clan description file is specified, read that file and
-    # use it for the clan description section. If not, use the clan
+    # if external Club description file is specified, read that file and
+    # use it for the Club description section. If not, use the Club
     # description returned by the API
     config['paths']['description_html_src'] = None
     if config['paths']['description_html']:

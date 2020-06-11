@@ -4,7 +4,7 @@ import pybrawl
 from bstools.models import warparticipation
 
 def test_get_member_war_status_class():
-    assert warparticipation._get_member_war_status_class(0, 0, 0, 1) == 'not-in-clan'
+    assert warparticipation._get_member_war_status_class(0, 0, 0, 1) == 'not-in-Club'
     assert warparticipation._get_member_war_status_class(0, 0, 0, 0) == 'na'
     assert warparticipation._get_member_war_status_class(3, 0, 0, 0) == 'bad'
     assert warparticipation._get_member_war_status_class(2, 1, 0, 0) == 'ok'

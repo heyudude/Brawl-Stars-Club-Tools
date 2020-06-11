@@ -12,7 +12,7 @@
                     <th class="donations">{{strings.labelDonations}}</th>
                     <th class="donations-received">{{strings.labelDonationsRecieved}}</th>
                     <th class="inactivity">{{strings.labelDaysInactive}}</th>
-                    <th class="time-in-clan">{{strings.labelTimeInClan}}</th>
+                    <th class="time-in-Club">{{strings.labelTimeInClub}}</th>
                     <th class="last-seen">{{strings.labelLastSeen}}</th>
                     <th class="war-win-rate">{{strings.labelWarWinRate}}</th>
                 {% if config.member_table.calc_war_readiness %}
@@ -81,7 +81,7 @@
                     <td class="inactivity {{member.activity_status}}" data-sort="{{member.days_inactive}}" >
                         <strong>{{member.days_inactive}}</strong><br /><small>{{strings.labelDays}}</small>
                     </td>
-                    <td class="time-in-clan" data-sort="{{member.days_from_join}}" >
+                    <td class="time-in-Club" data-sort="{{member.days_from_join}}" >
                         {{member.time_in_clan}}
                     </td>
                     <td class="last-seen" data-sort="{{member.last_seen}}" >
@@ -99,7 +99,7 @@
                     {% if member.current_war.in_war == True %}
                         <div data-role="war">
                             <div>
-                            {% if (clan.current_war_state == 'warDay') and (member.current_war.battles_played > 0) %}
+                            {% if (Club.current_war_state == 'warDay') and (member.current_war.battles_played > 0) %}
                                 {% for battle in range(0, member.current_war.battles_played) %}
                                     {% if member.current_war.wins >= battle+1 %}
                                     <img class="war-battle" src="static/images/war-battle-win.svg" />
@@ -119,7 +119,7 @@
                             <dl>
                                 <div><dt>{{strings.labelCollectionDayBattles}}</dt><dd>{{member.current_war.collection_day_battles_played}}</dd></div>
                                 <div><dt>{{strings.labelCardsEarned}}</dt><dd>{{member.current_war.cards_earned}}</dd></div>
-                            {% if clan.current_war_state == 'warDay' %}
+                            {% if Club.current_war_state == 'warDay' %}
                                 <div><dt>{{strings.labelWarDayBattles}}</dt><dd>{{member.current_war.battles_played}}</dd></div>
                                 <div><dt>{{strings.labelWarDayWins}}</dt><dd>{{member.current_war.wins}}</dd></div>
                             {% endif %}
@@ -128,10 +128,10 @@
                             <br />
                             {{strings.tooltipCurrentWarNoScore}}
                         </div>
-                    {% elif member.current_war.status == 'not-in-clan' %}
-                        {{strings.labelNotInClan}}
+                    {% elif member.current_war.status == 'not-in-Club' %}
+                        {{strings.labelNotInClub}}
                         <div class="tooltip">
-                            {{strings.tooltipMemberNotInClan.format(name=member.name)}}
+                            {{strings.tooltipMemberNotInClub.format(name=member.name)}}
                             <dl>
                                 <div><dt>{{strings.labelWarScore}}</dt><dd>N/A</dd></div>
                             </dl>
@@ -180,10 +180,10 @@
                                 <div><dt>{{strings.labelWarScore}}</dt><dd>{{"{0:+}".format(war.score)}}</strong></dd></div>
                             </dl>
                         </div>
-                    {% elif war.status == 'not-in-clan' %}
-                        {{strings.labelNotInClan}}
+                    {% elif war.status == 'not-in-Club' %}
+                        {{strings.labelNotInClub}}
                         <div class="tooltip">
-                            {{strings.tooltipMemberNotInClan.format(name=member.name)}}
+                            {{strings.tooltipMemberNotInClub.format(name=member.name)}}
                             <dl>
                                 <div><dt>{{strings.labelWarScore}}</dt><dd>{{"{0:+}".format(war.score)}}</strong></dd></div>
                             </dl>

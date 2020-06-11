@@ -21,11 +21,11 @@ setup(
     # Version single-sourced from bstools/_version.py
     version=__version__,
 
-    description='Python tools for creating a clan management dashboard for Clash Royale',
+    description='Python tools for creating a Club management dashboard for Clash Royale',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/AaronTraas/Clash-Royale-Clan-Tools',
+    url='https://github.com/AaronTraas/Clash-Royale-Club-Tools',
 
     # Author details
     author='Aaron Traas',
@@ -47,7 +47,7 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
     setup_requires=['babel'],
-    install_requires=['jinja2','configparser','pybrawl>=1.0.3', 'requests', 'discord-webhook', 'google-api-python-client'],
+    install_requires=['jinja2','configparser','pybrawl>=1.0.0', 'requests', 'discord-webhook', 'google-api-python-client'],
 
     include_package_data=True,
 
@@ -57,7 +57,7 @@ setup(
         ],
     },
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/AaronTraas/Clash-Royale-Clan-Tools/issues',
-        'Source': 'https://github.com/AaronTraas/Clash-Royale-Clan-Tools',
+        'Bug Reports': 'https://github.com/AaronTraas/Clash-Royale-Club-Tools/issues',
+        'Source': 'https://github.com/AaronTraas/Clash-Royale-Club-Tools',
     },
 )

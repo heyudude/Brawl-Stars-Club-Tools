@@ -6,19 +6,19 @@ from bstools import history, load_config_file
 from bstools.models import ProcessedCurrentWar
 
 __fake_members__ = [
-    pybrawl.ClanMember(
+    pybrawl.ClubMember(
         name      = 'Player A',
         tag       = '#AAAAAA',
         role      = 'leader',
         donations = 100
     ),
-    pybrawl.ClanMember(
+    pybrawl.ClubMember(
         name      = 'Player C',
         tag       = '#CCCCCC',
         role      = 'member',
         donations = 10
     ),
-    pybrawl.ClanMember(
+    pybrawl.ClubMember(
         name      = 'Player D',
         tag       = '#DDDDDD',
         role      = 'elder',

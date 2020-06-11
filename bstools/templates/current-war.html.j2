@@ -12,10 +12,10 @@
             {% else %}
             <div><dt>{{strings.labelWarEnd}}</dt><dd>{{current_war.end_label}}</dd></div>
             {% endif %}
-            <div><dt>{{strings.labelNumWarParticipants}}</dt><dd>{{current_war.clan.participants}}</dd></div>
+            <div><dt>{{strings.labelNumWarParticipants}}</dt><dd>{{current_war.Club.participants}}</dd></div>
             {% if current_war.state == 'warDay' %}
-            <div class="crowns"><dt>{{strings.labelWarCrowns}}</dt><dd>{{current_war.clan.crowns}}</dd></div>
-            <div class="wins"><dt>{{strings.labelWarVictories}}</dt><dd>{{current_war.clan.wins}}</dd></div>
+            <div class="crowns"><dt>{{strings.labelWarCrowns}}</dt><dd>{{current_war.Club.crowns}}</dd></div>
+            <div class="wins"><dt>{{strings.labelWarVictories}}</dt><dd>{{current_war.Club.wins}}</dd></div>
             {% else %}
             <div class="cards"><dt>{{strings.labelWarCards}}</dt><dd>{{current_war.cards}}</dd></div>
             {% endif %}
@@ -29,8 +29,8 @@
         </header>
         <table class="war-standings" width="100%">
         {% for war_clan in current_war.clans %}
-            {% if war_clan.tag == clan.tag %}
-            <tr class="this-clan">
+            {% if war_clan.tag == Club.tag %}
+            <tr class="this-Club">
             {% else %}
             <tr>
             {% endif %}
@@ -56,8 +56,8 @@
                 {% if loop.index <= 5 %}
                 <tr>
                     <td class="date">{{war.date}}</td>
-                    <td class="battles">{{war.clan.battles_played}}</td>
-                    <td class="wins">{{war.clan.wins}}</td>
+                    <td class="battles">{{war.Club.battles_played}}</td>
+                    <td class="wins">{{war.Club.wins}}</td>
                     <td class="rank rank-{{war.rank}}"><span>{{war.rank}}</span></td>
                     <td class="trophies"><strong class="{{ 'good' if war.trophy_change > 0 else 'bad' }}">{{"{0:+}".format(war.trophy_change)}}</strong></td>
                 </tr>

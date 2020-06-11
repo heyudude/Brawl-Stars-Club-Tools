@@ -27,7 +27,7 @@ def _get_war_date(war):
 def _get_member_war_status_class(collection_day_battles, war_day_battles, war_date, join_date, current_war=False, war_day=False):
     """ returns CSS class(es) for a war log entry for a given member """
     if war_date < join_date:
-        return 'not-in-clan'
+        return 'not-in-Club'
 
     status = 'normal'
     if current_war:
@@ -78,7 +78,7 @@ class WarParticipation():
             self.score = 0
         elif war_date < join_date:
             # member is not in this war
-            self.status = 'not-in-clan'
+            self.status = 'not-in-Club'
             return
         else:
             # member is not in this war

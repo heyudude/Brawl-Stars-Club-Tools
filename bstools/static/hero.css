@@ -9,7 +9,7 @@
     box-shadow: inset 0px 6px 70px 10px rgba(0,0,0,0.8);
 }
 
-#hero h2, #hero h3, #clan-stats thead th {
+#hero h2, #hero h3, #Club-stats thead th {
     text-shadow: -1px -1px 0px #000000,
                  0px -1px 0px #000000,
                  1px -1px 0px #000000,
@@ -73,29 +73,29 @@
     }
 }
 
-/* Clan stats table
+/* Club stats table
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-#clan-stats {
+#Club-stats {
     min-width: 260px;
 }
-#clan-stats .table-wrap {
+#Club-stats .table-wrap {
     border: 1px solid #fff;
     border-radius: 5px;
     background-color: rgba(0,0,0,.3);
 }
-#clan-stats table {
+#Club-stats table {
     width: 100%;
     margin: 0;
 }
-#clan-stats table thead th {
+#Club-stats table thead th {
     text-align: center;
     background-color: rgba(255,255,255,0.4);
 }
-#clan-stats table tbody th {
+#Club-stats table tbody th {
     font-family: 'Open Sans Condensed', sans-serif;
 }
-#clan-stats table tbody tr:last-child th,
-#clan-stats table tbody tr:last-child td {
+#Club-stats table tbody tr:last-child th,
+#Club-stats table tbody tr:last-child td {
     border-bottom: none;
 }
 
@@ -104,9 +104,9 @@ img.war-league {
     vertical-align: text-top;
 }
 
-/* Clan description region
+/* Club description region
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-#clan-description {
+#Club-description {
     flex: 1;
     text-shadow:
                  1px 0px 0px #333,
@@ -114,7 +114,7 @@ img.war-league {
                  -1px 1px 0px #333,
                  1px 1px 0px #333;
 }
-#clan-description > *:last-child {
+#Club-description > *:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
 }

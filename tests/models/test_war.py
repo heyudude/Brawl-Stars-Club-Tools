@@ -2,9 +2,9 @@ import pybrawl
 from bstools import load_config_file
 from bstools.models import ProcessedCurrentWar
 
-CLAN_TAG = '#FakeClanTag'
+CLAN_TAG = '#FakeClubTag'
 
-__fake_war_clan__ = pybrawl.WarClan(
+__fake_war_clan__ = pybrawl.WarClub(
         tag = CLAN_TAG,
         name = "Agrassar",
         clan_score = 1813,
@@ -47,7 +47,7 @@ def test_process_current_war_nowar():
 
     war = ProcessedCurrentWar(config=config, current_war=pybrawl.WarCurrent(state='notInWar'))
 
-    assert war.state_label == 'The clan is not currently engaged in a war.'
+    assert war.state_label == 'The Club is not currently engaged in a war.'
 
 def test_process_current_war_collection():
     config = load_config_file(False)
@@ -55,7 +55,7 @@ def test_process_current_war_collection():
     war = ProcessedCurrentWar(config=config, current_war=pybrawl.WarCurrent(
         state               = 'collectionDay',
         collection_end_time = '20190209T212846.354Z',
-        clan                = __fake_war_clan__,
+        Club                = __fake_war_clan__,
         participants        = __fake_war_participants__
     ))
 
@@ -68,7 +68,7 @@ def test_process_current_war_warday():
     war = ProcessedCurrentWar(config=config, current_war=pybrawl.WarCurrent(
         state        = 'warDay',
         war_end_time = '20190209T212846.354Z',
-        clan         = __fake_war_clan__,
+        Club         = __fake_war_clan__,
         participants = __fake_war_participants__,
         clans        = [__fake_war_clan__]
     ))

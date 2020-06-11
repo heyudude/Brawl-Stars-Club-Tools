@@ -15,7 +15,7 @@ class ProcessedCurrentWar:
         self.state = current_war.state
         self.war_end_time = current_war.war_end_time
         self.collection_end_time = current_war.collection_end_time
-        self.clan = current_war.clan
+        self.Club = current_war.Club
         self.participants = current_war.participants
         self.clans = current_war.clans
 
@@ -51,11 +51,11 @@ class ProcessedCurrentWar:
             self.collection_end_time_label = config['strings']['labelCollectionComplete']
             self.end_label = config['strings']['labelCollectionEndTime'].format(end_time_delta)
 
-            # calculate battles remaining for each clan
-            for clan in self.clans:
-                clan.battles_remaining = clan.participants - clan.battles_played
-                if clan.battles_remaining < 0:
-                    clan.battles_remaining = 0; # pragma: no coverage
+            # calculate battles remaining for each Club
+            for Club in self.clans:
+                Club.battles_remaining = Club.participants - Club.battles_played
+                if Club.battles_remaining < 0:
+                    Club.battles_remaining = 0; # pragma: no coverage
 
             # sort clans by who's winning
             self.clans = sorted(self.clans, key=lambda k: (k.wins, k.crowns), reverse=True)
