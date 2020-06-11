@@ -29,16 +29,16 @@ If applicable, add screenshots to help explain your problem.
  - Python version [e.g., 3.7.3] 
 
 **Command line arguments**
-[e.g., `crtools --clan_id=#JY8YVV --debug`]
+[e.g., `bstools --clan_id=#JY8YVV --debug`]
 
 **Console output**
 [e.g.:
 ```
-DEBUG:crtools.config:Grabbing current version from PyPI
+DEBUG:bstools.config:Grabbing current version from PyPI
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): pypi.org:443
-DEBUG:urllib3.connectionpool:https://pypi.org:443 "GET /pypi/crtools/json HTTP/1.1" 200 31317
-crtools v2.10.3
-DEBUG:crtools.config:specified locale: "en"
+DEBUG:urllib3.connectionpool:https://pypi.org:443 "GET /pypi/bstools/json HTTP/1.1" 200 31317
+bstools v2.10.3
+DEBUG:bstools.config:specified locale: "en"
 - requesting info for clan id: #JY8YVV
 - clan: Agrassar (#JY8YVV)
 ```]

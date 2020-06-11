@@ -1,5 +1,5 @@
 ==================================================
-crtools - Clash Royale Clan Dashboard generator
+bstools - Clash Royale Clan Dashboard generator
 ==================================================
 
 This is a tool for creating a dashboard for clan participation in ClashRoyale.
@@ -20,13 +20,13 @@ This requires Python 3 and pip on your machine. To install, use
 
 .. code::
 
-  pip3 install crtools
+  pip3 install bstools
 
 If you have an older version installed, to upgrade to the latest version, run:
 
 .. code::
 
-  pip3 install -U crtools
+  pip3 install -U bstools
 
 
 ==================================================
@@ -37,7 +37,7 @@ Usage:
 
 .. code::
 
-  crtools [-h] [--locale LOCALE] [--config CONFIG-FILE] [--api_key KEY]
+  bstools [-h] [--locale LOCALE] [--config CONFIG-FILE] [--api_key KEY]
           [--clan TAG] [--out PATH] [--favicon PATH] [--clan_logo PATH]
           [--description PATH] [--canonical_url URL] [--debug]
           [--version]
@@ -51,16 +51,16 @@ optional arguments:
   --out PATH           Output path for HTML.
   --favicon PATH       Source path for favicon.ico. If provided, we will copy to the output directory.
   --clan_logo PATH     Source path for clan logo PNG. Recommended at least 64x64 pizels. If provided, we will copy to the output directory.
-  --description PATH   Source path snippet of HTML to replace the clan description. Should not be a complete HTML document. Sample here: https://github.com/AaronTraas/crtools-agrassar-assets/blob/master/description.html If provided, we will copy to the output directory.
+  --description PATH   Source path snippet of HTML to replace the clan description. Should not be a complete HTML document. Sample here: https://github.com/AaronTraas/bstools-agrassar-assets/blob/master/description.html If provided, we will copy to the output directory.
   --canonical_url URL  Canonical URL for this site. Used for setting the rel=canonical link in the web site, as well as generating the robots.txt and sitemap.xml
   --debug              Turns on debug mode
-  --version            List the version of crtools.
+  --version            List the version of bstools.
 
 ==================================================
 Optional config file
 ==================================================
 
-crtools looks for a config file in your home directory called .crtools
+bstools looks for a config file in your home directory called .bstools
 
 This is an INI file. As of current version, there's only one possible
 parameter: api_key. The file should look like:
@@ -101,16 +101,16 @@ parameter: api_key. The file should look like:
   # and sitemap.xml
   canonical_url=https://yourclan.com/
 
-For more details, see `samples/crtools.ini <https://github.com/AaronTraas/Clash-Royale-Clan-Tools/blob/master/samples/crtools.ini>`_
+For more details, see `samples/bstools.ini <https://github.com/AaronTraas/Clash-Royale-Clan-Tools/blob/master/samples/bstools.ini>`_
 
 ===================================================================
 Optional blacklist and vacation management using Google Sheets
 ===================================================================
 
 You can optionally use a Google Sheets log to keep track of demerits
-and vacations. If you want that info to be integrated with crtools, you
+and vacations. If you want that info to be integrated with bstools, you
 need to copy the
-`crtools member log template <https://docs.google.com/spreadsheets/d/1_8YKfJf-2HVZOgtuosVaGM_50kB8q7YYR3H2d8p0Wzw>`_
+`bstools member log template <https://docs.google.com/spreadsheets/d/1_8YKfJf-2HVZOgtuosVaGM_50kB8q7YYR3H2d8p0Wzw>`_
 to your Google Docs account and use that. Fill in with info about your
 clan. Be sure not to re-name any of the tabs, or add/remove any columns.
 
@@ -143,7 +143,7 @@ Supercell here. To enable automated downloading of the fan kit, add:
 To the :code:`[Paths]` section of your config file.
 
 NOTE: This requires about 5GB free in your temp forlder on the machine that
-crtools runs on. It will take 10-15 minutes to download and extract, but only
+bstools runs on. It will take 10-15 minutes to download and extract, but only
 the first time you run with the fankit enabled.
 
 If you have problems, you can manually install the fan kit. See
@@ -153,7 +153,7 @@ If you have problems, you can manually install the fan kit. See
 Other languages/locales
 ==================================================
 
-Crtools currently supports the following languages:
+bstools currently supports the following languages:
 
 ======= =================
 locale  language
@@ -175,7 +175,7 @@ on the command line:
 
 The above example is French. Use the locale code listed above
 
-If you wish for crtools to be available in another languages, reach out to
+If you wish for bstools to be available in another languages, reach out to
 me. I'm unable to do the translation myself (I speak only English), but I can
 help you provide a translation for this.
 
@@ -193,14 +193,14 @@ Assuming root is going to be running the script:
 1. Install this application via pip
 2. Install nginx or apache
 3. Find your document root (e.g., :code:`/var/www/html`)
-4. Create :code:`/root/.crtools` file as specified above, and add your
+4. Create :code:`/root/.bstools` file as specified above, and add your
    API key (from https://developer.clashroyale.com), output path (the
    document root), and clan tag
 5. Create the following entry in your crontab:
 
 .. code::
 
-  0 * * * * crtools
+  0 * * * * bstools
 
 ==================================================
 Development links
@@ -215,7 +215,7 @@ Support
 ==================================================
 
 If you need help getting this up and running, feel free to hop on the
-`crtools discord <https://discord.gg/K2UDCXU>`_.
+`bstools discord <https://discord.gg/K2UDCXU>`_.
 
 Keep in mind, this is a command-line utility that expects a working Python 3
 environment. It also assumes you will know how to configure a web server to
@@ -245,7 +245,7 @@ It was important to us to make sure the entirety of this application is
 open source, and not subject to takedown request. We will not ever
 extract assets from the game or from any other web properties.
 
-Optionally, crtools can download the official Clash Royale fan kit and use
+Optionally, bstools can download the official Clash Royale fan kit and use
 some of the content contained. This is not the default behavior, and no
 works copywritten by Supercell are contained within this code.
 

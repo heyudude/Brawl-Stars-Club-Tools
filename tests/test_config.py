@@ -1,11 +1,11 @@
 import pytest
 import requests_mock
 
-from crtools import load_config_file
-from crtools.config import PYPI_URL, LOCALE_NOT_FOUND_ERROR_TEMPLATE
+from bstools import load_config_file
+from bstools.config import PYPI_URL, LOCALE_NOT_FOUND_ERROR_TEMPLATE
 
 __config_debug =  '''
-[crtools]
+[bstools]
 debug=True
 '''
 
@@ -45,7 +45,7 @@ def test_config_debug(tmpdir):
 
     config = load_config_file(config_file.realpath())
 
-    assert config['crtools']['debug'] == True
+    assert config['bstools']['debug'] == True
 
 def test_config_unknown_key(tmpdir):
     """ Sections and properties in INI files should never be added to
@@ -110,8 +110,8 @@ def test_config_paths_empty(tmpdir):
     ))
     config = load_config_file(config_file.realpath())
 
-    assert config['paths']['clan_logo'].endswith('/templates/crtools-logo.png')
-    assert config['paths']['favicon'].endswith('/templates/crtools-favicon.ico')
+    assert config['paths']['clan_logo'].endswith('/templates/bstools-logo.png')
+    assert config['paths']['favicon'].endswith('/templates/bstools-favicon.ico')
     assert config['paths']['description_html_src'] == None
 
 def test_config_paths_invalid(tmpdir):
@@ -123,8 +123,8 @@ def test_config_paths_invalid(tmpdir):
     ))
     config = load_config_file(config_file.realpath())
 
-    assert config['paths']['clan_logo'].endswith('/templates/crtools-logo.png')
-    assert config['paths']['favicon'].endswith('/templates/crtools-favicon.ico')
+    assert config['paths']['clan_logo'].endswith('/templates/bstools-logo.png')
+    assert config['paths']['favicon'].endswith('/templates/bstools-favicon.ico')
     assert config['paths']['description_html_src'] == None
 
 def test_config_paths_valid(tmpdir):
@@ -159,9 +159,9 @@ def test_version_update(requests_mock, tmpdir):
 
     config = load_config_file(config_file.realpath(), True)
 
-    assert config['crtools']['latest_version'] != config['crtools']['version']
-    assert config['crtools']['latest_version'] == latest_version
-    assert config['crtools']['update_available'] == True
+    assert config['bstools']['latest_version'] != config['bstools']['version']
+    assert config['bstools']['latest_version'] == latest_version
+    assert config['bstools']['update_available'] == True
 
 def test_version_update_latest(requests_mock, tmpdir):
     latest_version = '0.0.0'
@@ -174,8 +174,8 @@ def test_version_update_latest(requests_mock, tmpdir):
 
     config = load_config_file(config_file.realpath(), True)
 
-    assert config['crtools']['latest_version'] == config['crtools']['version']
-    assert config['crtools']['update_available'] == False
+    assert config['bstools']['latest_version'] == config['bstools']['version']
+    assert config['bstools']['update_available'] == False
 
 def test_version_update_request_fail(requests_mock, tmpdir):
     mock_object = {}
@@ -187,13 +187,13 @@ def test_version_update_request_fail(requests_mock, tmpdir):
 
     config = load_config_file(config_file.realpath(), True)
 
-    assert config['crtools']['latest_version'] == config['crtools']['version']
-    assert config['crtools']['update_available'] == False
+    assert config['bstools']['latest_version'] == config['bstools']['version']
+    assert config['bstools']['update_available'] == False
 
 def test_bad_locale_aborts_with_error(tmpdir, capsys):
     config_file = tmpdir.mkdir('test_bad_locale_defaults_to_default').join('config.ini')
     bad_locale = 'sdlkjfasldfjalsdfjalsdf'
-    config_file.write('[crtools]\nlocale='+bad_locale)
+    config_file.write('[bstools]\nlocale='+bad_locale)
 
     with pytest.raises(SystemExit):
         config = load_config_file(config_file.realpath())

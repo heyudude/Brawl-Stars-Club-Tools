@@ -1,7 +1,7 @@
-import pyroyale
-from crtools import load_config_file
-from crtools.models import ProcessedClan
-from crtools.models import ProcessedCurrentWar
+import pybrawl
+from bstools import load_config_file
+from bstools.models import ProcessedClan
+from bstools.models import ProcessedCurrentWar
 
 CLAN_TAG = '#FakeClanTag'
 
@@ -21,7 +21,7 @@ war_participation=0
 war_non_participation=-1
 '''
 
-__fake_clan__ = pyroyale.Clan(
+__fake_clan__ = pybrawl.Clan(
     tag                = CLAN_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
@@ -31,7 +31,7 @@ __fake_clan__ = pyroyale.Clan(
     donations_per_week = 7540,
     members            = 4,
     member_list        = [
-        pyroyale.ClanMember(
+        pybrawl.ClanMember(
             tag       = "#AAAAAA",
             name      = "LeaderPerson",
             role      = "leader",
@@ -43,7 +43,7 @@ __fake_clan__ = pyroyale.Clan(
     ]
 )
 
-__fake_war_clan__ = pyroyale.WarClan(
+__fake_war_clan__ = pybrawl.WarClan(
         tag = CLAN_TAG,
         name = "Agrassar",
         clan_score = 1813,
@@ -54,12 +54,12 @@ __fake_war_clan__ = pyroyale.WarClan(
         crowns = 5
     )
 
-__fake_current_war__ = pyroyale.WarCurrent(
+__fake_current_war__ = pybrawl.WarCurrent(
     state        = 'warDay',
     war_end_time = '20190209T212846.354Z',
     clan         = __fake_war_clan__,
     participants = [
-        pyroyale.WarParticipant(
+        pybrawl.WarParticipant(
             tag                           =  '#AAAAAA',
             cards_earned                  = 1120,
             battles_played                = 1,

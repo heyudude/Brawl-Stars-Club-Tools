@@ -2,15 +2,15 @@ import googleapiclient.discovery
 import pytest
 import requests_mock
 
-from crtools import load_config_file
-from crtools import gdoc
+from bstools import load_config_file
+from bstools import gdoc
 
 __config_file__ =  '''
 [google_docs]
 api_key=FAKE_KEY
 sheet_id=FAKE_SHEET_ID
 
-[crtools]
+[bstools]
 debug=True
 '''
 
@@ -58,7 +58,7 @@ def test_get_member_data_from_sheets_no_api_key_does_nothing(tmpdir, capsys):
 [google_docs]
 api_key=FAKE_KEY
 
-[crtools]
+[bstools]
 debug=True
 """)
 
@@ -79,7 +79,7 @@ def test_get_member_data_from_sheets_no_sheet_id_does_nothing(tmpdir, capsys):
 [google_docs]
 sheet_id=FAKE_SHEET_ID
 
-[crtools]
+[bstools]
 debug=True
 """)
 

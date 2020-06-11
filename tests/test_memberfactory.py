@@ -1,6 +1,6 @@
-from crtools import load_config_file
-from crtools.memberfactory import MemberFactory
-from crtools.models import MemberVacation
+from bstools import load_config_file
+from bstools.memberfactory import MemberFactory
+from bstools.models import MemberVacation
 
 def test_calc_activity_status():
     config = load_config_file(False)

@@ -1,8 +1,8 @@
-from crtools import discord, load_config_file
+from bstools import discord, load_config_file
 from datetime import datetime, timedelta
 import logging
 
-import pyroyale
+import pybrawl
 
 __config_file__ = '''
 [discord]
@@ -45,15 +45,15 @@ def test_trigger_webhooks_no_nag_returns_false(tmpdir):
     config_file.write(__config_file_no_nag__)
     config = load_config_file(config_file.realpath())
 
-    assert discord.trigger_webhooks(config, pyroyale.WarCurrent(state = 'collectionDay'), None) == True
-    assert discord.trigger_webhooks(config, pyroyale.WarCurrent(state = 'warDay'), None) == True
+    assert discord.trigger_webhooks(config, pybrawl.WarCurrent(state = 'collectionDay'), None) == True
+    assert discord.trigger_webhooks(config, pybrawl.WarCurrent(state = 'warDay'), None) == True
 
 def test_send_war_nag_not_in_war_returns_false(tmpdir):
     config_file = tmpdir.mkdir('test_send_war_nag_not_in_war_returns_false').join('testfile')
     config_file.write(__config_file__)
     config = load_config_file(config_file.realpath())
 
-    assert discord.send_war_nag(config, pyroyale.WarCurrent(state = 'notInWar'), None) == True
+    assert discord.send_war_nag(config, pybrawl.WarCurrent(state = 'notInWar'), None) == True
 
 def test_send_war_nag_collection_no_members_returns_true(tmpdir):
 
@@ -61,7 +61,7 @@ def test_send_war_nag_collection_no_members_returns_true(tmpdir):
     config_file.write(__config_file__)
     config = load_config_file(config_file.realpath())
 
-    fake_current_war = pyroyale.WarCurrent(
+    fake_current_war = pybrawl.WarCurrent(
         state               = 'collectionDay',
         collection_end_time = datetime.utcnow().strftime("%Y%m%dT%H%M%S.xxxx"),
         participants        = []
@@ -74,7 +74,7 @@ def test_send_war_nag_war_no_members_returns_true(tmpdir):
     config_file.write(__config_file__)
     config = load_config_file(config_file.realpath())
 
-    fake_current_war = pyroyale.WarCurrent(
+    fake_current_war = pybrawl.WarCurrent(
         state        = 'warDay',
         war_end_time = datetime.utcnow().strftime("%Y%m%dT%H%M%S.xxxx"),
         participants = []
@@ -88,7 +88,7 @@ def test_send_war_nag_threshold_not_met_returns_true(tmpdir):
     config_file.write(__config_file_no_threshold__)
     config = load_config_file(config_file.realpath())
 
-    fake_current_war = pyroyale.WarCurrent(
+    fake_current_war = pybrawl.WarCurrent(
         state               = 'collectionDay',
         collection_end_time = datetime.utcnow().strftime("%Y%m%dT%H%M%S.xxxx"),
         participants        = []
@@ -102,17 +102,17 @@ def test_send_war_nag_participants_completed_returns_false_because_url_invalid(t
     config_file.write(__config_file__)
     config = load_config_file(config_file.realpath())
 
-    fake_current_war = pyroyale.WarCurrent(
+    fake_current_war = pybrawl.WarCurrent(
         state               = 'collectionDay',
         collection_end_time = datetime.utcnow().strftime("%Y%m%dT%H%M%S.xxxx"),
         participants        = [
-            pyroyale.WarParticipant(
+            pybrawl.WarParticipant(
                 name              = 'AAA',
                 tag               = '#AAA',
                 battles_played    = 1,
                 number_of_battles = 3
             ),
-            pyroyale.WarParticipant(
+            pybrawl.WarParticipant(
                 name              = 'BBB',
                 tag               = '#BBB',
                 battles_played    = 1,
@@ -121,6 +121,6 @@ def test_send_war_nag_participants_completed_returns_false_because_url_invalid(t
         ]
     )
 
-    fake_members = [pyroyale.WarParticipant(tag='#AAA')]
+    fake_members = [pybrawl.WarParticipant(tag='#AAA')]
 
     assert discord.send_war_nag(config, fake_current_war, fake_members) == False

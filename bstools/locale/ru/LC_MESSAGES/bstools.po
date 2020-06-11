@@ -1,0 +1,773 @@
+# Russian translations for bstools.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the bstools project.
+# FIRST AUTHOR <metatronishe@gmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bstools 2.12.14\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-02-27 09:02-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Aleksander Nepomnyashchy <metatronishe@gmail.com>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: bstools/config.py:154
+msgid "{clan_name} Clan Dashboard"
+msgstr "Основная информация клана {clan_name}"
+
+#: bstools/config.py:156
+msgid "Looking for a clan?"
+msgstr "Ищешь клан?"
+
+#: bstools/config.py:157
+msgid "Join us!"
+msgstr "Присоединяйся!"
+
+#: bstools/config.py:159
+msgid "Current war"
+msgstr "Текущая война"
+
+#: bstools/config.py:160
+msgid "Standings"
+msgstr "Турнирная таблица"
+
+#: bstools/config.py:161
+msgid "Recent wars"
+msgstr "Последние КВ"
+
+#: bstools/config.py:162
+msgid "Member list and stats"
+msgstr "Список участников и статы"
+
+#: bstools/config.py:163
+msgid "Members"
+msgstr "Участники"
+
+#: bstools/config.py:164
+msgid "Suggestions"
+msgstr "Предложения"
+
+#: bstools/config.py:165
+msgid "Score explanation"
+msgstr "Правила начисления очков"
+
+#: bstools/config.py:166
+msgid "Leaderboard"
+msgstr "Список лидеров"
+
+#: bstools/config.py:168
+msgid "Clan Stats"
+msgstr "Статистика клана"
+
+#: bstools/config.py:169
+msgid "Clan Name"
+msgstr "Имя клана"
+
+#: bstools/config.py:170
+msgid "Clan Score"
+msgstr "Счет клана"
+
+#: bstools/config.py:171
+msgid "Country"
+msgstr "Расположение"
+
+#: bstools/config.py:172
+msgid "International"
+msgstr "Интернациональный"
+
+#: bstools/config.py:173
+msgid "Donations/week"
+msgstr "Донат/неделя"
+
+#: bstools/config.py:174
+msgid "Required Trophies"
+msgstr "Необходимо трофеев"
+
+#: bstools/config.py:175
+msgid "War Trophies"
+msgstr "Трофеи КВ клана"
+
+#: bstools/config.py:176
+msgid "Clan Tag"
+msgstr "Таг клана"
+
+#: bstools/config.py:177
+msgid "Clan Role"
+msgstr "Роль в клане"
+
+#: bstools/config.py:178
+msgid "Last update"
+msgstr "Последнее обновление"
+
+#: bstools/config.py:179
+msgid "Yes"
+msgstr "Да"
+
+#: bstools/config.py:180
+msgid "No"
+msgstr "Нет"
+
+#: bstools/config.py:181
+msgid "No wars in war log"
+msgstr "Нет проведенных КВ в истории клана"
+
+#: bstools/config.py:182
+msgid "State"
+msgstr "Состояние"
+
+#: bstools/config.py:183
+msgid "Collection Day End"
+msgstr "До окончания сбора карт"
+
+#: bstools/config.py:184
+msgid "War End"
+msgstr "До окончания КВ"
+
+#: bstools/config.py:185
+msgid "Participants"
+msgstr "Участники"
+
+#: bstools/config.py:186
+msgid "Crowns"
+msgstr "Короны"
+
+#: bstools/config.py:187
+msgid "Victories"
+msgstr "Победы"
+
+#: bstools/config.py:188
+msgid "Cards Earned"
+msgstr "Карт собрано"
+
+#: bstools/config.py:189 bstools/config.py:303
+msgid "Member"
+msgstr "Участник"
+
+#: bstools/config.py:190
+msgid "Previous"
+msgstr "Предыдущий"
+
+#: bstools/config.py:191
+msgid "Member Name"
+msgstr "Имя участника"
+
+#: bstools/config.py:192
+msgid "Member Tag"
+msgstr "Таг участника"
+
+#: bstools/config.py:193
+msgid "Join Date"
+msgstr "Дата вступления"
+
+#: bstools/config.py:194
+msgid "Last Active"
+msgstr "Последняя активность"
+
+#: bstools/config.py:195
+msgid "Before recorded history"
+msgstr "До записи истории"
+
+#: bstools/config.py:196
+msgid "Arena"
+msgstr "Арена"
+
+#: bstools/config.py:197
+msgid "XP Level"
+msgstr "Уровень опыта"
+
+#: bstools/config.py:198
+msgid "Score"
+msgstr "Очки"
+
+#: bstools/config.py:199
+msgid "Rank"
+msgstr "Ранг"
+
+#: bstools/config.py:200
+msgid "Trophies"
+msgstr "Трофеии"
+
+#: bstools/config.py:201
+msgid "Dona&shy;tions"
+msgstr "Донат"
+
+#: bstools/config.py:202
+msgid "Donations received"
+msgstr "Получено карт"
+
+#: bstools/config.py:203
+msgid "Days Inactive"
+msgstr "Дней не в игре"
+
+#: bstools/config.py:204
+msgid "Days"
+msgstr "Дней"
+
+#: bstools/config.py:205
+msgid "Months"
+msgstr ""
+
+#: bstools/config.py:206
+msgid "Years"
+msgstr ""
+
+#: bstools/config.py:207
+msgid "Day"
+msgstr "День"
+
+#: bstools/config.py:208
+msgid "Minutes"
+msgstr "Минут"
+
+#: bstools/config.py:209
+msgid "Hours"
+msgstr "Часов"
+
+#: bstools/config.py:210
+#, fuzzy
+#| msgid "Not in clan"
+msgid "Time in Clan"
+msgstr "Не в клане"
+
+#: bstools/config.py:211
+msgid "Last Seen"
+msgstr "Был в игре"
+
+#: bstools/config.py:212
+msgid "Current War"
+msgstr "Текущая война"
+
+#: bstools/config.py:213
+msgid "Not in clan"
+msgstr "Не в клане"
+
+#: bstools/config.py:214
+msgid "N/A"
+msgstr "Н/Д"
+
+#: bstools/config.py:215
+msgid "The clan is not currently engaged in a war."
+msgstr "Клан не участвует в КВ"
+
+#: bstools/config.py:216
+msgid "Score from donations"
+msgstr "Очки за донат"
+
+#: bstools/config.py:217
+msgid "Score from war participation"
+msgstr "Очки за участвие в КВ"
+
+#: bstools/config.py:218
+msgid "Cards given"
+msgstr "Карт роздано"
+
+#: bstools/config.py:219
+msgid "Cards received"
+msgstr "Карт получено"
+
+#: bstools/config.py:220
+msgid "Cards given last week"
+msgstr "Карт роздано за последнюю неделю"
+
+#: bstools/config.py:221
+msgid "Collection day battles"
+msgstr "Битвы в день сбора карт для КВ"
+
+#: bstools/config.py:222
+msgid "Collection day wins"
+msgstr "Победы в битвах сбора карт для КВ"
+
+#: bstools/config.py:223
+msgid "Cards earned"
+msgstr "Карт собрано"
+
+#: bstools/config.py:224
+msgid "War day battles"
+msgstr "Битвы КВ"
+
+#: bstools/config.py:225
+msgid "War day wins"
+msgstr "Победы в КВ"
+
+#: bstools/config.py:226
+msgid "War win rate"
+msgstr "Рейтинг побед в КВ"
+
+#: bstools/config.py:227
+msgid "War readiness"
+msgstr ""
+
+#: bstools/config.py:228
+#, python-format
+msgid "Must complete at least %d battles of the last %d"
+msgstr ""
+
+#: bstools/config.py:229
+msgid "Collection win rate"
+msgstr "Рейтинг сбора карт для КВ"
+
+#: bstools/config.py:230
+msgid "Collection cards won"
+msgstr "Собрал карт для КВ"
+
+#: bstools/config.py:231
+msgid "War score average"
+msgstr "Среднее КВ очков"
+
+#: bstools/config.py:232
+msgid "War score"
+msgstr "КВ очки"
+
+#: bstools/config.py:233
+msgid "War league"
+msgstr "Лига КВ"
+
+#: bstools/config.py:234
+msgid "{month}/{day}"
+msgstr "{day}/{month}"
+
+#: bstools/config.py:235
+msgid "{} hours"
+msgstr "{} часов"
+
+#: bstools/config.py:236
+msgid "Complete"
+msgstr "Завершенно"
+
+#: bstools/config.py:237
+msgid "1 day, {} hours"
+msgstr "1 день, {} часов"
+
+#: bstools/config.py:238
+msgid "Collection Day"
+msgstr "День сбора карт"
+
+#: bstools/config.py:239
+msgid "War Day"
+msgstr "День КВ"
+
+#: bstools/config.py:240
+msgid "View List of Old Members"
+msgstr "История старых участников"
+
+#: bstools/config.py:241
+msgid "Old Members"
+msgstr "Старые участники"
+
+#: bstools/config.py:243
+msgid "Joined clan"
+msgstr "Присоеденился к клану"
+
+#: bstools/config.py:244
+msgid "Changed role to {}"
+msgstr "Сменил статус на {}"
+
+#: bstools/config.py:245
+msgid "Departed clan"
+msgstr "Покинувшие клан"
+
+#: bstools/config.py:247
+msgid "Member Details"
+msgstr "Инфо участника"
+
+#: bstools/config.py:248
+msgid "Player Stats and Info"
+msgstr "Инфо и статисика игрока"
+
+#: bstools/config.py:249
+msgid "See on StatsRoyale"
+msgstr "Смотреть на StatsRoyale"
+
+#: bstools/config.py:250
+msgid "See on RoyaleAPI"
+msgstr "Смотреть на RoyaleAPI"
+
+#: bstools/config.py:251
+msgid "Player History"
+msgstr "История игрока"
+
+#: bstools/config.py:252
+msgid "Member is on the blacklist. Kick member immediately."
+msgstr "Участник в Черном списке. Кикнуть немедленно!"
+
+#: bstools/config.py:253
+msgid ""
+"Member has been tagged on the \"No Promote\" list for abusing privileges "
+"in the past. Never promote to Elder or higher."
+msgstr ""
+"Участник был внесен в список \"Не повышать\". Выше звания \"участник\" не"
+" давать"
+
+#: bstools/config.py:254
+msgid "Former Members"
+msgstr "Бывший член клана"
+
+#: bstools/config.py:255
+msgid "Name / tag"
+msgstr "Имя / таг"
+
+#: bstools/config.py:256
+msgid "Events"
+msgstr "События"
+
+#: bstools/config.py:257
+msgid "Links"
+msgstr "ССылки"
+
+#: bstools/config.py:258
+msgid "Close"
+msgstr "Закрыть"
+
+#: bstools/config.py:260
+msgid "<strong>{name}</strong> was not in this war."
+msgstr "<strong>{name}</strong> не участвовал в этой КВ"
+
+#: bstools/config.py:261
+msgid "<strong>{name}</strong> was not in the clan at the time of this war."
+msgstr "<strong>{name}</strong> не был в клане во время этой КВ"
+
+#: bstools/config.py:262
+msgid "NOTE: current war <strong>does not</strong> affect score."
+msgstr "ПРИМЕЧАНИЕ: данная КВ <strong>не влияет</strong> на очки"
+
+#: bstools/config.py:264
+msgid "Filter"
+msgstr "Фильтр"
+
+#: bstools/config.py:265
+msgid "None"
+msgstr "Никто"
+
+#: bstools/config.py:266
+msgid "Leadership"
+msgstr "Список лидеров"
+
+#: bstools/config.py:267
+msgid "Role: Elder"
+msgstr "Статус: сорук"
+
+#: bstools/config.py:268
+msgid "Role: Member"
+msgstr "Статус: участник"
+
+#: bstools/config.py:269
+msgid "New Members"
+msgstr "Новые участники"
+
+#: bstools/config.py:270
+msgid "In current war"
+msgstr "В текущей КВ"
+
+#: bstools/config.py:271
+msgid "Inactive"
+msgstr "Не активен"
+
+#: bstools/config.py:272
+msgid "In danger"
+msgstr "В опастности"
+
+#: bstools/config.py:273
+msgid "War"
+msgstr "КВ"
+
+#: bstools/config.py:274
+msgid "Donations"
+msgstr "Донат"
+
+#: bstools/config.py:276
+msgid ""
+"Members with a <strong class=\"bad\">score below 0</strong> will be "
+"recommended for kicking or demotion."
+msgstr ""
+"Участники с <strong class=\"bad\">очками ниже 0</strong> будут "
+"реккомендованы к понижению или удалению из клана"
+
+#: bstools/config.py:277
+msgid ""
+"Members inactive for <strong class=\"bad\">{days_inactive} days</strong> "
+"will be kicked."
+msgstr ""
+"Учасники не активные <strong class=\"bad\">{days_inactive} "
+"дней</strong>будут удалены из клана"
+
+#: bstools/config.py:278
+msgid ""
+"A member who achieves <strong class=\"good\">{points} points</strong> is "
+"elegible for promotion to <strong>Elder</strong> at the discretion of "
+"leadership."
+msgstr ""
+"Участник набравший <strong class=\"good\">{points} очков</strong>будет "
+"реккомендован к повышению статуса"
+
+#: bstools/config.py:279
+msgid ""
+"Members must be in the clan for a at least <strong>{} days</strong> to be"
+" promoted."
+msgstr ""
+"Участники для повышения должны быть в клане минимум <strong>{} "
+"дней</strong>"
+
+#: bstools/config.py:280
+msgid "<strong>Recruit new members!</strong> The team needs some fresh blood."
+msgstr "<strong>Набираем в клан!</strong> Клану нужна свежая кровь"
+
+#: bstools/config.py:281
+msgid "No suggestions at this time. The clan is in good order."
+msgstr "Без предложений. Клан как никогда хорошь )"
+
+#: bstools/config.py:282
+msgid "Kick <strong>{name}</strong>. Member is blacklisted."
+msgstr "Кикнуть <strong>{name}</strong>. Игрок в Черном списке"
+
+#: bstools/config.py:283
+msgid ""
+"Kick <strong>{name}</strong> <strong class=\"bad\">{days} days "
+"inactive</strong>"
+msgstr ""
+"Кикнуть <strong>{name}</strong> <strong class=\"bad\">{days} дней не "
+"активен</strong>"
+
+#: bstools/config.py:284
+msgid "Kick <strong>{name}</strong> <strong class=\"bad\">{score}</strong>"
+msgstr "Кикнуть <strong>{name}</strong> <strong class=\"bad\">{score}</strong>"
+
+#: bstools/config.py:285
+msgid "Demote <strong>{name}</strong> <strong class=\"bad\">{score}</strong>"
+msgstr "Понизить <strong>{name}</strong> <strong class=\"bad\">{score}</strong>"
+
+#: bstools/config.py:286
+msgid ""
+"Promote <strong>{name}</strong> to <strong>Elder</strong> <strong "
+"class=\"good\">{score}</strong>"
+msgstr ""
+"Повысить <strong>{name}</strong> до <strong>Старейшина</strong> <strong "
+"class=\"good\">{score}</strong>\""
+
+#: bstools/config.py:288
+msgid ""
+"Score is made of two components: <strong>donation score</strong> and "
+"<strong>war participation score</strong>."
+msgstr ""
+"Очки состоят из 2х компонентов: <strong>очки за донат</strong> и "
+"<strong>очки за участие в КВ</strong>"
+
+#: bstools/config.py:289
+msgid "Donation Score"
+msgstr "Очки за донат"
+
+#: bstools/config.py:290
+msgid ""
+"You are expected to donate <strong>{min_donations_daily} cards per "
+"day</strong>, on average. If you make more, you will gain points. If you "
+"make fewer, you will lose points. If you have zero, you will be penalized"
+" <strong class=\"bad\">{donations_zero} points</strong>"
+msgstr ""
+"Ожидаемый донат игрока <strong>{min_donations_daily} карт в "
+"день</strong>, в среднем. За донат выше среднего - полуешь очки,  ниже "
+"среднего - теряешь. Если твой донат равен <strong>0</strong>, будешь "
+"оштрафован на <strong class=\"bad\">{donations_zero} очков</strong>"
+
+#: bstools/config.py:292
+msgid "War Participation Score"
+msgstr "Начисление очков за КВ"
+
+#: bstools/config.py:293
+msgid "For each of the last 10 wars, did member..."
+msgstr "В каждой из последних 10 КВ, участник сделал..."
+
+#: bstools/config.py:294
+msgid "...participate in the war?"
+msgstr "...участвовал в КВ?"
+
+#: bstools/config.py:295
+msgid "...complete each collection battle? (per battle)"
+msgstr "...провел все бои сбора карт? (за битву)"
+
+#: bstools/config.py:296
+msgid "...win each collection battle? (per battle)"
+msgstr "...выиграл каждый бой сбора карт? (за битву)"
+
+#: bstools/config.py:297
+msgid "...complete war day battle?"
+msgstr "...провел финальный КВ бой?"
+
+#: bstools/config.py:298
+msgid "...win war day battle? (per battle)"
+msgstr "...выиграл финальный КВ бой? (за бой)"
+
+#: bstools/config.py:300
+msgid "Leader"
+msgstr "Глава"
+
+#: bstools/config.py:301
+msgid "Co-Leader"
+msgstr "Сорук"
+
+#: bstools/config.py:302
+msgid "Elder"
+msgstr "Старик"
+
+#: bstools/config.py:304
+msgid "Blacklisted. Kick!"
+msgstr "В ЧС. Кик!"
+
+#: bstools/config.py:305
+msgid "On vacation"
+msgstr "В отпуске"
+
+#: bstools/config.py:306
+msgid "Vacation until {}"
+msgstr "Отпуск до {}"
+
+#: bstools/config.py:307
+msgid "Inactive {days} days"
+msgstr "Не активен {days} дней"
+
+#: bstools/config.py:308
+msgid "Never Promote"
+msgstr "Никогда не повышать"
+
+#: bstools/config.py:310
+msgid "Arena Unknown"
+msgstr "Арена не известна"
+
+#: bstools/config.py:311
+msgid "Goblin Stadium"
+msgstr "Гоблинский стадион"
+
+#: bstools/config.py:312
+msgid "Bone Pit"
+msgstr "Костяная яма"
+
+#: bstools/config.py:313
+msgid "Barbarian Bowl"
+msgstr "Варварская арена"
+
+#: bstools/config.py:314
+msgid "P.E.K.K.A's Playhouse"
+msgstr "Игровой домик П.Е.К.К.А."
+
+#: bstools/config.py:315
+msgid "Spell Valley"
+msgstr "Долина чар"
+
+#: bstools/config.py:316
+msgid "Builder's Workshop"
+msgstr "Мастерская строителя"
+
+#: bstools/config.py:317
+msgid "Royal Arena"
+msgstr "Королевская арена"
+
+#: bstools/config.py:318
+msgid "Frozen Peak"
+msgstr "Ледяной пик"
+
+#: bstools/config.py:319
+msgid "Jungle Arena"
+msgstr "Арена в джунглях"
+
+#: bstools/config.py:320
+msgid "Hog Mountain"
+msgstr "Кабанья гора"
+
+#: bstools/config.py:321
+msgid "Electro Valley"
+msgstr "Электрическая долина"
+
+#: bstools/config.py:322
+msgid "Spooky Town"
+msgstr "Жуткий город"
+
+#: bstools/config.py:323
+msgid "Legendary Arena"
+msgstr "Легендарная арена"
+
+#: bstools/config.py:324
+msgid "Challenger II"
+msgstr "Искатель II"
+
+#: bstools/config.py:325
+msgid "Challenger III"
+msgstr "Искатель III"
+
+#: bstools/config.py:326
+msgid "Master I"
+msgstr "Мастер I"
+
+#: bstools/config.py:327
+msgid "Master II"
+msgstr "Мастер II"
+
+#: bstools/config.py:328
+msgid "Master III"
+msgstr "Мастер III"
+
+#: bstools/config.py:329
+msgid "Champion"
+msgstr "Чемпион"
+
+#: bstools/config.py:330
+msgid "Grand Champion"
+msgstr "Большой чемпион"
+
+#: bstools/config.py:331
+msgid "Royal Champion"
+msgstr "Королевский чемпион"
+
+#: bstools/config.py:332
+msgid "Ultimate Champion"
+msgstr "Абсолютный чемпион"
+
+#: bstools/config.py:334
+msgid "**{} hours** left on {} day. Members have **not** completed all battles:"
+msgstr "**{} часов** осталось в {} день. Участники **не** сыгравшие все битвы:"
+
+#: bstools/config.py:335
+msgid "Members who have quit the clan and are now blacklisted:"
+msgstr "Участники которые вышли из клана во время КВ и теперь в ЧС:"
+
+#: bstools/config.py:336
+msgid "war"
+msgstr "война"
+
+#: bstools/config.py:337
+msgid "collection"
+msgstr "сбор"
+
+#: bstools/config.py:339
+msgid "Bronze League"
+msgstr "Бронзовая лига"
+
+#: bstools/config.py:340
+msgid "Silver League"
+msgstr "Серебряная лига"
+
+#: bstools/config.py:341
+msgid "Gold League"
+msgstr "Золотая лига"
+
+#: bstools/config.py:342
+msgid "Legendary League"
+msgstr "Легендарная лига"
+
+#: bstools/config.py:344
+msgid ""
+"This content is not affiliated with, endorsed, sponsored, or specifically"
+" approved by Supercell and Supercell is not responsible for it."
+msgstr ""
+"Этот контент не связан, не одобрен, не спонсируется Supercellи Supercell "
+"не имеет к нему никакого отношения"
+
+#: bstools/config.py:345
+msgid "For more information see Supercell's Fan Content Policy."
+msgstr "Для детальной информации смотрите ПРАВИЛА ФАН-КОНТЕНТА от Supercell"
+

@@ -12,13 +12,13 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 # single-sourcing the version
-with open(path.join(here, 'crtools/_version.py')) as f:
+with open(path.join(here, 'bstools/_version.py')) as f:
     exec(f.read())
 
 setup(
-    name='crtools',
+    name='bstools',
 
-    # Version single-sourced from crtools/_version.py
+    # Version single-sourced from bstools/_version.py
     version=__version__,
 
     description='Python tools for creating a clan management dashboard for Clash Royale',
@@ -47,13 +47,13 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
     setup_requires=['babel'],
-    install_requires=['jinja2','configparser','pyroyale>=1.0.3', 'requests', 'discord-webhook', 'google-api-python-client'],
+    install_requires=['jinja2','configparser','pybrawl>=1.0.3', 'requests', 'discord-webhook', 'google-api-python-client'],
 
     include_package_data=True,
 
     entry_points={
         'console_scripts': [
-            'crtools=crtools:main',
+            'bstools=bstools:main',
         ],
     },
     project_urls={  # Optional

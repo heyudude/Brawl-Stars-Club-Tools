@@ -1,7 +1,7 @@
 import requests_mock
 import os
 
-from crtools import fankit
+from bstools import fankit
 
 def test_get_fankit_exists(tmpdir):
     tempdir_root = tmpdir.mkdir('test_get_fankit_exists')
