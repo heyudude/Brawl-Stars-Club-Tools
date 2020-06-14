@@ -1,18 +1,16 @@
 from datetime import datetime
 import logging
 
-from bstools.models import Demerit, ProcessedMember, WarParticipation
+from bstools.models import Demerit, ProcessedMember
 from bstools import history
 from bstools.scorecalc import ScoreCalculator
 
 logger = logging.getLogger(__name__)
 
 class MemberFactory:
-    def __init__(self, config, Club, member_history, current_war, warlog=[], days_from_donation_reset=0):
+    def __init__(self, config, club, member_history):
         self.config = config
-        self.Club = Club
-        self.current_war = current_war
-        self.warlog = warlog
+        self.club = Club
         self.member_history = member_history
         self.days_from_donation_reset = days_from_donation_reset
         self.now = config['bstools']['timestamp']
@@ -30,12 +28,8 @@ class MemberFactory:
         return processed_member
 
     def enrich_member_with_history(self, member, historical_member):
-        days_from_donation_reset = self.days_from_donation_reset
-
         member.join_date = historical_member['join_date']
         member.last_activity_date = historical_member['last_activity_date']
-        member.last_donation_date = historical_member['last_donation_date']
-        member.donations_last_week = historical_member['donations_last_week']
         member.days_inactive = (self.now - datetime.fromtimestamp(member.last_activity_date)).days
         member.days_inactive = member.days_inactive if member.days_inactive >= 0 else 0
 
@@ -170,8 +164,6 @@ class MemberFactory:
         # Figure out whether member is on the leadership team by role
         member.leadership = member.role == 'leader' or member.role == 'coLeader'
 
-        self.calc_recent_war_stats(member)
-
     def get_role_label(self, member_tag, member_role, days_inactive, activity_status, vacation, blacklisted, no_promote):
         """ Format roles in sane way """
 
@@ -200,45 +192,6 @@ class MemberFactory:
             'member'   : self.config['strings']['roleMember'],
         }[member_role]
 
-    def calc_recent_war_stats(self, member):
-        war_wins = 0
-        war_battles = 0
-        collection_wins = 0
-        collection_cards = 0
-        for war in member.warlog:
-            if hasattr(war, 'wins'):
-                war_wins += war.wins
-                war_battles += war.number_of_battles
-            if hasattr(war, 'collection_battle_wins'):
-                collection_wins += war.collection_battle_wins
-            if hasattr(war, 'collection_win_cards'):
-                collection_cards += war.collection_win_cards
-
-        if war_battles > 0:
-            member.war_win_rate = round((war_wins/war_battles) * 100)
-        else:
-            member.war_win_rate = 0
-
-        member.war_battles = war_battles
-        member.war_collection_win_rate = round(((collection_wins / 10) / 3) * 100)
-        member.war_collection_cards_average = round(collection_cards / 10)
-        member.war_score_average = round(member.war_score / 10)
-
-    def calc_donation_status(self, donation_score, donations_daily, days_from_donation_reset):
-        """ calculate the number of daily donations, and the donation status
-        based on threshold set in config """
-        if donation_score >= self.config['score']['max_donations_bonus']:
-            return 'good'
-
-        if days_from_donation_reset >= 1:
-            if donations_daily == 0:
-                return 'bad'
-
-            if donations_daily < self.config['score']['min_donations_daily']:
-                return 'ok'
-
-        return 'normal'
-
     def calc_member_status(self, member_score, no_promote):
         # either 'good', 'ok', 'bad', or 'normal'
         if member_score < 0:
@@ -266,5 +219,3 @@ class MemberFactory:
             return 'ok'
 
         return 'normal'
-
-

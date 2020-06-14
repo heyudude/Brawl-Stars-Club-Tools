@@ -20,7 +20,7 @@ from bstools import fankit
 from bstools import io
 from bstools import discord
 from bstools.memberfactory import MemberFactory
-from bstools.models import FormerMember, ProcessedClub, ProcessedCurrentWar
+from bstools.models import FormerMember, ProcessedClub
 
 MAX_CLAN_SIZE = 50
 
