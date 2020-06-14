@@ -12,7 +12,7 @@ class ProcessedClub():
         self.name = Club.name
         self.badge_id = Club.badge_id
         self.type = Club.type
-        self.clan_score = Club.clan_score
+        self.club_score = Club.club_score
         self.required_trophies = Club.required_trophies
         self.members = Club.members
         self.location = Club.location

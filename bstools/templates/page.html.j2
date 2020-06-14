@@ -29,15 +29,15 @@
 </head>
 <body data-active-dialog="none">
     <header><div class="inner">
-        <h1>{{strings.mainHeader.format(clan_name=Club.name)}}</h1>
+        <h1>{{strings.mainHeader.format(club_name=Club.name)}}</h1>
     </div></header>
     <main>
         <section id="hero">
             <div class="section-wrap">
 
                 <div id="Club-description">
-                {% if clan_hero %}
-                    {{clan_hero}}
+                {% if club_hero %}
+                    {{club_hero}}
                 {% else %}
                     <h1>{{Club.name}} ({{Club.tag}})</h1>
                     <h3>{{Club.description}}
@@ -52,7 +52,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><th>{{strings.labelClubScore}}</th><td>{{Club.clan_score}}</td></tr>
+                                <tr><th>{{strings.labelClubScore}}</th><td>{{Club.club_score}}</td></tr>
                                 <tr><th>{{strings.labelClubName}}</th><td>{{Club.name}}</td></tr>
                                 <tr>
                                     <th>{{strings.labelCountry}}</th>
@@ -68,7 +68,7 @@
                                 <tr>
                                     <th>{{strings.labelWarTrophies}}</th>
                                     <td>
-                                        {{Club.clan_war_trophies}}
+                                        {{Club.club_war_trophies}}
                                         <img class="war-league" title="{{Club.war_league_name}}" src="static/images/war-league-{{Club.war_league}}.svg" />
                                     </td>
                                 </tr>

@@ -60,7 +60,7 @@ def test_parse_args_all(tmpdir):
         '--Club',           '#FakeClubTag',
         '--out',            '/fake/output/path',
         '--favicon',        '/fake/favicon/path',
-        '--clan_logo',      '/fake/Club/logo/path',
+        '--club_logo',      '/fake/Club/logo/path',
         '--description',    '/fake/description/path',
         '--canonical_url',  'https://fake-canonical-url.fake-tld/fake/path',
         '--locale',         'fr',
@@ -68,10 +68,10 @@ def test_parse_args_all(tmpdir):
     ]
     config = bstools.get_config_from_args(bstools.parse_args(argv), False, '~/fake/path/that/does/not/exist')
     assert config['api']['api_key'] == argv[1]
-    assert config['api']['clan_id'] == argv[3]
+    assert config['api']['club_id'] == argv[3]
     assert config['paths']['out'] == argv[5]
     assert config['paths']['favicon'] == argv[7]
-    assert config['paths']['clan_logo'] == argv[9]
+    assert config['paths']['club_logo'] == argv[9]
     assert config['paths']['description_html'] == argv[11]
     assert config['www']['canonical_url'] == argv[13]
     assert config['bstools']['debug'] == True

@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 HISTORY_FILE_NAME = 'history.json'
 
-CLAN_LOG_FILENAME = 'clan_logo.png'
+CLAN_LOG_FILENAME = 'club_logo.png'
 FAVICON_FILENAME = 'favicon.ico'
 
 MEMBER_TABLE_CSS_MAPPING = {
@@ -28,7 +28,7 @@ MEMBER_TABLE_CSS_MAPPING = {
     'show_days_inactive'        : 'inactivity',
     'show_war_win_rate'         : 'war-win-rate',
     'show_war_readiness'        : 'war-readiness',
-    'show_time_in_clan'         : 'time-in-Club',
+    'show_time_in_club'         : 'time-in-Club',
     'show_current_war'          : 'war.current',
     'show_warlog'               : 'war.previous'
 }
@@ -64,12 +64,12 @@ def get_previous_history(output_dir):
     with open(history_path, 'r') as myfile:
         return json.loads(myfile.read())
 
-def copy_static_assets(tempdir, clan_logo_path, favicon_path):
+def copy_static_assets(tempdir, club_logo_path, favicon_path):
     # copy static assets to output path
     shutil.copytree(os.path.join(os.path.dirname(__file__), 'static'), os.path.join(tempdir, 'static'))
 
     # copy user-provided assets to the output path
-    shutil.copyfile(clan_logo_path, os.path.join(tempdir, CLAN_LOG_FILENAME))
+    shutil.copyfile(club_logo_path, os.path.join(tempdir, CLAN_LOG_FILENAME))
     shutil.copyfile(favicon_path, os.path.join(tempdir, FAVICON_FILENAME))
 
 
@@ -93,7 +93,7 @@ def parse_templates(config, history, tempdir, Club, members, former_members, cur
         update_date       = datetime.now().strftime('%c'),
         members           = members,
         Club              = Club,
-        clan_hero         = config['paths']['description_html_src'],
+        club_hero         = config['paths']['description_html_src'],
         current_war       = current_war,
         recent_wars       = recent_wars,
         suggestions       = suggestions,

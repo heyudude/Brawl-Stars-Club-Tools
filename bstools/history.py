@@ -84,11 +84,11 @@ def get_role_change_status(old_role, new_role):
 
     return False
 
-def cleanup_member_history(member, history, timestamp, new_clan=False):
+def cleanup_member_history(member, history, timestamp, new_club=False):
     """ make sure member history entry has all the necessary fields.
     This is here to make upgrades smooth """
     now = timestamp
-    if new_clan == True:
+    if new_club == True:
         now = 0
     if 'name' not in history or history['name'] == NAME_UNKNOWN:
         history['name'] = member.name
@@ -115,8 +115,8 @@ def cleanup_member_history(member, history, timestamp, new_clan=False):
                             }]
     return history
 
-def create_new_member(member, timestamp, new_clan):
-    return cleanup_member_history(member, {}, timestamp, new_clan)
+def create_new_member(member, timestamp, new_club):
+    return cleanup_member_history(member, {}, timestamp, new_club)
 
 def member_rejoin(historical_member, member, timestamp):
     updated_member = copy.deepcopy(historical_member)
@@ -193,7 +193,7 @@ def get_member_history(members, date, old_history=None, current_war=None):
     # validate that old history is formatted properly. If not, return new
     # hitory object and reset the timestamp to 0
     timestamp = datetime.timestamp(date)
-    history, new_clan = validate_history(old_history, timestamp)
+    history, new_club = validate_history(old_history, timestamp)
 
     war_participants = []
     if current_war and current_war.state != 'notInWar':
@@ -208,7 +208,7 @@ def get_member_history(members, date, old_history=None, current_war=None):
         if tag not in history['members']:
             # No history of this member, therefore they are new.
             # Create record for user.
-            history['members'][tag] = create_new_member(member, timestamp, new_clan)
+            history['members'][tag] = create_new_member(member, timestamp, new_club)
         else:
             historical_member = cleanup_member_history(member, history['members'][tag], timestamp)
             if historical_member['status'] == 'absent':

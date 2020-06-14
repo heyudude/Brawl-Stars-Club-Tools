@@ -26,20 +26,20 @@
             </thead>
             <class="list">
             {% for member in members %}
-                <tr data-blacklist="{{ 'true' if member.blacklist else 'false' }}" data-nopromote="{{ 'true' if member.no_promote else 'false' }}" data-score="{{member.score}}" data-activity="{{member.activity_status}}" data-status="{{member.status}}" data-clanrole="{{member.role}}" data-currentwar="{{member.current_war.status}}" data-leadership="{{member.leadership}}" data-vacation="{{member.vacation != False}}" data-new="{{ 'true' if member.new else 'false' }}">
-                    <td class="id rank" data-sort="{{member.clan_rank}}">
-                        {% if member.clan_rank < member.previous_clan_rank %}
+                <tr data-blacklist="{{ 'true' if member.blacklist else 'false' }}" data-nopromote="{{ 'true' if member.no_promote else 'false' }}" data-score="{{member.score}}" data-activity="{{member.activity_status}}" data-status="{{member.status}}" data-clubrole="{{member.role}}" data-currentwar="{{member.current_war.status}}" data-leadership="{{member.leadership}}" data-vacation="{{member.vacation != False}}" data-new="{{ 'true' if member.new else 'false' }}">
+                    <td class="id rank" data-sort="{{member.club_rank}}">
+                        {% if member.club_rank < member.previous_club_rank %}
                         <span class="rank-up">
-                        {% elif member.clan_rank > member.previous_clan_rank %}
+                        {% elif member.club_rank > member.previous_club_rank %}
                         <span class="rank-down">
                         {% else %}
                         <span>
                         {% endif %}
-                           <strong>{{member.clan_rank}}</strong>
+                           <strong>{{member.club_rank}}</strong>
                         </span>
                     </td>
-                    <td class="rank previous" data-sort="{{member.previous_clan_rank}}">
-                        <strong>{{member.previous_clan_rank}}</strong>
+                    <td class="rank previous" data-sort="{{member.previous_club_rank}}">
+                        <strong>{{member.previous_club_rank}}</strong>
                     </td>
                     <td class="name" data-sort="{{member.name}}" data-role="dialog-show" data-target="member-detail" data-member-tag="{{member.tag}}">
                         <strong>{{member.name}}</strong><br />
@@ -82,7 +82,7 @@
                         <strong>{{member.days_inactive}}</strong><br /><small>{{strings.labelDays}}</small>
                     </td>
                     <td class="time-in-Club" data-sort="{{member.days_from_join}}" >
-                        {{member.time_in_clan}}
+                        {{member.time_in_club}}
                     </td>
                     <td class="last-seen" data-sort="{{member.last_seen}}" >
                         {{member.last_seen_delta}}

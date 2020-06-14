@@ -20,8 +20,8 @@ msgstr ""
 "Generated-By: Babel 2.8.0\n"
 
 #: bstools/config.py:154
-msgid "{clan_name} Club Dashboard"
-msgstr "Painel de Controle do Clã {clan_name}"
+msgid "{club_name} Club Dashboard"
+msgstr "Painel de Controle do Clã {club_name}"
 
 #: bstools/config.py:156
 msgid "Looking for a Club?"

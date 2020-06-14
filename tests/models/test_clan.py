@@ -21,12 +21,12 @@ war_participation=0
 war_non_participation=-1
 '''
 
-__fake_clan__ = pybrawl.Club(
+__fake_club__ = pybrawl.Club(
     tag                = CLAN_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
-    clan_score         = 38803,
-    clan_war_trophies  = 1813,
+    club_score         = 38803,
+    club_war_trophies  = 1813,
     required_trophies  = 3000,
     donations_per_week = 7540,
     members            = 4,
@@ -43,10 +43,10 @@ __fake_clan__ = pybrawl.Club(
     ]
 )
 
-__fake_war_clan__ = pybrawl.WarClub(
+__fake_war_club__ = pybrawl.WarClub(
         tag = CLAN_TAG,
         name = "Agrassar",
-        clan_score = 1813,
+        club_score = 1813,
         participants = 17,
         battles_played = 13,
         battles_remaining = 0,
@@ -57,7 +57,7 @@ __fake_war_clan__ = pybrawl.WarClub(
 __fake_current_war__ = pybrawl.WarCurrent(
     state        = 'warDay',
     war_end_time = '20190209T212846.354Z',
-    Club         = __fake_war_clan__,
+    Club         = __fake_war_club__,
     participants = [
         pybrawl.WarParticipant(
             tag                           =  '#AAAAAA',
@@ -68,17 +68,17 @@ __fake_current_war__ = pybrawl.WarCurrent(
             collection_day_battles_played = 3
         )
     ],
-    clans        = [__fake_war_clan__]
+    clubs        = [__fake_war_club__]
 )
 
-def test_process_clan(tmpdir):
-    config_file = tmpdir.mkdir('test_process_clan').join('testfile')
+def test_process_club(tmpdir):
+    config_file = tmpdir.mkdir('test_process_club').join('testfile')
     config_file.write(__config_file_score__)
     config = load_config_file(config_file.realpath())
 
     Club = ProcessedClub(
         config=config,
-        Club=__fake_clan__,
+        Club=__fake_club__,
         current_war=ProcessedCurrentWar(config=config, current_war=__fake_current_war__)
     )
 

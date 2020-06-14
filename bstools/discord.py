@@ -65,7 +65,7 @@ class WarNagConfig:
         for member in war_participants:
             if member.battles_played < member.number_of_battles:
                 member_bullet = '- **{}**\n'.format(escape_markdown(member.name))
-                if is_member_in_clan(member_list, member.tag):
+                if is_member_in_club(member_list, member.tag):
                     self.naughty_member_list += member_bullet
                 else:
                     self.quit_member_list += member_bullet
@@ -114,7 +114,7 @@ def escape_markdown(s):
         s = s.replace(search, replace)
     return s
 
-def is_member_in_clan(member_list, member_tag):
+def is_member_in_club(member_list, member_tag):
     for member in member_list:
         if member.tag == member_tag:
             return True

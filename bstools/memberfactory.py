@@ -67,13 +67,13 @@ class MemberFactory:
             member.days_from_join = self.max_days_from_join + 1
 
         if member.days_from_join > 560:
-            member.time_in_clan = "{} {}".format(round(member.days_from_join/365), self.config['strings']['labelYears'])
+            member.time_in_club = "{} {}".format(round(member.days_from_join/365), self.config['strings']['labelYears'])
         elif member.days_from_join > 60:
-            member.time_in_clan = "{} {}".format(round(member.days_from_join/30), self.config['strings']['labelMonths'])
+            member.time_in_club = "{} {}".format(round(member.days_from_join/30), self.config['strings']['labelMonths'])
         else:
-            member.time_in_clan = "{} {}".format(member.days_from_join, self.config['strings']['labelDays'])
+            member.time_in_club = "{} {}".format(member.days_from_join, self.config['strings']['labelDays'])
         if member.days_from_join > self.max_days_from_join:
-            member.time_in_clan = "> " + member.time_in_clan
+            member.time_in_club = "> " + member.time_in_club
 
         if days_from_donation_reset > member.days_from_join:
             days_from_donation_reset = member.days_from_join

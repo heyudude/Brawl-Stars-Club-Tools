@@ -28,17 +28,17 @@
             <h3>{{strings.sectionWarStandings}}</h3>
         </header>
         <table class="war-standings" width="100%">
-        {% for war_clan in current_war.clans %}
-            {% if war_clan.tag == Club.tag %}
+        {% for war_club in current_war.clubs %}
+            {% if war_club.tag == Club.tag %}
             <tr class="this-Club">
             {% else %}
             <tr>
             {% endif %}
                 <td class="rank rank-{{loop.index}}"><span>{{loop.index}}</span></td>
-                <td class="name">{{war_clan.name}}</td>
-                <td class="battles">{{war_clan.battles_remaining}}</td>
-                <td class="crowns">{{war_clan.crowns}}</td>
-                <td class="wins">{{war_clan.wins}}</td>
+                <td class="name">{{war_club.name}}</td>
+                <td class="battles">{{war_club.battles_remaining}}</td>
+                <td class="crowns">{{war_club.crowns}}</td>
+                <td class="wins">{{war_club.wins}}</td>
             </tr>
         {% endfor %}
         </table>

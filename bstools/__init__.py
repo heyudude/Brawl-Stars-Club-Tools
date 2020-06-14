@@ -16,7 +16,7 @@ def parse_args(argv):
     # parse command line arguments
     parser = ArgumentParser(prog        = 'bstools',
                             description = '''A tool for creating a dashboard for Club participation in
-                                             ClashRoyale. See https://developer.clashroyale.com to sign up
+                                             ClashRoyale. See https://developer.brawlstars.com to sign up
                                              for a developer account and create an API key to use with this.''')
     parser.add_argument('--locale',
                         metavar  = 'LOCALE',
@@ -37,7 +37,7 @@ def parse_args(argv):
     parser.add_argument('--favicon',
                         metavar  = 'PATH',
                         help     = 'Source path for favicon.ico. If provided, we will copy to the output directory.')
-    parser.add_argument('--clan_logo',
+    parser.add_argument('--club_logo',
                         metavar  = 'PATH',
                         help     = 'Source path for Club logo PNG. Recommended at least 64x64 pizels. If provided, we will copy to the output directory.')
     parser.add_argument('--description',
@@ -79,13 +79,13 @@ def get_config_from_args(args, check_config_file=True, config_default='~/.bstool
     if args.api_key:
         config['api']['api_key'] = args.api_key
     if args.Club:
-        config['api']['clan_id'] = args.Club
+        config['api']['club_id'] = args.Club
     if args.out:
         config['paths']['out'] = args.out
     if args.favicon:
         config['paths']['favicon'] = args.favicon
-    if args.clan_logo:
-        config['paths']['clan_logo'] = args.clan_logo
+    if args.club_logo:
+        config['paths']['club_logo'] = args.club_logo
     if args.description:
         config['paths']['description_html'] = args.description
     if args.canonical_url:
