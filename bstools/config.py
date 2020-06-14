@@ -36,14 +36,14 @@ for name, description in LOCALE_LIST.items():
 config_defaults = {
     'api' : {
         'api_key'                       : False,
-        'clan_id'                       : False,
+        'club_id'                       : False,
         'proxy'                         : '',
         'proxy_headers'                 : ''
     },
     'paths' : {
         'out'                           : './bstools-out',
         'favicon'                       : False,
-        'clan_logo'                     : False,
+        'club_logo'                     : False,
         'description_html'              : False,
         'temp_dir_name'                 : 'bstools',
         'use_fankit'                    : False
@@ -57,7 +57,7 @@ config_defaults = {
         'min_days_to_promote'           : 0
     },
     'score' : {
-        'min_clan_size' :               46,
+        'min_club_size' :               46,
         'war_battle_played' :           15,
         'war_battle_incomplete' :       -30,
         'war_battle_won' :              5,
@@ -99,7 +99,7 @@ config_defaults = {
         'show_trophies'                 : True,
         'show_donations'                : True,
         'show_donations_received'       : False,
-        'show_time_in_clan'             : False,
+        'show_time_in_club'             : False,
         'show_last_seen'                : False,
         'show_days_inactive'            : True,
         'show_war_win_rate'             : False,
@@ -152,7 +152,7 @@ def __localize_strings(locale_id):
     _ = translate.gettext
 
     return {
-        'mainHeader'                : _('{clan_name} Club Dashboard'),
+        'mainHeader'                : _('{club_name} Club Dashboard'),
 
         'ctaLookingForClub'         : _('Looking for a Club?'),
         'buttonJoinUs'              : _('Join us!'),
@@ -360,13 +360,13 @@ def __validate_paths(config):
     # If logo_path is provided, use logo from path given, and put it where
     # it needs to go. Otherwise, use the default from the template folder
     logo_src_path = os.path.join(os.path.dirname(__file__), 'templates', 'bstools-logo.png')
-    if config['paths']['clan_logo']:
-        logo_src_path_test = os.path.expanduser(config['paths']['clan_logo'])
+    if config['paths']['club_logo']:
+        logo_src_path_test = os.path.expanduser(config['paths']['club_logo'])
         if os.path.isfile(logo_src_path_test):
             logo_src_path = logo_src_path_test
         else:
             logger.warn('custom logo file "{}" not found. Using default instead.'.format(logo_src_path_test))
-    config['paths']['clan_logo'] = logo_src_path
+    config['paths']['club_logo'] = logo_src_path
 
     # If favicon_path is provided, use favicon from path given, and put it
     # where it needs to go. Otherwise, use the default from the template folder

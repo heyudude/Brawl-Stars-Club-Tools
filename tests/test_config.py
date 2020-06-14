@@ -16,7 +16,7 @@ should_not_exist=True
 
 __config_file_booleans__ = '''
 [score]
-min_clan_size=False
+min_club_size=False
 '''
 
 __config_file_list__ = '''
@@ -29,7 +29,7 @@ vacation=Bar,     Baz    ,Quux
 
 __config_paths_template__ = '''
 [Paths]
-clan_logo={logo}
+club_logo={logo}
 favicon={favicon}
 description_html={description}
 '''
@@ -64,8 +64,8 @@ def test_config_boolean(tmpdir):
     config = load_config_file(config_file.realpath())
 
     # input was 'False'
-    assert config['score']['min_clan_size'] == False
-    assert type(config['score']['min_clan_size']) == type(False)
+    assert config['score']['min_club_size'] == False
+    assert type(config['score']['min_club_size']) == type(False)
 
 def test_config_list(tmpdir):
     """ If the template property contains a list, parse the contents as a list """
@@ -95,7 +95,7 @@ def test_config_paths_empty(tmpdir):
     ))
     config = load_config_file(config_file.realpath())
 
-    assert config['paths']['clan_logo'].endswith('/templates/bstools-logo.png')
+    assert config['paths']['club_logo'].endswith('/templates/bstools-logo.png')
     assert config['paths']['favicon'].endswith('/templates/bstools-favicon.ico')
     assert config['paths']['description_html_src'] == None
 
@@ -108,7 +108,7 @@ def test_config_paths_invalid(tmpdir):
     ))
     config = load_config_file(config_file.realpath())
 
-    assert config['paths']['clan_logo'].endswith('/templates/bstools-logo.png')
+    assert config['paths']['club_logo'].endswith('/templates/bstools-logo.png')
     assert config['paths']['favicon'].endswith('/templates/bstools-favicon.ico')
     assert config['paths']['description_html_src'] == None
 
@@ -129,7 +129,7 @@ def test_config_paths_valid(tmpdir):
     description.write('foo')
     config = load_config_file(config_file.realpath())
 
-    assert config['paths']['clan_logo'].endswith('/test_config_paths_valid/logo.png')
+    assert config['paths']['club_logo'].endswith('/test_config_paths_valid/logo.png')
     assert config['paths']['favicon'].endswith('/test_config_paths_valid/favicon.ico')
     assert config['paths']['description_html'].endswith('/test_config_paths_valid/description.html')
 

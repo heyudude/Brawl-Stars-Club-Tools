@@ -94,22 +94,22 @@ __fake_member_list__ = [
 
 ]
 
-__fake_clan__ = pybrawl.Club(
+__fake_club__ = pybrawl.Club(
     tag                = CLAN_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
-    clan_score         = 38803,
-    clan_war_trophies  = 1813,
+    club_score         = 38803,
+    club_war_trophies  = 1813,
     required_trophies  = 3000,
     donations_per_week = 7540,
     members            = 4,
     member_list        = __fake_member_list__
 )
 
-__fake_war_clan__ = pybrawl.WarClub(
+__fake_war_club__ = pybrawl.WarClub(
         tag = CLAN_TAG,
         name = "Agrassar",
-        clan_score = 1813,
+        club_score = 1813,
         participants = 17,
         battles_played = 13,
         battles_remaining = 0,
@@ -147,9 +147,9 @@ __fake_war_participants__ = [
 __fake_current_war__ = pybrawl.WarCurrent(
         state        = 'warDay',
         war_end_time = '20190209T212846.354Z',
-        Club         = __fake_war_clan__,
+        Club         = __fake_war_club__,
         participants = __fake_war_participants__,
-        clans        = [__fake_war_clan__]
+        clubs        = [__fake_war_club__]
     )
 
 __fake_war__ = pybrawl.War(
@@ -202,9 +202,9 @@ def test_donations_score(tmpdir):
     member_history = history.get_member_history(__fake_member_list__, config['bstools']['timestamp'], '{}', war)
     date = datetime(2019, 2, 12, 7, 32, 1, 0)
 
-    member_6 = MemberFactory(config=config, current_war=war, Club=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=6).get_processed_member(__fake_member_list__[0])
-    member_3 = MemberFactory(config=config, current_war=war, Club=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=3).get_processed_member(__fake_member_list__[0])
-    member_0 = MemberFactory(config=config, current_war=war, Club=__fake_clan__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=0).get_processed_member(__fake_member_list__[0])
+    member_6 = MemberFactory(config=config, current_war=war, Club=__fake_club__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=6).get_processed_member(__fake_member_list__[0])
+    member_3 = MemberFactory(config=config, current_war=war, Club=__fake_club__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=3).get_processed_member(__fake_member_list__[0])
+    member_0 = MemberFactory(config=config, current_war=war, Club=__fake_club__, member_history=member_history, warlog=pybrawl.WarLog(items=[]), days_from_donation_reset=0).get_processed_member(__fake_member_list__[0])
 
     assert calc.get_member_donations_score(member_6) == 11
     assert calc.get_member_donations_score(member_3) == 18

@@ -3,7 +3,7 @@ bstools - Clash Royale Club Dashboard generator
 ==================================================
 
 This is a tool for creating a dashboard for Club participation in ClashRoyale.
-See https://developer.clashroyale.com to sign up for a developer account and
+See https://developer.brawlstars.com to sign up for a developer account and
 create an API key to use with this.
 
 For an example dashboard created for the Club Agrassar (#JY8YVV), see: https://agrassar.com/
@@ -38,7 +38,7 @@ Usage:
 .. code::
 
   bstools [-h] [--locale LOCALE] [--config CONFIG-FILE] [--api_key KEY]
-          [--Club TAG] [--out PATH] [--favicon PATH] [--clan_logo PATH]
+          [--Club TAG] [--out PATH] [--favicon PATH] [--club_logo PATH]
           [--description PATH] [--canonical_url URL] [--debug]
           [--version]
 
@@ -50,7 +50,7 @@ optional arguments:
   --Club Club          Club ID from Clash Royale. If it starts with a '#', Club ID must be quoted.
   --out PATH           Output path for HTML.
   --favicon PATH       Source path for favicon.ico. If provided, we will copy to the output directory.
-  --clan_logo PATH     Source path for Club logo PNG. Recommended at least 64x64 pizels. If provided, we will copy to the output directory.
+  --club_logo PATH     Source path for Club logo PNG. Recommended at least 64x64 pizels. If provided, we will copy to the output directory.
   --description PATH   Source path snippet of HTML to replace the Club description. Should not be a complete HTML document. Sample here: https://github.com/AaronTraas/bstools-agrassar-assets/blob/master/description.html If provided, we will copy to the output directory.
   --canonical_url URL  Canonical URL for this site. Used for setting the rel=canonical link in the web site, as well as generating the robots.txt and sitemap.xml
   --debug              Turns on debug mode
@@ -73,7 +73,7 @@ parameter: api_key. The file should look like:
   api_key=<YOUR-API-KEY>
 
   # Your Club tag
-  clan_id=#JY8YVV
+  club_id=#JY8YVV
 
   # Proxy URL -- URL for proxy server, if needed
   #proxy=https://my-proxy.com
@@ -87,19 +87,19 @@ parameter: api_key. The file should look like:
 
   # Path to the logo artwork for Club. Must be PNG. Recommended at
   # least 64x64 pixels.
-  clan_logo=~/myclan/logo.png
+  club_logo=~/myclub/logo.png
 
   # Path to the favicon file you want to use for this
-  favicon=~/myclan/favicon.ico
+  favicon=~/myclub/favicon.ico
 
   # Path to a file that contains arbitrary HTML for the site.
-  description_html=~/myclan/body.html
+  description_html=~/myclub/body.html
 
   [www]
   # Canonical URL for this site. Used for setting the rel=canonical
   # link in the web site, as well as generating the robots.txt
   # and sitemap.xml
-  canonical_url=https://yourclan.com/
+  canonical_url=https://yourclub.com/
 
 For more details, see `samples/bstools.ini <https://github.com/AaronTraas/Clash-Royale-Club-Tools/blob/master/samples/bstools.ini>`_
 

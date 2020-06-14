@@ -12,7 +12,7 @@ CLAN_TAG = '#FakeClubTag'
 
 __config_file__ = '''
 [api]
-clan_id={}
+club_id={}
 '''.format(CLAN_TAG)
 
 __config_file_score__ = '''
@@ -57,12 +57,12 @@ __fake_history_old_member__ = {
 
 }
 
-__fake_clan__ = pybrawl.Club(
+__fake_club__ = pybrawl.Club(
     tag                = CLAN_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
-    clan_score         = 38803,
-    clan_war_trophies  = 1813,
+    club_score         = 38803,
+    club_war_trophies  = 1813,
     required_trophies  = 3000,
     donations_per_week = 7540,
     members            = 4,
@@ -178,7 +178,7 @@ __fake_war__ = pybrawl.War(
         pybrawl.WarStanding(
             Club = pybrawl.WarStandingClub(
                 tag            = CLAN_TAG,
-                clan_score     = 2428,
+                club_score     = 2428,
                 participants   = 19,
                 battles_played = 20,
                 wins           = 11,
@@ -198,7 +198,7 @@ __fake_warlog__ = pybrawl.WarLog(
 __fake_currentwar_notinwar__ = pybrawl.WarCurrent(
     state='notInWar',
     participants=[],
-    clans=[]
+    clubs=[]
 )
 
 def test_get_scoring_rules(tmpdir):
@@ -234,11 +234,11 @@ def test_get_suggestions_recruit(tmpdir):
     config_file.write(__config_file_score__ + '\nthreshold_demote=-999999\nthreshold_promote=9999999')
     config = load_config_file(config_file.realpath())
 
-    h = history.get_member_history(__fake_clan__.member_list, config['bstools']['timestamp'])
+    h = history.get_member_history(__fake_club__.member_list, config['bstools']['timestamp'])
 
-    members = bstools.process_members(config, __fake_clan__, __fake_warlog__, __fake_currentwar_notinwar__, h)
+    members = bstools.process_members(config, __fake_club__, __fake_warlog__, __fake_currentwar_notinwar__, h)
 
-    suggestions = bstools.get_suggestions(config, members, __fake_clan__)
+    suggestions = bstools.get_suggestions(config, members, __fake_club__)
 
     print(suggestions)
 
@@ -250,7 +250,7 @@ def test_process_absent_members(tmpdir):
     config_file.write(__config_file_score__ + '\nthreshold_demote=-999999\nthreshold_promote=9999999')
     config = load_config_file(config_file.realpath())
 
-    h = history.get_member_history(__fake_clan__.member_list, config['bstools']['timestamp'], __fake_history_old_member__)
+    h = history.get_member_history(__fake_club__.member_list, config['bstools']['timestamp'], __fake_history_old_member__)
 
     absent_members = bstools.process_absent_members(config, h['members'])
 
@@ -259,15 +259,15 @@ def test_process_absent_members(tmpdir):
 
 def test_get_suggestions_nosuggestions(tmpdir):
     config_file = tmpdir.mkdir('test_get_suggestions').join('testfile')
-    config_file.write(__config_file_score__ + '\nthreshold_demote=-999999\nthreshold_promote=9999999\nmin_clan_size={}'.format(bstools.MAX_CLAN_SIZE))
+    config_file.write(__config_file_score__ + '\nthreshold_demote=-999999\nthreshold_promote=9999999\nmin_club_size={}'.format(bstools.MAX_CLAN_SIZE))
     config = load_config_file(config_file.realpath())
 
     war = ProcessedCurrentWar(config=config, current_war=pybrawl.WarCurrent(state='notInWar'))
     factory = MemberFactory(
         config=config,
-        member_history=history.get_member_history(__fake_clan__.member_list, config['bstools']['timestamp'], '{}', war),
+        member_history=history.get_member_history(__fake_club__.member_list, config['bstools']['timestamp'], '{}', war),
         current_war=war,
-        Club=__fake_clan__,
+        Club=__fake_club__,
         warlog=pybrawl.WarLog(items=[])
     )
 
@@ -289,21 +289,21 @@ def test_get_suggestions_nosuggestions(tmpdir):
         member.safe = True
         members.append(member)
 
-    suggestions = bstools.get_suggestions(config, members, __fake_clan__.required_trophies)
+    suggestions = bstools.get_suggestions(config, members, __fake_club__.required_trophies)
 
     assert len(suggestions) == 1
     assert suggestions[-1] == config['strings']['suggestionNone']
 
 def test_get_suggestions_kick(tmpdir):
     config_file = tmpdir.mkdir('test_get_suggestions').join('testfile')
-    config_file.write(__config_file_score__ + '\nmin_clan_size=1')
+    config_file.write(__config_file_score__ + '\nmin_club_size=1')
     config = load_config_file(config_file.realpath())
 
-    h = history.get_member_history(__fake_clan__.member_list, config['bstools']['timestamp'])
+    h = history.get_member_history(__fake_club__.member_list, config['bstools']['timestamp'])
 
-    members = bstools.process_members(config, __fake_clan__, __fake_warlog__, __fake_currentwar_notinwar__, h)
+    members = bstools.process_members(config, __fake_club__, __fake_warlog__, __fake_currentwar_notinwar__, h)
 
-    suggestions = bstools.get_suggestions(config, members, __fake_clan__.required_trophies)
+    suggestions = bstools.get_suggestions(config, members, __fake_club__.required_trophies)
 
     print(suggestions)
 
@@ -315,11 +315,11 @@ def test_get_suggestions_promote_demote(tmpdir):
     config_file.write(__config_file_score__ + '\nthreshold_promote=10')
     config = load_config_file(config_file.realpath())
 
-    h = history.get_member_history(__fake_clan__.member_list, config['bstools']['timestamp'])
+    h = history.get_member_history(__fake_club__.member_list, config['bstools']['timestamp'])
 
-    members = bstools.process_members(config, __fake_clan__, __fake_warlog__, __fake_currentwar_notinwar__, h)
+    members = bstools.process_members(config, __fake_club__, __fake_warlog__, __fake_currentwar_notinwar__, h)
 
-    suggestions = bstools.get_suggestions(config, members, __fake_clan__.required_trophies)
+    suggestions = bstools.get_suggestions(config, members, __fake_club__.required_trophies)
 
     print(suggestions)
 

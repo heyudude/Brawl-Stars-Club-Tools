@@ -34,7 +34,7 @@ def get_suggestions(config, processed_members, required_trophies):
     # sort members by score, and preserve trophy order if relevant
     members_by_score = sorted(processed_members, key=lambda m: (m.score, m.trophies))
 
-    logger.debug("min_clan_size: {}".format(config['score']['min_clan_size']))
+    logger.debug("min_club_size: {}".format(config['score']['min_club_size']))
     logger.debug("# members: {}".format(len(members_by_score)))
 
     suggestions = []
@@ -57,7 +57,7 @@ def get_suggestions(config, processed_members, required_trophies):
             # demote them.
             # if we're above the minimum Club size, recommend kicking
             # poorly participating member.
-            elif member.score < config['score']['threshold_kick'] and index <= len(members_by_score) - config['score']['min_clan_size']:
+            elif member.score < config['score']['threshold_kick'] and index <= len(members_by_score) - config['score']['min_club_size']:
                 suggestion = config['strings']['suggestionKickScore'].format(name=member.name, score=member.score)
                 logger.debug(suggestion)
                 suggestions.append(suggestion)
@@ -148,9 +148,9 @@ def process_recent_wars(config, warlog):
     wars = []
     for war in warlog.items:
         Club = None
-        for rank, war_clan in enumerate(war.standings):
-            if war_clan.Club.tag == config['api']['clan_id']:
-                Club = war_clan
+        for rank, war_club in enumerate(war.standings):
+            if war_club.Club.tag == config['api']['club_id']:
+                Club = war_club
                 Club.rank = rank+1
                 date = datetime.strptime(war.created_date.split('.')[0], '%Y%m%dT%H%M%S')
                 Club.date = config['strings']['labelWarDate'].format(month=date.month, day=date.day)
@@ -172,7 +172,7 @@ def process_recent_wars(config, warlog):
 def build_dashboard(config): # pragma: no coverage
     """Compile and render Club dashboard."""
 
-    print('- requesting info for Club id: {}'.format(config['api']['clan_id']))
+    print('- requesting info for Club id: {}'.format(config['api']['club_id']))
 
     api = ApiWrapper(config)
 
@@ -180,7 +180,7 @@ def build_dashboard(config): # pragma: no coverage
 
     war_readiness_map = {}
     if config['member_table']['calc_war_readiness'] == True:
-        war_readiness_map = api.get_war_readiness_map(Club.member_list, Club.clan_war_trophies)
+        war_readiness_map = api.get_war_readiness_map(Club.member_list, Club.club_war_trophies)
 
     # Create temporary directory. All file writes, until the very end,
     # will happen in this directory, so that no matter what we do, it
@@ -194,7 +194,7 @@ def build_dashboard(config): # pragma: no coverage
 
         # process data from API
         current_war_processed = ProcessedCurrentWar(current_war, config)
-        clan_processed = ProcessedClub(Club, current_war_processed, config)
+        club_processed = ProcessedClub(Club, current_war_processed, config)
 
         member_history = history.get_member_history(Club.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path), current_war_processed)
 
@@ -206,12 +206,12 @@ def build_dashboard(config): # pragma: no coverage
             config,
             member_history,
             tempdir,
-            clan_processed,
+            club_processed,
             members_processed,
             former_members,
             current_war_processed,
             recent_wars,
-            get_suggestions(config, members_processed, clan_processed.required_trophies),
+            get_suggestions(config, members_processed, club_processed.required_trophies),
             get_scoring_rules(config)
         )
 
@@ -223,7 +223,7 @@ def build_dashboard(config): # pragma: no coverage
                     'Club'                  : Club.to_dict(),
                     'warlog'                : warlog.to_dict(),
                     'current_war'           : current_war.to_dict(),
-                    'Club-processed'        : clan_processed,
+                    'Club-processed'        : club_processed,
                     'members-processed'     : members_processed,
                     'current_war-processed' : current_war_processed,
                     'recentwars-processed'  : list(map(lambda war: war.to_dict(), recent_wars))
@@ -234,7 +234,7 @@ def build_dashboard(config): # pragma: no coverage
         # if fankit is enabled, it will download it.
         fankit.get_fankit(tempdir, output_path, config['paths']['use_fankit'])
 
-        io.copy_static_assets(tempdir, config['paths']['clan_logo'], config['paths']['favicon'])
+        io.copy_static_assets(tempdir, config['paths']['club_logo'], config['paths']['favicon'])
 
         io.move_temp_to_output_dir(tempdir, output_path)
 

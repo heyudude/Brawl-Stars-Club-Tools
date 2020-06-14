@@ -18,7 +18,7 @@ msgstr ""
 "Generated-By: Babel 2.8.0\n"
 
 #: bstools/config.py:154
-msgid "{clan_name} Club Dashboard"
+msgid "{club_name} Club Dashboard"
 msgstr ""
 
 #: bstools/config.py:156
