@@ -157,11 +157,11 @@ def process_absent_members(config, historical_members):
 # warnings.
 def build_dashboard(config): # pragma: no coverage
     """Compile and render Club dashboard."""
-
+    #print('- requesting info for Player id: {}'.format(config['api']['player_id']))
     print('- requesting info for Club id: {}'.format(config['api']['club_id']))
-
+   
     api = ApiWrapper(config)
-
+    
     Club = api.get_data_from_api()
 
     # Create temporary directory. All file writes, until the very end,
@@ -175,7 +175,7 @@ def build_dashboard(config): # pragma: no coverage
         output_path = os.path.expanduser(config['paths']['out'])
 
         # process data from API
-        club_processed = ProcessedClub(Club, current_war_processed, config)
+        club_processed = ProcessedClub(Club, config)
 
         member_history = history.get_member_history(Club.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path))
 

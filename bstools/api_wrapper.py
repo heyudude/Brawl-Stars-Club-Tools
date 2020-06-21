@@ -22,8 +22,12 @@ class ApiWrapper:
 
     def get_data_from_api(self): # pragma: no coverage
         try:
-            # Get Club data from API.
+            # Get Club data from API via PLayer
+            #Player = self.players.get_player(self.config['api']['player_id'])
             Club = self.clubs.getclub(self.config['api']['club_id'])
+
+            #logger.info('- Player: {} ({})'.format(Player.name, Player.club_id))
+            #Club = self.clubs.getclub(Player.club_id)
 
             logger.info('- Club: {} ({})'.format(Club.name, Club.tag))
 

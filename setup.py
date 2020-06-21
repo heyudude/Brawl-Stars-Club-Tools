@@ -47,7 +47,7 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
     setup_requires=['babel'],
-    install_requires=['jinja2','configparser','pybrawl>=1.0.0', 'requests', 'discord-webhook', 'google-api-python-client'],
+    install_requires=['jinja2','configparser','pybrawl>=0.0.1', 'requests', 'discord-webhook', 'google-api-python-client'],
 
     include_package_data=True,
 
