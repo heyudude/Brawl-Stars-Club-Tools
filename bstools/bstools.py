@@ -144,20 +144,6 @@ def process_absent_members(config, historical_members):
 
     return sorted(absent_members, key=lambda k: k.timestamp, reverse=True)
 
-def process_recent_wars(config, warlog):
-    wars = []
-    for war in warlog.items:
-        Club = None
-        for rank, war_club in enumerate(war.standings):
-            if war_club.Club.tag == config['api']['club_id']:
-                Club = war_club
-                Club.rank = rank+1
-                date = datetime.strptime(war.created_date.split('.')[0], '%Y%m%dT%H%M%S')
-                Club.date = config['strings']['labelWarDate'].format(month=date.month, day=date.day)
-                wars.append(Club)
-
-    return wars
-
 # NOTE: we're not testing this function because this is where we're
 # isolating all of the I/O for the application here. The real "work"
 # here is done in all of the calls to functions in this file, or in the
@@ -176,11 +162,7 @@ def build_dashboard(config): # pragma: no coverage
 
     api = ApiWrapper(config)
 
-    Club, warlog, current_war = api.get_data_from_api()
-
-    war_readiness_map = {}
-    if config['member_table']['calc_war_readiness'] == True:
-        war_readiness_map = api.get_war_readiness_map(Club.member_list, Club.club_war_trophies)
+    Club = api.get_data_from_api()
 
     # Create temporary directory. All file writes, until the very end,
     # will happen in this directory, so that no matter what we do, it
@@ -193,13 +175,11 @@ def build_dashboard(config): # pragma: no coverage
         output_path = os.path.expanduser(config['paths']['out'])
 
         # process data from API
-        current_war_processed = ProcessedCurrentWar(current_war, config)
         club_processed = ProcessedClub(Club, current_war_processed, config)
 
-        member_history = history.get_member_history(Club.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path), current_war_processed)
+        member_history = history.get_member_history(Club.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path))
 
-        members_processed = process_members(config, Club, warlog, current_war_processed, member_history, war_readiness_map)
-        recent_wars = process_recent_wars(config, warlog)
+        members_processed = process_members(config, Club, member_history)
         former_members = process_absent_members(config, member_history['members'])
 
         io.parse_templates(
@@ -209,8 +189,6 @@ def build_dashboard(config): # pragma: no coverage
             club_processed,
             members_processed,
             former_members,
-            current_war_processed,
-            recent_wars,
             get_suggestions(config, members_processed, club_processed.required_trophies),
             get_scoring_rules(config)
         )
@@ -221,12 +199,8 @@ def build_dashboard(config): # pragma: no coverage
                 tempdir,
                 {
                     'Club'                  : Club.to_dict(),
-                    'warlog'                : warlog.to_dict(),
-                    'current_war'           : current_war.to_dict(),
                     'Club-processed'        : club_processed,
                     'members-processed'     : members_processed,
-                    'current_war-processed' : current_war_processed,
-                    'recentwars-processed'  : list(map(lambda war: war.to_dict(), recent_wars))
                 }
             )
 
@@ -238,7 +212,7 @@ def build_dashboard(config): # pragma: no coverage
 
         io.move_temp_to_output_dir(tempdir, output_path)
 
-        discord.trigger_webhooks(config, current_war, members_processed)
+        discord.trigger_webhooks(config, members_processed)
 
     except Exception as e:
         logger.error('error: {}'.format(e))
