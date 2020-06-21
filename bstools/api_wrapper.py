@@ -9,7 +9,7 @@ class ApiWrapper:
     def __init__(self, config):
         self.config = config
 
-        logger.debug("Creating API instnce")
+        logger.debug("Creating API instance")
         api_config = pybrawl.Configuration()
         api_config.api_key['authorization'] = config['api']['api_key']
         if config['api']['proxy']:
@@ -23,7 +23,7 @@ class ApiWrapper:
     def get_data_from_api(self): # pragma: no coverage
         try:
             # Get Club data from API.
-            Club = self.clubs.get_club(self.config['api']['club_id'])
+            Club = self.clubs.getclub(self.config['api']['club_id'])
 
             logger.info('- Club: {} ({})'.format(Club.name, Club.tag))
 
