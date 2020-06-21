@@ -27,10 +27,13 @@ def parse_args(argv):
                         help     = 'configuration file for this app.')
     parser.add_argument('--api_key',
                         metavar  = 'KEY',
-                        help     = 'API key for developer.clashroyale.com')
+                        help     = 'API key for developer.brawlstars.com')
     parser.add_argument('--Club',
                         metavar  = 'TAG',
-                        help    = 'Club ID from Clash Royale. If it starts with a "#", Club ID must be quoted.')
+                        help    = 'Club ID from Brawl Stars. If it starts with a "#", Club ID must be quoted.')
+    parser.add_argument('--Player',
+                        metavar  = 'TAG',
+                        help    = 'Plaer ID from Brawl Stars. If it starts with a "#", Player ID must be quoted.')
     parser.add_argument('--out',
                         metavar  = 'PATH',
                         help     = 'Output path for HTML.')
@@ -75,11 +78,13 @@ def get_config_from_args(args, check_config_file=True, config_default='~/.bstool
 
     config = load_config_file(config_file_name, check_config_file, locale)
 
-    # grab API key and Club ID from arguments if applicable
+    # grab API key and Plaer / Club ID from arguments if applicable
     if args.api_key:
         config['api']['api_key'] = args.api_key
     if args.Club:
         config['api']['club_id'] = args.Club
+    if args.Player:
+        config['api']['player_id'] = args.Player
     if args.out:
         config['paths']['out'] = args.out
     if args.favicon:
