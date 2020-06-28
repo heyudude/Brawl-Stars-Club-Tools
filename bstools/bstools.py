@@ -105,31 +105,19 @@ def get_scoring_rules(config):
 
     return rules
 
-def process_members(config, Club, warlog, current_war, member_history, war_readiness_map={}):
+def process_members(config, club, member_history):
     """ Process member list, adding calculated meta-data for rendering of
     status in the Club member table. """
-
-    # calculate the number of days since the donation last sunday, for
-    # donation tracking purposes:
-    days_from_donation_reset = config['bstools']['timestamp'].isoweekday()
-    if days_from_donation_reset > 7 or days_from_donation_reset <= 0:
-        days_from_donation_reset = 1
 
     # process members with results from the API
     factory = MemberFactory(
         config=config,
-        Club=Club,
-        current_war=current_war,
-        warlog=warlog,
-        member_history=member_history,
-        days_from_donation_reset=days_from_donation_reset)
+        club=club,
+        member_history=member_history)
     members_processed = []
-    for member_src in Club.member_list:
-        war_readiness = war_readiness_map.get(member_src.tag)
-        members_processed.append(factory.get_processed_member(member_src, war_readiness))
 
     return members_processed
-
+ 
 def process_absent_members(config, historical_members):
     absent_members = []
 
@@ -162,7 +150,7 @@ def build_dashboard(config): # pragma: no coverage
    
     api = ApiWrapper(config)
     
-    Club = api.get_data_from_api()
+    club = api.get_data_from_api()
 
     # Create temporary directory. All file writes, until the very end,
     # will happen in this directory, so that no matter what we do, it
@@ -175,11 +163,11 @@ def build_dashboard(config): # pragma: no coverage
         output_path = os.path.expanduser(config['paths']['out'])
 
         # process data from API
-        club_processed = ProcessedClub(Club, config)
+        club_processed = ProcessedClub(club, config)
 
-        member_history = history.get_member_history(Club.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path))
+        member_history = history.get_member_history(club.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path))
 
-        members_processed = process_members(config, Club, member_history)
+        members_processed = process_members(config, club, member_history)
         former_members = process_absent_members(config, member_history['members'])
 
         io.parse_templates(
@@ -198,24 +186,24 @@ def build_dashboard(config): # pragma: no coverage
             io.dump_debug_logs(
                 tempdir,
                 {
-                    'Club'                  : Club.to_dict(),
-                    'Club-processed'        : club_processed,
+                    'club'                  : club.to_dict(),
+                    'club-processed'        : club_processed,
                     'members-processed'     : members_processed,
                 }
             )
 
         # if fankit is previously downloaded, it will copy fankit. Otherwise,
         # if fankit is enabled, it will download it.
-        fankit.get_fankit(tempdir, output_path, config['paths']['use_fankit'])
+        # fankit.get_fankit(tempdir, output_path, config['paths']['use_fankit'])
 
         io.copy_static_assets(tempdir, config['paths']['club_logo'], config['paths']['favicon'])
 
         io.move_temp_to_output_dir(tempdir, output_path)
 
-        discord.trigger_webhooks(config, members_processed)
+        # discord.trigger_webhooks(config, members_processed)
 
     except Exception as e:
-        logger.error('error: {}'.format(e))
+        logger.error('error bstools: {}'.format(e))
 
     finally:
         # Ensure that temporary directory gets deleted no matter what

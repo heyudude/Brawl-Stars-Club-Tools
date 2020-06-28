@@ -10,9 +10,8 @@ logger = logging.getLogger(__name__)
 class MemberFactory:
     def __init__(self, config, club, member_history):
         self.config = config
-        self.club = Club
+        self.club = club
         self.member_history = member_history
-        self.days_from_donation_reset = days_from_donation_reset
         self.now = config['bstools']['timestamp']
         self.history_start_timestamp = member_history['history_start']
         self.max_days_from_join = (self.now - datetime.fromtimestamp(self.history_start_timestamp)).days
@@ -123,22 +122,7 @@ class MemberFactory:
             member.vacation = True
 
     def calc_derived_member_stats(self, member):
-        member.current_war = WarParticipation(self.config, member, self.current_war)
-        member.warlog = []
-        for war in self.warlog.items:
-            member.warlog.append(WarParticipation(self.config, member, war))
-
         score_calc = ScoreCalculator(self.config)
-
-        member.donation_score = score_calc.get_member_donations_score(member)
-
-        # calculate score based on war participation
-        member.war_score = 0
-        for war in member.warlog:
-            member.war_score += war.score
-
-        # get member score
-        member.score = member.war_score + member.donation_score
 
         # members on the safe list can't have a score below zero
         if member.safe and member.score < 0:
@@ -159,7 +143,7 @@ class MemberFactory:
         else:
             member.trophies_status = 'ok'
 
-        member.arena_league_label = self.config['strings']['league-' + member.arena_league['id']]
+        # member.arena_league_label = self.config['strings']['league-' + member.arena_league['id']]
 
         # Figure out whether member is on the leadership team by role
         member.leadership = member.role == 'leader' or member.role == 'coLeader'
