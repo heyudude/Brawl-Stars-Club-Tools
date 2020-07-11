@@ -21,15 +21,15 @@ setup(
     # Version single-sourced from bstools/_version.py
     version=__version__,
 
-    description='Python tools for creating a Club management dashboard for Clash Royale',
+    description='Python tools for creating a Club management dashboard for Brawl Stars',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/AaronTraas/Clash-Royale-Club-Tools',
+    url='https://github.com/heyudude/Brawl-Stars-Club-Tools',
 
     # Author details
-    author='Aaron Traas',
-    author_email='aaron@traas.org',
+    author='heyudude',
+    author_email='',
 
     # Choose your license
     license='LGPLv3+',
@@ -42,7 +42,7 @@ setup(
         'Programming Language :: Python :: 3',
     ],
 
-    keywords='ClashRoyale',
+    keywords='BrawlStars',
 
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
 
@@ -57,7 +57,7 @@ setup(
         ],
     },
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/AaronTraas/Clash-Royale-Club-Tools/issues',
-        'Source': 'https://github.com/AaronTraas/Clash-Royale-Club-Tools',
+        'Bug Reports': 'https://github.com/heyudude/Brawl-Stars-Club-Tools/issues',
+        'Source': 'https://github.com/heyudude/Brawl-Stars-Club-Tools',
     },
 )
