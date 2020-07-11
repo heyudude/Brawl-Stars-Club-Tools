@@ -1,0 +1,1 @@
+bstools --config ./bstools.ini
