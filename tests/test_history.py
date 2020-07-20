@@ -9,7 +9,7 @@ __fake_members__ = [
     pybrawl.ClubMember(
         name      = 'Player A',
         tag       = '#AAAAAA',
-        role      = 'leader',
+        role      = 'President',
         donations = 100
     ),
     pybrawl.ClubMember(
@@ -21,7 +21,7 @@ __fake_members__ = [
     pybrawl.ClubMember(
         name      = 'Player D',
         tag       = '#DDDDDD',
-        role      = 'elder',
+        role      = 'Vice-President',
         donations = 10
     )
 ]
@@ -32,13 +32,13 @@ __fake_history__ = {
         "#AAAAAA": {
             "join_date": 1549974720.0,
             "status": "present",
-            "role": "leader",
+            "role": "president",
             "donations": 100,
             "events": [
                 {
                     "event": "join",
                     "status": "new",
-                    "role": "leader",
+                    "role": "president",
                     "date": 1549974720.0
                 }
             ]
@@ -46,13 +46,13 @@ __fake_history__ = {
         "#CCCCCC": {
             "join_date": 1549974720.0,
             "status": "present",
-            "role": "elder",
+            "role": "Vice-President",
             "donations": 5,
             "events": [
                 {
                     "event": "join",
                     "status": "new",
-                    "role": "elder",
+                    "role": "Vice-President",
                     "date": 1549974720.0
                 }
             ]

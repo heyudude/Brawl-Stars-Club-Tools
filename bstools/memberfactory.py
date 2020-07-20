@@ -74,23 +74,6 @@ class MemberFactory:
         if member.days_from_join > self.max_days_from_join:
             member.time_in_club = "> " + member.time_in_club
 
-        if days_from_donation_reset > member.days_from_join:
-            days_from_donation_reset = member.days_from_join
-
-        if member.days_inactive > 7:
-            member.donations_last_week = 0
-
-        member.total_donations = member.donations + member.donations_last_week
-        if member.days_from_join > days_from_donation_reset + 7:
-            days_from_donation_reset += 7
-        else:
-            days_from_donation_reset = member.days_from_join
-
-        if(days_from_donation_reset > 0):
-            member.donations_daily = round(member.total_donations / days_from_donation_reset)
-        else:
-            member.donations_daily = member.total_donations
-
         member.events = history.process_member_events(self.config, historical_member['events'])
 
     def calc_special_status(self, member):
@@ -130,8 +113,6 @@ class MemberFactory:
 
         # calculate the number of daily donations, and the donation status
         # based on threshold set in config
-        member.donation_status = self.calc_donation_status(member.donation_score, member.donations_daily, self.days_from_donation_reset)
-
         member.status = self.calc_member_status(member.score, member.no_promote)
 
         member.activity_status = self.calc_activity_status(member.days_inactive)
@@ -146,7 +127,7 @@ class MemberFactory:
         # member.arena_league_label = self.config['strings']['league-' + member.arena_league['id']]
 
         # Figure out whether member is on the leadership team by role
-        member.leadership = member.role == 'leader' or member.role == 'coLeader'
+        member.leadership = member.role == 'President' or member.role == 'VicePresident'
 
     def get_role_label(self, member_tag, member_role, days_inactive, activity_status, vacation, blacklisted, no_promote):
         """ Format roles in sane way """
@@ -170,9 +151,9 @@ class MemberFactory:
             return self.config['strings']['roleNoPromote']
 
         return {
-            'leader'   : self.config['strings']['roleLeader'],
-            'coLeader' : self.config['strings']['roleCoLeader'],
-            'elder'    : self.config['strings']['roleElder'],
+            'President'   : self.config['strings']['roleLeader'],
+            'VicePresident' : self.config['strings']['roleCoLeader'],
+            'Vice-President'    : self.config['strings']['roleElder'],
             'member'   : self.config['strings']['roleMember'],
         }[member_role]
 

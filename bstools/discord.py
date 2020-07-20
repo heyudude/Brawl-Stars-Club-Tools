@@ -22,9 +22,12 @@ class WarNagConfig:
     naughty_member_list = ''
     quit_member_list = ''
 
-    def __init__(self, config, current_war, member_list):
-        if current_war.state == 'notInWar':
-            logger.debug('Not in war; no nagging')
+    def __init__(self, config, member_list):
+        #if current_war.state == 'notInWar':
+        if True: # Disable for now
+        
+            logger.debug('Disable for now; no nagging')
+
             self.abort = True
             return
 

@@ -652,7 +652,7 @@ table tr[data-blacklist="true"] td.name:after {
     display: block;
 }
 
-#info table tr[data-role='leader'] .member-role {
+#info table tr[data-role='President'] .member-role {
     background: url(images/crown-gold.svg) no-repeat left center;
     background-size: 1em;
     padding-left: 1.3em;

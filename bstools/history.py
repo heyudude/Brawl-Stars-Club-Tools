@@ -7,10 +7,10 @@ from bstools.models import MemberEvent
 
 """Functions for maintaining a historical record of the Club."""
 
-ROLE_MEMBER     = 'member'
-ROLE_ELDER      = 'elder'
-ROLE_COLEADER   = 'coLeader'
-ROLE_LEADER     = 'leader'
+ROLE_MEMBER     = 'Member'
+ROLE_ELDER      = 'Vice-President'
+ROLE_COLEADER   = 'VicePresident'
+ROLE_LEADER     = 'President'
 
 NAME_UNKNOWN = '[unknown]'
 
@@ -96,16 +96,10 @@ def cleanup_member_history(member, history, timestamp, new_club=False):
         history['join_date'] = now
     if 'last_activity_date' not in history:
         history['last_activity_date'] = timestamp
-    if 'last_donation_date' not in history:
-        history['last_donation_date'] = timestamp
     if 'role' not in history:
         history['role'] = member.role
     if 'status' not in history:
         history['status'] = 'present'
-    if 'donations' not in history:
-        history['donations'] = member.donations
-    if 'donations_last_week' not in history:
-        history['donations_last_week'] = 0
     if 'events' not in history:
         history['events'] = [{
                                 'event': 'join',
@@ -195,15 +189,10 @@ def get_member_history(members, date, old_history=None, current_war=None):
     timestamp = datetime.timestamp(date)
     history, new_club = validate_history(old_history, timestamp)
 
-    war_participants = []
-    if current_war and current_war.state != 'notInWar':
-        for participant in current_war.participants:
-            war_participants.append(participant.tag)
-
     member_tags = []
     for member in members:
         tag = member.tag
-        member.role = 'coLeader' if member.role == 'co-leader' else member.role
+        member.role = 'VicePresident' if member.role == 'vice-president' else member.role
         member_tags.append(tag)
         if tag not in history['members']:
             # No history of this member, therefore they are new.

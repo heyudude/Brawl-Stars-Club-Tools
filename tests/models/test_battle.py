@@ -2,10 +2,10 @@ import pybrawl
 from bstools import load_config_file
 from bstools.models import ProcessedCurrentWar
 
-CLAN_TAG = '#FakeClubTag'
+CLUB_TAG = '#FakeClubTag'
 
 __fake_war_club__ = pybrawl.WarClub(
-        tag = CLAN_TAG,
+        tag = CLUB_TAG,
         name = "Agrassar",
         club_score = 1813,
         participants = 17,

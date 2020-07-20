@@ -2,8 +2,6 @@ import logging
 import pybrawl
 import json
 
-from bstools import leagueinfo
-
 logger = logging.getLogger(__name__)
 
 class ApiWrapper:
@@ -18,12 +16,12 @@ class ApiWrapper:
         if config['api']['proxy_headers']:
             api_config.proxy_headers = config['api']['proxy_headers']
 
-        self.clubs = pybrawl.ClubsApi(pybrawl.ApiClient(api_config))
         self.players = pybrawl.PlayersApi(pybrawl.ApiClient(api_config))
+        self.clubs = pybrawl.ClubsApi(pybrawl.ApiClient(api_config))
 
     def get_data_from_api(self): # pragma: no coverage
         try:
-            # Get Club data from API via PLayer
+            # Get Club data from API via Player
             #Player = self.players.get_player(self.config['api']['player_id'])
             Club = self.clubs.getclub(self.config['api']['club_id'])
 
