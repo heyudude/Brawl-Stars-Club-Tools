@@ -186,4 +186,6 @@ def test_bad_locale_aborts_with_error(tmpdir, capsys):
     expected = LOCALE_NOT_FOUND_ERROR_TEMPLATE.format(bad_locale)
     assert expected in out
 
-
+if __name__ == '__main__':
+    pytest.main()
+ 

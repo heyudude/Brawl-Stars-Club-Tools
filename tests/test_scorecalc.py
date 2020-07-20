@@ -23,14 +23,14 @@ war_participation=0
 war_non_participation=-1
 '''
 
-CLAN_TAG = '#FakeClubTag'
+CLUB_TAG = '#FakeClubTag'
 
 __fake_member_list__ = [
     pybrawl.ClubMember(
         tag       = "#AAAAAA",
-        name      = "LeaderPerson",
-        role      = "leader",
-        exp_level = 12,
+        name      = "PresidentPerson",
+        role      = "president",
+        explevel = 12,
         trophies  = 4153,
         donations = 300,
         arena     = pybrawl.Arena(
@@ -42,8 +42,8 @@ __fake_member_list__ = [
     pybrawl.ClubMember(
         tag       = "#BBBBBB",
         name      = "CoLeaderPerson",
-        role      = "coLeader",
-        exp_level = 12,
+        role      = "VicePresident",
+        explevel = 12,
         trophies  = 4418,
         donations = 150,
         arena     = pybrawl.Arena(
@@ -55,8 +55,8 @@ __fake_member_list__ = [
     pybrawl.ClubMember(
         tag       = "#CCCCCC",
         name      = "ElderPerson",
-        role      = "elder",
-        exp_level = 12,
+        role      = "Vice-President",
+        explevel = 12,
         trophies  = 4224,
         donations = 0,
         arena     = pybrawl.Arena(
@@ -69,7 +69,7 @@ __fake_member_list__ = [
         tag       = "#DDDDDD",
         name      = "MemberPerson",
         role      = "member",
-        exp_level = 8,
+        explevel = 8,
         trophies  = 3100,
         donations = 0,
         arena     = pybrawl.Arena(
@@ -82,7 +82,7 @@ __fake_member_list__ = [
         tag       = "#EEEEEE",
         name      = "MemberPersonToBePromoted",
         role      = "member",
-        exp_level = 8,
+        explevel = 8,
         trophies  = 3144,
         donations = 100000000,
         arena     = pybrawl.Arena(
@@ -95,7 +95,7 @@ __fake_member_list__ = [
 ]
 
 __fake_club__ = pybrawl.Club(
-    tag                = CLAN_TAG,
+    tag                = CLUB_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
     club_score         = 38803,
@@ -107,7 +107,7 @@ __fake_club__ = pybrawl.Club(
 )
 
 __fake_war_club__ = pybrawl.WarClub(
-        tag = CLAN_TAG,
+        tag = CLUB_TAG,
         name = "Agrassar",
         club_score = 1813,
         participants = 17,

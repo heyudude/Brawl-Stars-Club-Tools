@@ -22,7 +22,7 @@ from bstools import discord
 from bstools.memberfactory import MemberFactory
 from bstools.models import FormerMember, ProcessedClub
 
-MAX_CLAN_SIZE = 50
+MAX_CLAN_SIZE = 100
 
 logger = logging.getLogger(__name__)
 
@@ -67,7 +67,7 @@ def get_suggestions(config, processed_members, required_trophies):
                 suggestions.append(config['strings']['suggestionDemoteScore'].format(name=member.name, score=member.score))
 
         # if user is above the threshold, and has not been promoted to
-        # Elder or higher, recommend promotion.
+        # Vice-President or higher, recommend promotion.
         if not member.no_promote and not member.blacklist and (member.score >= config['score']['threshold_promote']) and (member.role == 'member') and (member.trophies >= required_trophies) and (member.days_from_join > config['activity']['min_days_to_promote']):
             suggestions.append(config['strings']['suggestionPromoteScore'].format(name=member.name, score=member.score))
 

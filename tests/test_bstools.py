@@ -5,15 +5,15 @@ import shutil
 
 import pybrawl
 from bstools import bstools, load_config_file, history
-from bstools.models import ProcessedMember, ProcessedCurrentWar
+from bstools.models import ProcessedMember
 from bstools.memberfactory import MemberFactory
 
-CLAN_TAG = '#FakeClubTag'
+CLUB_TAG = '#FakeClubTag'
 
 __config_file__ = '''
 [api]
 club_id={}
-'''.format(CLAN_TAG)
+'''.format(CLUB_TAG)
 
 __config_file_score__ = '''
 [activity]
@@ -42,13 +42,13 @@ __fake_history_old_member__ = {
         "#ZZZZZZ": {
             "join_date": 1549974720.0,
             "status": "present",
-            "role": "leader",
+            "role": "president",
             "donations": 100,
             "events": [
                 {
                     "event": "join",
                     "status": "new",
-                    "role": "leader",
+                    "role": "president",
                     "date": 1549974720.0
                 }
             ]
@@ -58,143 +58,60 @@ __fake_history_old_member__ = {
 }
 
 __fake_club__ = pybrawl.Club(
-    tag                = CLAN_TAG,
+    tag                = CLUB_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
     club_score         = 38803,
-    club_war_trophies  = 1813,
     required_trophies  = 3000,
-    donations_per_week = 7540,
     members            = 4,
     member_list        = [
         pybrawl.ClubMember(
-            tag       = "#AAAAAA",
-            name      = "LeaderPerson",
-            role      = "leader",
-            exp_level = 12,
-            trophies  = 4153,
-            donations = 300,
-            arena     = pybrawl.Arena(
-                id    = 54000012,
-                name  = 'Legendary Arena'
-            ),
+            tag        = "#AAAAAA",
+            name       = "PresidentPerson",
+            role       = "president",
+            explevel  = 12,
+            trophies   = 4153,
+            name_color = "",
             last_seen = "20190802T154619.000Z"
         ),
         pybrawl.ClubMember(
             tag       = "#BBBBBB",
             name      = "CoLeaderPerson",
-            role      = "coLeader",
-            exp_level = 12,
+            role      = "VicePresident",
+            explevel = 12,
             trophies  = 4418,
-            arena     = pybrawl.Arena(
-                id    = 54000013,
-                name  = 'Arena 12'
-            ),
+            name_color = "",
             last_seen = "20190802T154619.000Z"
         ),
         pybrawl.ClubMember(
             tag       = "#CCCCCC",
             name      = "ElderPerson",
-            role      = "elder",
-            exp_level = 12,
+            role      = "Vice-President",
+            explevel = 12,
             trophies  = 4224,
-            arena     = pybrawl.Arena(
-                id    = 54000012,
-                name  = 'Legendary Arena'
-            ),
+            name_color = "",
             last_seen = "20190802T154619.000Z"
         ),
         pybrawl.ClubMember(
             tag       = "#DDDDDD",
             name      = "MemberPerson",
             role      = "member",
-            exp_level = 8,
+            explevel = 8,
             trophies  = 3100,
-            arena     = pybrawl.Arena(
-                id    = 54000008,
-                name  = 'Arena 7'
-            ),
+            name_color = "",
             last_seen = "20190802T154619.000Z"
         ),
         pybrawl.ClubMember(
             tag       = "#EEEEEE",
             name      = "MemberPersonToBePromoted",
             role      = "member",
-            exp_level = 8,
+            explevel = 8,
             trophies  = 3144,
-            arena     = pybrawl.Arena(
-                id    = 54000008,
-                name  = 'Arena 7'
-            ),
+            name_color = "",
             last_seen = "20190802T154619.000Z"
         )
 
     ]
-)
-
-__fake_war_participants__ = [
-    pybrawl.WarParticipant(
-        tag                           =  '#AAAAAA',
-        cards_earned                  = 1120,
-        battles_played                = 1,
-        wins                          = 1,
-        number_of_battles             = 1,
-        collection_day_battles_played = 3
-    ),
-    pybrawl.WarParticipant(
-        tag                           =  '#BBBBBB',
-        cards_earned                  = 1120,
-        battles_played                = 1,
-        wins                          = 1,
-        number_of_battles             = 1,
-        collection_day_battles_played = 1
-    ),
-    pybrawl.WarParticipant(
-        tag                           =  '#CCCCCC',
-        cards_earned                  = 1120,
-        battles_played                = 1,
-        wins                          = 1,
-        number_of_battles             = 1,
-        collection_day_battles_played = 1
-    ),
-    pybrawl.WarParticipant(
-        tag                           =  '#DDDDDD',
-        cards_earned                  = 1120,
-        battles_played                = 0,
-        wins                          = 1,
-        number_of_battles             = 1,
-        collection_day_battles_played = 1
-    )
-]
-
-__fake_war__ = pybrawl.War(
-    created_date = '20190209T212846.354Z',
-    participants = __fake_war_participants__,
-    standings = [
-        pybrawl.WarStanding(
-            Club = pybrawl.WarStandingClub(
-                tag            = CLAN_TAG,
-                club_score     = 2428,
-                participants   = 19,
-                battles_played = 20,
-                wins           = 11,
-                crowns         = 22
-            ),
-            trophy_change = 111
-        )
-    ]
-)
-
-__fake_warlog__ = pybrawl.WarLog(
-    items = [
-        __fake_war__
-    ]
-)
-
-__fake_currentwar_notinwar__ = pybrawl.WarCurrent(
-    state='notInWar',
-    participants=[],
-    clubs=[]
 )
 
 def test_get_scoring_rules(tmpdir):
@@ -270,16 +187,12 @@ def test_get_suggestions_nosuggestions(tmpdir):
     members = []
     for i in range(0, bstools.MAX_CLAN_SIZE):
         member = factory.get_processed_member(pybrawl.ClubMember(
-            tag       = "#AAAAAA",
-            name      = "LeaderPerson",
-            role      = "leader",
-            exp_level = 13,
-            trophies  = 9999,
-            donations = 9999,
-            arena     = pybrawl.Arena(
-                id    = 54000012,
-                name  = 'Legendary Arena'
-            ),
+            tag        = "#AAAAAA",
+            name       = "PresidentPerson",
+            role       = "president",
+            explevel  = 13,
+            trophies   = 9999,
+            name_color = "",
             last_seen = "20190802T154619.000Z"
         ))
         member.safe = True
@@ -323,18 +236,3 @@ def test_get_suggestions_promote_demote(tmpdir):
     assert members[2].name in suggestions[0]
     assert suggestions[1].startswith('Promote') or suggestions[2].startswith('Promote')
     assert members[4].name in suggestions[1] or members[4].name in suggestions[2]
-
-
-def test_process_recent_wars(tmpdir):
-    config_file = tmpdir.mkdir('test_process_recent_wars').join('config.ini')
-    config_file.write(__config_file__)
-
-    config = load_config_file(config_file.realpath())
-
-    processed_warlog = bstools.process_recent_wars(config, __fake_warlog__)
-
-    assert processed_warlog[0].Club.tag == CLAN_TAG
-    assert processed_warlog[0].rank == 1
-    assert processed_warlog[0].date == '2/9'
-    assert processed_warlog[0].trophy_change == 111
-

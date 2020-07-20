@@ -22,15 +22,9 @@ MEMBER_TABLE_CSS_MAPPING = {
     'show_xp_level'             : 'xp-level',
     'show_score'                : 'score',
     'show_trophies'             : 'trophies',
-    'show_donations'            : 'donations',
-    'show_donations_received'   : 'donations-received',
     'show_last_seen'            : 'last-seen',
     'show_days_inactive'        : 'inactivity',
-    'show_war_win_rate'         : 'war-win-rate',
-    'show_war_readiness'        : 'war-readiness',
-    'show_time_in_club'         : 'time-in-Club',
-    'show_current_war'          : 'war.current',
-    'show_warlog'               : 'war.previous'
+    'show_time_in_club'         : 'time-in-Club'
 }
 
 def json_dumper(obj):
@@ -94,8 +88,6 @@ def parse_templates(config, history, tempdir, Club, members, former_members, cur
         members           = members,
         Club              = Club,
         club_hero         = config['paths']['description_html_src'],
-        current_war       = current_war,
-        recent_wars       = recent_wars,
         suggestions       = suggestions,
         scoring_rules     = scoring_rules,
         former_members    = former_members,

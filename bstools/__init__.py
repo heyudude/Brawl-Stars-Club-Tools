@@ -12,7 +12,6 @@ from .scorecalc import ScoreCalculator
 
 logger = logging.getLogger(__name__)
 
-
 def parse_args(argv):
     # parse command line arguments
     parser = ArgumentParser(prog='bstools',
@@ -34,7 +33,7 @@ def parse_args(argv):
                         help='Club ID from Brawl Stars. If it starts with a "#", Club ID must be quoted.')
     parser.add_argument('--player',
                         metavar='TAG',
-                        help='Plaer ID from Brawl Stars. If it starts with a "#", Player ID must be quoted.')
+                        help='Player ID from Brawl Stars. If it starts with a "#", Player ID must be quoted. Note Brawlstars API needs a player tag to get the Club info')
     parser.add_argument('--out',
                         metavar='PATH',
                         help='Output path for HTML.')
@@ -58,7 +57,6 @@ def parse_args(argv):
                         help='List the version of bstools.')
 
     return parser.parse_args(argv)
-
 
 def get_config_from_args(args, check_config_file=True, config_default='~/.bstools'):
     if args.version:

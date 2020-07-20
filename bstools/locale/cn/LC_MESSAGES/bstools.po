@@ -400,7 +400,7 @@ msgstr "成员处于黑名单中，请尽快踢出部落。"
 #: bstools/config.py:253
 msgid ""
 "Member has been tagged on the \"No Promote\" list for abusing privileges "
-"in the past. Never promote to Elder or higher."
+"in the past. Never promote to Vice-President or higher."
 msgstr "成员因有过违例行为，被标记为“不可晋升”。请勿晋升其为长者或更高身份。"
 
 #: bstools/config.py:254
@@ -448,7 +448,7 @@ msgid "Leadership"
 msgstr "首领"
 
 #: bstools/config.py:267
-msgid "Role: Elder"
+msgid "Role: Vice-President"
 msgstr "长者"
 
 #: bstools/config.py:268
@@ -494,7 +494,7 @@ msgstr "超过 <strong class=\"bad\">{days_inactive} 天</strong> 未活跃的�
 #: bstools/config.py:278
 msgid ""
 "A member who achieves <strong class=\"good\">{points} points</strong> is "
-"elegible for promotion to <strong>Elder</strong> at the discretion of "
+"elegible for promotion to <strong>Vice-President</strong> at the discretion of "
 "leadership."
 msgstr ""
 "获取 <strong class=\"good\">{points} 及以上积分</strong> 的成员将被建议晋升为 "
@@ -534,7 +534,7 @@ msgstr "降职 <strong>{name}</strong> <strong class=\"bad\">{score}</strong>"
 
 #: bstools/config.py:286
 msgid ""
-"Promote <strong>{name}</strong> to <strong>Elder</strong> <strong "
+"Promote <strong>{name}</strong> to <strong>Vice-President</strong> <strong "
 "class=\"good\">{score}</strong>"
 msgstr ""
 "晋升 <strong>{name}</strong> 为 <strong>长老</strong> <strong "
@@ -590,15 +590,15 @@ msgid "...win war day battle? (per battle)"
 msgstr "每赢得单场终极战"
 
 #: bstools/config.py:300
-msgid "Leader"
+msgid "President"
 msgstr "首领"
 
 #: bstools/config.py:301
-msgid "Co-Leader"
+msgid "Vice-President"
 msgstr "副首领"
 
 #: bstools/config.py:302
-msgid "Elder"
+msgid "Vice-President"
 msgstr "长老"
 
 #: bstools/config.py:304

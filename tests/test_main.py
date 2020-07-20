@@ -76,3 +76,4 @@ def test_parse_args_all(tmpdir):
     assert config['www']['canonical_url'] == argv[13]
     assert config['bstools']['debug'] == True
     assert config['bstools']['locale'] == 'fr'
+

@@ -401,7 +401,7 @@ msgstr "Membro esta na blacklist. Expulsar membro imediatamente."
 #: bstools/config.py:253
 msgid ""
 "Member has been tagged on the \"No Promote\" list for abusing privileges "
-"in the past. Never promote to Elder or higher."
+"in the past. Never promote to Vice-President or higher."
 msgstr ""
 "Membro foi marcado em lista para \"Não ser promovido\" por abusar de "
 "privilégios no passado. Nunca promover a Ancião ou nível mais elevado."
@@ -451,7 +451,7 @@ msgid "Leadership"
 msgstr "Liderança"
 
 #: bstools/config.py:267
-msgid "Role: Elder"
+msgid "Role: Vice-President"
 msgstr "Cargo: Ancião"
 
 #: bstools/config.py:268
@@ -501,7 +501,7 @@ msgstr ""
 #: bstools/config.py:278
 msgid ""
 "A member who achieves <strong class=\"good\">{points} points</strong> is "
-"elegible for promotion to <strong>Elder</strong> at the discretion of "
+"elegible for promotion to <strong>Vice-President</strong> at the discretion of "
 "leadership."
 msgstr ""
 "Um membro que obtém <strong class = \"good\">{points} pontos</strong> é "
@@ -544,7 +544,7 @@ msgstr "Rebaixe <strong>{name}</strong> <strong class=\"bad\">{score}</strong>"
 
 #: bstools/config.py:286
 msgid ""
-"Promote <strong>{name}</strong> to <strong>Elder</strong> <strong "
+"Promote <strong>{name}</strong> to <strong>Vice-President</strong> <strong "
 "class=\"good\">{score}</strong>"
 msgstr ""
 "Promova <strong>{name}</strong> para <strong>Ancião</strong> <strong "
@@ -603,15 +603,15 @@ msgid "...win war day battle? (per battle)"
 msgstr "...ganharem cada batalha de guerra? (por batalha)"
 
 #: bstools/config.py:300
-msgid "Leader"
+msgid "President"
 msgstr "Líder"
 
 #: bstools/config.py:301
-msgid "Co-Leader"
+msgid "Vice-President"
 msgstr "Colíder"
 
 #: bstools/config.py:302
-msgid "Elder"
+msgid "Vice-President"
 msgstr "Ancião"
 
 #: bstools/config.py:304
