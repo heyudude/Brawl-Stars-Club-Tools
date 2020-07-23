@@ -37,6 +37,7 @@ config_defaults = {
     'api' : {
         'api_key'                       : False,
         'club_id'                       : False,
+        'player_id'                     : False,
         'proxy'                         : '',
         'proxy_headers'                 : ''
     },
@@ -303,7 +304,7 @@ def __parse_value(new_value, template_value):
     return value
 
 def __get_version_info(config):
-    logger.debug('Grabbing current version from PyPI')
+    logger.debug('TODO: Grabbing current version from PyPI')
 
     try:
         req = requests.get(PYPI_URL)

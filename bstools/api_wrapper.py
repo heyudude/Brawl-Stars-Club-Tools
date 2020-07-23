@@ -15,27 +15,23 @@ class ApiWrapper:
             api_config.proxy = config['api']['proxy']
         if config['api']['proxy_headers']:
             api_config.proxy_headers = config['api']['proxy_headers']
-
-        self.players = pybrawl.PlayersApi(pybrawl.ApiClient(api_config))
+        self.players = pybrawl.PlayersApi(pybrawl.ApiClient(api_config.api_key['authorization']))
         self.clubs = pybrawl.ClubsApi(pybrawl.ApiClient(api_config))
 
     def get_data_from_api(self): # pragma: no coverage
         try:
             # Get Club data from API via Player
-            #Player = self.players.get_player(self.config['api']['player_id'])
-            Club = self.clubs.getclub(self.config['api']['club_id'])
-
-            #logger.info('- Player: {} ({})'.format(Player.name, Player.club_id))
-            #Club = self.clubs.getclub(Player.club_id)
-
-            logger.info('- Club: {} ({})'.format(Club.name, Club.tag))
-
-            return (Club)
+            Player = self.players.get_player(self.config['api']['player_id'])
+            logger.info('- Player: {} ({})'.format(Player.name, Player.player_id))
+            Club = self.clubs.get_club(self.config['api']['club_id'])
+            logger.info('- Club: {} ({})'.format(Club.name, Club.club_id))
+ 
+            return (Player, Club)
         except pybrawl.ApiException as e:
             if e.body:
                 body = json.loads(e.body)
                 if body['reason'] == 'accessDenied':
-                    logger.error('developer.brawlstars.com claims that your API key is invalid. Please make sure you are setting up bstools with a valid key.')
+                    logger.error('403: developer.brawlstars.com claims that your API key is invalid. Please make sure you are setting up bstools with a valid key.')
                 elif body['reason'] == 'accessDenied.invalidIp':
                     logger.error('developer.brawlstars.com says: {}'.format(body['message']))
                 else:
