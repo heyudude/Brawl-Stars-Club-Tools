@@ -1,5 +1,5 @@
 #!/usr/bin/python
-"""Tools for creating a Club management dashboard for Clash Royale."""
+"""Tools for creating a Club management dashboard for Brawl Stars."""
 
 __license__   = 'LGPLv3'
 __docformat__ = 'reStructuredText'
@@ -145,8 +145,8 @@ def process_absent_members(config, historical_members):
 # warnings.
 def build_dashboard(config): # pragma: no coverage
     """Compile and render Club dashboard."""
-    #print('- requesting info for Player id: {}'.format(config['api']['player_id']))
-    print('- requesting info for Club id: {}'.format(config['api']['club_id']))
+    print('- info: requesting info for Player id: {}'.format(config['api']['player_id']))
+    #print('- info: requesting info for Club id: {}'.format(config['api']['club_id']))
    
     api = ApiWrapper(config)
     
