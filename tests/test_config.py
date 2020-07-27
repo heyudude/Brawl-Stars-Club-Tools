@@ -1,5 +1,5 @@
 import pytest
-import requests_mock
+#import requests_mock
 
 from bstools import load_config_file
 from bstools.config import PYPI_URL, LOCALE_NOT_FOUND_ERROR_TEMPLATE
