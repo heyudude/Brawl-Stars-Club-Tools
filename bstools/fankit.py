@@ -66,7 +66,7 @@ def download_fan_kit(tempdir):
             logger.error(response.headers)
     except Exception as e:
         logger.error(e)
-        logger.error('Could not download Clash Royale Fan Kit')
+        logger.error('Could not download Brawl Stars Fan Kit')
     finally:
         if os.path.isfile(zip_path):
             os.unlink(zip_path)

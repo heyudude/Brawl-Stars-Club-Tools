@@ -1,5 +1,5 @@
 ==================================================
-bstools - Clash Royale Club Dashboard generator
+bstools - Brawl Stars Club Dashboard generator
 ==================================================
 
 This is a tool for creating a dashboard for Club participation in ClashRoyale.
@@ -47,7 +47,7 @@ optional arguments:
   --locale LOCALE      Locale if language other than English is desired (see `Other languages/locales`_).
   --config FILE        configuration file for this app.
   --api_key KEY        API key for developer.clashroyale.com
-  --Club Club          Club ID from Clash Royale. If it starts with a '#', Club ID must be quoted.
+  --Club Club          Club ID from Brawl Stars. If it starts with a '#', Club ID must be quoted.
   --out PATH           Output path for HTML.
   --favicon PATH       Source path for favicon.ico. If provided, we will copy to the output directory.
   --club_logo PATH     Source path for Club logo PNG. Recommended at least 64x64 pizels. If provided, we will copy to the output directory.
@@ -245,7 +245,7 @@ It was important to us to make sure the entirety of this application is
 open source, and not subject to takedown request. We will not ever
 extract assets from the game or from any other web properties.
 
-Optionally, bstools can download the official Clash Royale fan kit and use
+Optionally, bstools can download the official Brawl Stars fan kit and use
 some of the content contained. This is not the default behavior, and no
 works copywritten by Supercell are contained within this code.
 
