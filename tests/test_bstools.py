@@ -9,26 +9,23 @@ from bstools.models import ProcessedMember
 from bstools.memberfactory import MemberFactory
 
 CLUB_TAG = '#FakeClubTag'
+PLAYER_TAG = '#FakePlayerTag'
 
 __config_file__ = '''
 [api]
+player_id={}
+'''.format(PLAYER_TAG)
+
+__config_file_score__ = '''
 club_id={}
 '''.format(CLUB_TAG)
 
 __config_file_score__ = '''
+
 [activity]
 threshold_kick=99999999
 threshold_warn=99999999
 [Score]
-war_battle_incomplete=-30
-war_battle_won=5
-war_battle_lost=0
-collect_battle_played=0
-collect_battle_incomplete=-5
-collect_battle_won=2
-collect_battle_lost=0
-war_participation=0
-war_non_participation=-1
 '''
 
 __fake_history__ = {
@@ -43,7 +40,6 @@ __fake_history_old_member__ = {
             "join_date": 1549974720.0,
             "status": "present",
             "role": "president",
-            "donations": 100,
             "events": [
                 {
                     "event": "join",
@@ -57,11 +53,15 @@ __fake_history_old_member__ = {
 
 }
 
+__fake_player__ = pybrawl.Player(
+    tag                = PLAYER_TAG,
+    name               = "Dude"
+)
+
 __fake_club__ = pybrawl.Club(
     tag                = CLUB_TAG,
     name               = "Agrassar",
     description        = "Rules, stats, discord link, and info at https://agrassar.com",
-    club_score         = 38803,
     required_trophies  = 3000,
     members            = 4,
     member_list        = [
@@ -69,48 +69,37 @@ __fake_club__ = pybrawl.Club(
             tag        = "#AAAAAA",
             name       = "PresidentPerson",
             role       = "president",
-            explevel  = 12,
             trophies   = 4153,
-            name_color = "",
-            last_seen = "20190802T154619.000Z"
+            name_color = ""
         ),
         pybrawl.ClubMember(
             tag       = "#BBBBBB",
             name      = "CoLeaderPerson",
             role      = "VicePresident",
-            explevel = 12,
             trophies  = 4418,
-            name_color = "",
-            last_seen = "20190802T154619.000Z"
+            name_color = ""
         ),
         pybrawl.ClubMember(
             tag       = "#CCCCCC",
             name      = "ElderPerson",
             role      = "Vice-President",
-            explevel = 12,
             trophies  = 4224,
-            name_color = "",
-            last_seen = "20190802T154619.000Z"
+            name_color = ""
         ),
         pybrawl.ClubMember(
             tag       = "#DDDDDD",
             name      = "MemberPerson",
             role      = "member",
-            explevel = 8,
             trophies  = 3100,
-            name_color = "",
-            last_seen = "20190802T154619.000Z"
+            name_color = ""
         ),
         pybrawl.ClubMember(
             tag       = "#EEEEEE",
             name      = "MemberPersonToBePromoted",
             role      = "member",
-            explevel = 8,
             trophies  = 3144,
-            name_color = "",
-            last_seen = "20190802T154619.000Z"
+            name_color = ""
         )
-
     ]
 )
 

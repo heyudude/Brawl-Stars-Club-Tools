@@ -1,4 +1,4 @@
-from configparser import SafeConfigParser
+import configparser
 import copy
 from datetime import datetime
 import gettext
@@ -347,7 +347,7 @@ def load_config_file(config_file_name=None, check_for_update=False, locale=None)
     config = copy.deepcopy(config_defaults)
 
     if config_file_name and os.path.isfile(config_file_name):
-        parser = SafeConfigParser()
+        parser = configparser.ConfigParser()
         parser.read(config_file_name)
 
         # Map the contents of the ini file with the structure for the config object found above.
