@@ -146,11 +146,10 @@ def process_absent_members(config, historical_members):
 def build_dashboard(config): # pragma: no coverage
     """Compile and render Club dashboard."""
     print('- info: requesting info for Player id: {}'.format(config['api']['player_id']))
-    #print('- info: requesting info for Club id: {}'.format(config['api']['club_id']))
+    print('- info: requesting info for Club id: {}'.format(config['api']['club_id']))
    
     api = ApiWrapper(config)
-    
-    club = api.get_data_from_api()
+    player = api.get_data_from_api()
 
     # Create temporary directory. All file writes, until the very end,
     # will happen in this directory, so that no matter what we do, it
