@@ -5,10 +5,10 @@ import math
 from pybrawl import Club
 
 class ProcessedClub():
-    def __init__(self, Club, current_war, config):
-        self.tag = Club.tag
-        self.name = Club.name
-        self.description = Club.description
-        self.trophies = Club.trophies
-        self.required_trophies = Club.required_trophies
-        self.members = Club.members
+    def __init__(self, club, config):
+        self.tag = club.tag
+        self.name = club.name
+        self.description = club.description
+        self.trophies = club.trophies
+        self.required_trophies = club.required_trophies
+        self.members = club.member_list

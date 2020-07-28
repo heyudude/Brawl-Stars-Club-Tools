@@ -87,7 +87,7 @@ def get_scoring_rules(config):
         if score > 0:
             return 'good'
         elif score < 0:
-            return 'bad'
+             return 'bad'
         else:
             return 'normal'
 
@@ -144,12 +144,12 @@ def process_absent_members(config, historical_members):
 # other than a mess that will trigger teh cognitive complexity
 # warnings.
 def build_dashboard(config): # pragma: no coverage
-    """Compile and render Club dashboard."""
+    """Compile and render Club dashboard, get club via player."""
     print('- info: requesting info for Player id: {}'.format(config['api']['player_id']))
     print('- info: requesting info for Club id: {}'.format(config['api']['club_id']))
    
     api = ApiWrapper(config)
-    player = api.get_data_from_api()
+    player, club = api.get_data_from_api()
 
     # Create temporary directory. All file writes, until the very end,
     # will happen in this directory, so that no matter what we do, it
