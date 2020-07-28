@@ -223,8 +223,8 @@ def __localize_strings(locale_id):
         'ruleParticipate'           : _('...participate in the war?'),
 
         'roleLeader'                : _('President'),
-        'roleCoLeader'              : _('Vice-President'),
-        'roleElder'                 : _('Vice-President'),
+        'roleVicePresident'              : _('Vice-President'),
+        'roleSenior'                 : _('Vice-President'),
         'roleMember'                : _('Member'),
         'roleBlacklisted'           : _('Blacklisted. Kick!'),
         'roleVacation'              : _('On vacation'),

@@ -151,10 +151,10 @@ class MemberFactory:
             return self.config['strings']['roleNoPromote']
 
         return {
-            'President'   : self.config['strings']['roleLeader'],
-            'VicePresident' : self.config['strings']['roleCoLeader'],
-            'Vice-President'    : self.config['strings']['roleElder'],
-            'member'   : self.config['strings']['roleMember'],
+            'President'     : self.config['strings']['roleLeader'],
+            'Vice President' : self.config['strings']['roleVicePresident'],
+            'Senior'         : self.config['strings']['roleSenior'],
+            'member'         : self.config['strings']['roleMember'],
         }[member_role]
 
     def calc_member_status(self, member_score, no_promote):

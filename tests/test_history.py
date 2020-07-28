@@ -3,26 +3,22 @@ import copy
 
 import pybrawl
 from bstools import history, load_config_file
-from bstools.models import ProcessedCurrentWar
 
 __fake_members__ = [
     pybrawl.ClubMember(
         name      = 'Player A',
         tag       = '#AAAAAA',
-        role      = 'President',
-        donations = 100
+        role      = 'President'
     ),
     pybrawl.ClubMember(
         name      = 'Player C',
         tag       = '#CCCCCC',
-        role      = 'member',
-        donations = 10
+        role      = 'member'
     ),
     pybrawl.ClubMember(
         name      = 'Player D',
         tag       = '#DDDDDD',
-        role      = 'Vice-President',
-        donations = 10
+        role      = 'Vice-President'
     )
 ]
 
@@ -33,7 +29,6 @@ __fake_history__ = {
             "join_date": 1549974720.0,
             "status": "present",
             "role": "president",
-            "donations": 100,
             "events": [
                 {
                     "event": "join",
@@ -47,7 +42,6 @@ __fake_history__ = {
             "join_date": 1549974720.0,
             "status": "present",
             "role": "Vice-President",
-            "donations": 5,
             "events": [
                 {
                     "event": "join",
@@ -61,7 +55,6 @@ __fake_history__ = {
             "join_date": 1549974720.0,
             "status": "present",
             "role": "member",
-            "donations": 5,
             "events": [
                 {
                     "event": "join",
@@ -88,34 +81,28 @@ __fake_history__ = {
     }
 }
 
-__fake_currentwar__ = ProcessedCurrentWar(config=load_config_file(False), current_war=pybrawl.WarCurrent(
-        state               = 'collectionDay',
-        collection_end_time = '20190209T212846.354Z',
-        participants        = [pybrawl.WarParticipant(tag='#AAAAAA', cards_earned=0)]
-    ))
-
 def test_get_role_change_status():
     assert history.get_role_change_status('foo',                 'foo')                 == False
     assert history.get_role_change_status('foo',                 'bar')                 == False
     assert history.get_role_change_status('foo',                 history.ROLE_MEMBER)   == False
     assert history.get_role_change_status(history.ROLE_MEMBER,   'foo')                 == False
     assert history.get_role_change_status('foo',                 'foo')                 == False
-    assert history.get_role_change_status(history.ROLE_LEADER,   history.ROLE_LEADER)   == 'unchanged'
-    assert history.get_role_change_status(history.ROLE_LEADER,   history.ROLE_COLEADER) == 'demotion'
-    assert history.get_role_change_status(history.ROLE_LEADER,   history.ROLE_ELDER)    == 'demotion'
-    assert history.get_role_change_status(history.ROLE_LEADER,   history.ROLE_MEMBER)   == 'demotion'
-    assert history.get_role_change_status(history.ROLE_COLEADER, history.ROLE_COLEADER) == 'unchanged'
-    assert history.get_role_change_status(history.ROLE_COLEADER, history.ROLE_LEADER)   == 'promotion'
-    assert history.get_role_change_status(history.ROLE_COLEADER, history.ROLE_ELDER)    == 'demotion'
-    assert history.get_role_change_status(history.ROLE_COLEADER, history.ROLE_MEMBER)   == 'demotion'
-    assert history.get_role_change_status(history.ROLE_ELDER,    history.ROLE_ELDER)    == 'unchanged'
-    assert history.get_role_change_status(history.ROLE_ELDER,    history.ROLE_LEADER)   == 'promotion'
-    assert history.get_role_change_status(history.ROLE_ELDER,    history.ROLE_COLEADER) == 'promotion'
-    assert history.get_role_change_status(history.ROLE_ELDER,    history.ROLE_MEMBER)   == 'demotion'
+    assert history.get_role_change_status(history.ROLE_PRESIDENT,   history.ROLE_PRESIDENT)   == 'unchanged'
+    assert history.get_role_change_status(history.ROLE_PRESIDENT,   history.ROLE_VICEPRESIDENT) == 'demotion'
+    assert history.get_role_change_status(history.ROLE_PRESIDENT,   history.ROLE_SENIOR)    == 'demotion'
+    assert history.get_role_change_status(history.ROLE_PRESIDENT,   history.ROLE_MEMBER)   == 'demotion'
+    assert history.get_role_change_status(history.ROLE_VICEPRESIDENT, history.ROLE_VICEPRESIDENT) == 'unchanged'
+    assert history.get_role_change_status(history.ROLE_VICEPRESIDENT, history.ROLE_PRESIDENT)   == 'promotion'
+    assert history.get_role_change_status(history.ROLE_VICEPRESIDENT, history.ROLE_SENIOR)    == 'demotion'
+    assert history.get_role_change_status(history.ROLE_VICEPRESIDENT, history.ROLE_MEMBER)   == 'demotion'
+    assert history.get_role_change_status(history.ROLE_SENIOR,    history.ROLE_SENIOR)    == 'unchanged'
+    assert history.get_role_change_status(history.ROLE_SENIOR,    history.ROLE_PRESIDENT)   == 'promotion'
+    assert history.get_role_change_status(history.ROLE_SENIOR,    history.ROLE_VICEPRESIDENT) == 'promotion'
+    assert history.get_role_change_status(history.ROLE_SENIOR,    history.ROLE_MEMBER)   == 'demotion'
     assert history.get_role_change_status(history.ROLE_MEMBER,   history.ROLE_MEMBER)   == 'unchanged'
-    assert history.get_role_change_status(history.ROLE_MEMBER,   history.ROLE_LEADER)   == 'promotion'
-    assert history.get_role_change_status(history.ROLE_MEMBER,   history.ROLE_COLEADER) == 'promotion'
-    assert history.get_role_change_status(history.ROLE_MEMBER,   history.ROLE_ELDER)    == 'promotion'
+    assert history.get_role_change_status(history.ROLE_MEMBER,   history.ROLE_PRESIDENT)   == 'promotion'
+    assert history.get_role_change_status(history.ROLE_MEMBER,   history.ROLE_VICEPRESIDENT) == 'promotion'
+    assert history.get_role_change_status(history.ROLE_MEMBER,   history.ROLE_SENIOR)    == 'promotion'
 
 def test_validate_history_new():
     timestamp = datetime.utcnow()

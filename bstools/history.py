@@ -7,12 +7,11 @@ from bstools.models import MemberEvent
 
 """Functions for maintaining a historical record of the Club."""
 
-ROLE_MEMBER     = 'Member'
-ROLE_ELDER      = 'Vice-President'
-ROLE_COLEADER   = 'VicePresident'
-ROLE_LEADER     = 'President'
-
-NAME_UNKNOWN = '[unknown]'
+ROLE_MEMBER         = 'Member'
+ROLE_SENIOR         = 'Senior'
+ROLE_VICEPRESIDENT  = 'Vice President'
+ROLE_PRESIDENT      = 'President'
+NAME_UNKNOWN        = '[unknown]'
 
 def min_date(date1, date2):
     if date2 > 0 and date2 < date1:
@@ -34,7 +33,7 @@ def find_oldest_date(members):
 
 def validate_role(role):
     """ Returns whether or not the role string is a valid role """
-    return role in [ROLE_MEMBER, ROLE_ELDER, ROLE_COLEADER, ROLE_LEADER]
+    return role in [ROLE_MEMBER, ROLE_SENIOR, ROLE_VICEPRESIDENT, ROLE_PRESIDENT]
 
 def validate_history(old_history, timestamp):
     """ Returns True if and only if the history object is
@@ -61,7 +60,6 @@ def validate_history(old_history, timestamp):
         # history
         return history, True
 
-
 def get_role_change_status(old_role, new_role):
     """ Return 'unchanged', 'promotion', or 'demotion' based
     on the relationship between the old and new role. If the
@@ -72,14 +70,14 @@ def get_role_change_status(old_role, new_role):
             return 'unchanged'
         if old_role == ROLE_MEMBER:
             return 'promotion'
-        elif new_role == ROLE_LEADER:
+        elif new_role == ROLE_PRESIDENT:
             return 'promotion'
-        elif old_role == ROLE_ELDER:
+        elif old_role == ROLE_SENIOR:
             if new_role == ROLE_MEMBER:
                 return 'demotion'
             else:
                 return 'promotion'
-        elif old_role == ROLE_COLEADER or old_role == ROLE_LEADER:
+        elif old_role == ROLE_VICEPRESIDENT or old_role == ROLE_PRESIDENT:
             return 'demotion'
 
     return False
@@ -166,8 +164,7 @@ def process_member_events(config, events):
 
     return processed_events
 
-
-def get_member_history(members, date, old_history=None, current_war=None):
+def get_member_history(members, date, old_history=None):
     """ Generates user history. Takes as inputs the list of members
     from the API, as well as optionally the old history, and a date
     object for synchronization and testing.
@@ -188,11 +185,11 @@ def get_member_history(members, date, old_history=None, current_war=None):
     # hitory object and reset the timestamp to 0
     timestamp = datetime.timestamp(date)
     history, new_club = validate_history(old_history, timestamp)
-
+    
     member_tags = []
     for member in members:
         tag = member.tag
-        member.role = 'VicePresident' if member.role == 'vice-president' else member.role
+        member.role = 'Vice President' if member.role == 'Senior' else member.role
         member_tags.append(tag)
         if tag not in history['members']:
             # No history of this member, therefore they are new.
@@ -207,18 +204,9 @@ def get_member_history(members, date, old_history=None, current_war=None):
             elif historical_member['role'] != member.role:
                 # Member's role has changed
                 history['members'][tag] = member_role_change(historical_member, member, timestamp)
-            if member.donations < historical_member['donations']:
-                historical_member['donations_last_week'] = historical_member['donations']
-                historical_member['donations'] = member.donations
-            if member.donations > historical_member['donations']:
-                historical_member['donations'] = member.donations
-                historical_member['last_donation_date'] = timestamp
-                historical_member['last_activity_date'] = timestamp
-            if tag in war_participants:
-                historical_member['last_activity_date'] = timestamp
+
 
     # Look for missing members. If they're missing, they quit
     history['members'] = process_missing_members(history['members'], member_tags, timestamp)
 
     return history
-
