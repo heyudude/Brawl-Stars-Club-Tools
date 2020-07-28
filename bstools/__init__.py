@@ -109,7 +109,3 @@ def main():  # pragma: no cover
 
     # Build the dashboard
     build_dashboard(config)
-
-if __name__ == "__main__":
-    # execute only if run as a script
-    main()

@@ -30,7 +30,7 @@ class ApiWrapper:
             Club = self.clubs.get_club(self.config['api']['club_id'])
             logger.info('- Club: {} ({})'.format(Club.tag, Club.name))
  
-            return (Player)
+            return (Player, Club)
         except pybrawl.ApiException as e:
             if e.body:
                 body = json.loads(e.body)
