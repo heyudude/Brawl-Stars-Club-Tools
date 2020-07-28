@@ -11,6 +11,7 @@ class ApiWrapper:
         logger.debug("Creating API instance")
         api_config = pybrawl.Configuration()
         api_config.api_key['authorization'] = config['api']['api_key']
+        api_config.access_token = config['api']['api_key'] # TODO document this addition is needed! 
 
         if config['api']['proxy']:
             api_config.proxy = config['api']['proxy']
@@ -25,9 +26,9 @@ class ApiWrapper:
             # Get Club data from API via Player
             logger.debug('Get player')
             Player = self.players.get_player(self.config['api']['player_id'])
-            logger.info('- Player: {} ({})'.format(Player.name, Player.player_id))
+            logger.info('- Player: {} ({})'.format(Player.tag, Player.name))
             Club = self.clubs.get_club(self.config['api']['club_id'])
-            logger.info('- Club: {} ({})'.format(Club.name, Club.club_id))
+            logger.info('- Club: {} ({})'.format(Club.tag, Club.name))
  
             return (Player)
         except pybrawl.ApiException as e:
