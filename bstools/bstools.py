@@ -115,7 +115,9 @@ def process_members(config, club, member_history):
         club=club,
         member_history=member_history)
     members_processed = []
-
+    for member_src in club.member_list:
+        members_processed.append(factory.get_processed_member(member_src))
+        
     return members_processed
  
 def process_absent_members(config, historical_members):
@@ -145,11 +147,10 @@ def process_absent_members(config, historical_members):
 # warnings.
 def build_dashboard(config): # pragma: no coverage
     """Compile and render Club dashboard, get club via player."""
-    print('- info: requesting info for Player id: {}'.format(config['api']['player_id']))
     print('- info: requesting info for Club id: {}'.format(config['api']['club_id']))
    
     api = ApiWrapper(config)
-    player, club = api.get_data_from_api()
+    club = api.get_data_from_api()
 
     # Create temporary directory. All file writes, until the very end,
     # will happen in this directory, so that no matter what we do, it
@@ -165,7 +166,6 @@ def build_dashboard(config): # pragma: no coverage
         club_processed = ProcessedClub(club, config)
 
         member_history = history.get_member_history(club.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path))
-
         members_processed = process_members(config, club, member_history)
         former_members = process_absent_members(config, member_history['members'])
 
@@ -193,7 +193,7 @@ def build_dashboard(config): # pragma: no coverage
 
         # if fankit is previously downloaded, it will copy fankit. Otherwise,
         # if fankit is enabled, it will download it.
-        # fankit.get_fankit(tempdir, output_path, config['paths']['use_fankit'])
+        fankit.get_fankit(tempdir, output_path, config['paths']['use_fankit'])
 
         io.copy_static_assets(tempdir, config['paths']['club_logo'], config['paths']['favicon'])
 
@@ -202,7 +202,7 @@ def build_dashboard(config): # pragma: no coverage
         # discord.trigger_webhooks(config, members_processed)
 
     except Exception as e:
-        logger.error('error bstools: {}'.format(e))
+        logger.error('Error bstools: {}'.format(e))
 
     finally:
         # Ensure that temporary directory gets deleted no matter what

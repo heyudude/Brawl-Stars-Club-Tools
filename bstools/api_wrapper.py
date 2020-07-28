@@ -24,13 +24,10 @@ class ApiWrapper:
     def get_data_from_api(self): # pragma: no coverage
         try:
             # Get Club data from API via Player
-            logger.debug('Get player')
-            Player = self.players.get_player(self.config['api']['player_id'])
-            logger.info('- Player: {} ({})'.format(Player.tag, Player.name))
-            Club = self.clubs.get_club(self.config['api']['club_id'])
-            logger.info('- Club: {} ({})'.format(Club.tag, Club.name))
- 
-            return (Player, Club)
+            club = self.clubs.get_club(self.config['api']['club_id']) # TODO
+            logger.info('- Club: {} ({})'.format(club.tag, club.name))
+
+            return (club)
         except pybrawl.ApiException as e:
             if e.body:
                 body = json.loads(e.body)

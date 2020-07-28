@@ -1,4 +1,5 @@
 import json
+import pytest
 
 from bstools import io
 
@@ -50,7 +51,7 @@ def test_copy_static_assets(tmpdir):
 
     assert fake_tempdir.join('static').check(dir=1)
     assert fake_tempdir.join('static').join('images').check(dir=1)
-    assert fake_tempdir.join(io.CLAN_LOG_FILENAME).read() == 'foo'
+    assert fake_tempdir.join(io.CLUB_LOG_FILENAME).read() == 'foo'
     assert fake_tempdir.join(io.FAVICON_FILENAME).read() == 'bar'
 
 def test_dump_debug_logs(tmpdir):
@@ -104,3 +105,7 @@ def test_move_temp_to_output_dir_output_dir_no_write(tmpdir):
     fake_output_dir.chmod(0)
 
     io.move_temp_to_output_dir(fake_tempdir.realpath(), fake_output_dir.realpath())
+
+
+if __name__ == '__main__':
+    pytest.main()

@@ -60,8 +60,8 @@ def test_get_role_label():
     assert factory.get_role_label('#fff', 'President', 100, 'bad', None, False, False) == config['strings']['roleInactive'].format(days=100)
 
     assert factory.get_role_label('#fff', 'President', 0, 'good', None, False, False) == config['strings']['roleLeader']
-    assert factory.get_role_label('#fff', 'VicePresident', 0, 'good', None, False, False) == config['strings']['roleCoLeader']
-    assert factory.get_role_label('#fff', 'Vice-President', 0, 'good', None, False, False) == config['strings']['roleElder']
+    assert factory.get_role_label('#fff', 'VicePresident', 0, 'good', None, False, False) == config['strings']['roleVicePresident']
+    assert factory.get_role_label('#fff', 'Vice-President', 0, 'good', None, False, False) == config['strings']['roleSenior']
     assert factory.get_role_label('#fff', 'member', 0, 'good', None, False, False) == config['strings']['roleMember']
 
     assert factory.get_role_label('#fff', 'President', 0, 'good', None, False, True) == config['strings']['roleNoPromote']

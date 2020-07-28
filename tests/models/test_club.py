@@ -1,3 +1,4 @@
+import pytest
 import pybrawl
 from bstools import load_config_file
 from bstools.models import ProcessedClub
@@ -15,17 +16,14 @@ __fake_club__ = pybrawl.Club(
     tag                = CLUB_TAG,
     name               = "18plussers",
     description        = "Rules, stats, discord link, and info at https://18plussers.com",
-    club_score         = 38803,
     required_trophies  = 3000,
-    members            = 4,
     member_list        = [
         pybrawl.ClubMember(
             tag       = "#AAAAAA",
             name      = "PresidentPerson",
             role      = "president",
-            #explevel  = 12, #to do: how is this stored in CR or BS? It is part of the Player info
-            trophies  = 4153,
-            last_seen = "20190802T154619.000Z"
+            #explevel  = 12, # TODO: how is this stored in CR or BS? It is part of the Player info
+            trophies  = 4153
         )
     ]
 )
@@ -35,8 +33,11 @@ def test_process_club(tmpdir):
     config_file.write(__config_file_score__)
     config = load_config_file(config_file.realpath())
 
-    Club = ProcessedClub(
+    club = ProcessedClub(
         config=config,
-        Club=__fake_club__
+        club=__fake_club__
     )
 
+
+if __name__ == '__main__':
+    pytest.main()
