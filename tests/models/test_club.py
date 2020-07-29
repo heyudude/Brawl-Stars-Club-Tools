@@ -17,12 +17,11 @@ __fake_club__ = pybrawl.Club(
     name               = "18plussers",
     description        = "Rules, stats, discord link, and info at https://18plussers.com",
     required_trophies  = 3000,
-    member_list        = [
+    members        = [
         pybrawl.ClubMember(
             tag       = "#AAAAAA",
             name      = "PresidentPerson",
             role      = "president",
-            #explevel  = 12, # TODO: how is this stored in CR or BS? It is part of the Player info
             trophies  = 4153
         )
     ]
