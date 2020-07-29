@@ -9,6 +9,6 @@ class ProcessedClub():
         self.tag = club.tag
         self.name = club.name
         self.description = club.description
+        self.type = club.type
         self.trophies = club.trophies
         self.required_trophies = club.required_trophies
-        #self.members = club.member_list # TODO howto fill the list

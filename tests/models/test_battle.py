@@ -85,7 +85,7 @@ def test_member_war(tmpdir):
 
     war_current_nowar = bstools.member_war(
         config,
-        __fake_club__.member_list[0],
+        __fake_club__.members[0],
         pybrawl.WarCurrent(state='notInWar')
     )
     assert war_current_nowar['status'] == 'na'
@@ -93,7 +93,7 @@ def test_member_war(tmpdir):
 
     war_current_isparticipating = bstools.member_war(
         config,
-        __fake_club__.member_list[0].to_dict(),
+        __fake_club__.members[0].to_dict(),
         __fake_currentwar_warday__
     )
     assert war_current_isparticipating['status'] == 'good'
@@ -101,7 +101,7 @@ def test_member_war(tmpdir):
 
     war_current_notparticipating = bstools.member_war(
         config,
-        __fake_club__.member_list[3].to_dict(),
+        __fake_club__.members[3].to_dict(),
         __fake_currentwar_warday__
     )
     assert war_current_notparticipating['status'] == 'ok incomplete'
@@ -109,7 +109,7 @@ def test_member_war(tmpdir):
 
     war_isparticipating_good = bstools.member_war(
         config,
-        __fake_club__.member_list[0].to_dict(),
+        __fake_club__.members[0].to_dict(),
         __fake_war__
     )
     assert war_isparticipating_good['status'] == 'good'
@@ -117,16 +117,16 @@ def test_member_war(tmpdir):
 
     war_isparticipating_ok = bstools.member_war(
         config,
-        __fake_club__.member_list[1].to_dict(),
+        __fake_club__.members[1].to_dict(),
         __fake_war__
     )
-    print(__fake_club__.member_list[1].arena)
+    print(__fake_club__.members[1].arena)
     assert war_isparticipating_ok['status'] == 'ok'
     assert war_isparticipating_ok['score'] == 24
 
     war_isparticipating_bad = bstools.member_war(
         config,
-        __fake_club__.member_list[2].to_dict(),
+        __fake_club__.members[2].to_dict(),
         __fake_war__
     )
     assert war_isparticipating_bad['status'] == 'ok'
@@ -134,7 +134,7 @@ def test_member_war(tmpdir):
 
     war_notparticipating = bstools.member_war(
         config,
-        __fake_club__.member_list[3].to_dict(),
+        __fake_club__.members[3].to_dict(),
         __fake_war__
     )
     assert war_notparticipating['status'] == 'bad'
@@ -145,9 +145,9 @@ def test_member_warlog(tmpdir):
     config_file.write(__config_file_score__)
     config = load_config_file(config_file.realpath())
 
-    warlog = bstools.member_warlog(config, __fake_club__.member_list[0], __fake_warlog__)
+    warlog = bstools.member_warlog(config, __fake_club__.members[0], __fake_warlog__)
     assert warlog[0]['status'] == 'good'
 
-    warlog = bstools.member_warlog(config, __fake_club__.member_list[1], __fake_warlog__)
+    warlog = bstools.member_warlog(config, __fake_club__.members[1], __fake_warlog__)
     assert warlog[0]['status'] == 'ok'
 """

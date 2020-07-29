@@ -12,6 +12,7 @@ import tempfile
 
 import pybrawl
 import json
+import traceback
 
 from ._version import __version__
 from bstools.api_wrapper import ApiWrapper
@@ -47,7 +48,8 @@ def get_suggestions(config, processed_members, required_trophies):
 
         # if member on the 'safe' or 'vacation' list, don't make
         # recommendations to kick or demote
-        if not (member.safe or member.vacation) and member.current_war.status == 'na':
+        # if not (member.safe or member.vacation) and member.current_war.status == 'na':
+        if not (member.safe or member.vacation):
             # suggest kick if inactive for the set threshold
             if member.days_inactive >= config['activity']['threshold_kick']:
                 suggestion = config['strings']['suggestionKickInactivity'].format(name=member.name, days=member.days_inactive)
@@ -81,7 +83,10 @@ def get_suggestions(config, processed_members, required_trophies):
     return suggestions
 
 def get_scoring_rules(config):
-    """ Get list of scoring rules to display on the site """
+    """ Get list of scoring rules to display on the site.
+        TODO These rules are somewhat vague for Brawl Stars: no donations no wars
+        Propose to leave this in for now and think of somewhat ingenius and brilliant ;) 
+    """
 
     def get_score_rule_status(score):
         if score > 0:
@@ -115,7 +120,7 @@ def process_members(config, club, member_history):
         club=club,
         member_history=member_history)
     members_processed = []
-    for member_src in club.member_list:
+    for member_src in club.members:
         members_processed.append(factory.get_processed_member(member_src))
         
     return members_processed
@@ -164,8 +169,7 @@ def build_dashboard(config): # pragma: no coverage
 
         # process data from API
         club_processed = ProcessedClub(club, config)
-
-        member_history = history.get_member_history(club.member_list, config['bstools']['timestamp'], io.get_previous_history(output_path))
+        member_history = history.get_member_history(club.members, config['bstools']['timestamp'], io.get_previous_history(output_path))
         members_processed = process_members(config, club, member_history)
         former_members = process_absent_members(config, member_history['members'])
 
@@ -199,10 +203,14 @@ def build_dashboard(config): # pragma: no coverage
 
         io.move_temp_to_output_dir(tempdir, output_path)
 
-        # discord.trigger_webhooks(config, members_processed)
+        # TODO discord.trigger_webhooks(config, members_processed)
+        specialization_object = Specialization.objects.get(name="My Test Specialization")
 
+
+    # except Exception as e:
+    #     logger.error('Error bstools: {}'.format(e))
     except Exception as e:
-        logger.error('Error bstools: {}'.format(e))
+        print(traceback.format_exc())
 
     finally:
         # Ensure that temporary directory gets deleted no matter what

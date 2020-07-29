@@ -8,11 +8,11 @@ from ._version import __version__
 
 logger = logging.getLogger(__name__)
 
-def trigger_webhooks(config, current_war, member_list):
+def trigger_webhooks(config, current_war, members):
     if not config['discord']['webhook_default']:
         return False
 
-    return send_war_nag(config, current_war, member_list)
+    return send_war_nag(config, current_war, members)
 
 class WarNagConfig:
 
@@ -22,7 +22,7 @@ class WarNagConfig:
     naughty_member_list = ''
     quit_member_list = ''
 
-    def __init__(self, config, member_list):
+    def __init__(self, config, members):
         #if current_war.state == 'notInWar':
         if True: # Disable for now
         
@@ -35,47 +35,47 @@ class WarNagConfig:
         if config['discord']['webhook_war_nag']:
             self.webhook_url = config['discord']['webhook_war_nag']
 
-        if current_war.state == 'collectionDay':
-            if config['discord']['nag_collection_battle'] == False:
-                self.abort = True
-                return
+        # if current_war.state == 'collectionDay':
+        #     if config['discord']['nag_collection_battle'] == False:
+        #         self.abort = True
+        #         return
 
-            war_end_timestamp = datetime.strptime(current_war.collection_end_time.split('.')[0], '%Y%m%dT%H%M%S')
-            nag_threshold = config['discord']['nag_collection_battle_hours_left']
-            war_day_label = config['strings']['discord-collection-label']
+        #     war_end_timestamp = datetime.strptime(current_war.collection_end_time.split('.')[0], '%Y%m%dT%H%M%S')
+        #     nag_threshold = config['discord']['nag_collection_battle_hours_left']
+        #     war_day_label = config['strings']['discord-collection-label']
 
-        elif current_war.state == 'warDay':
-            if config['discord']['nag_war_battle'] == False:
-                self.abort = True
-                return
-            war_end_timestamp = datetime.strptime(current_war.war_end_time.split('.')[0], '%Y%m%dT%H%M%S')
-            nag_threshold = config['discord']['nag_war_battle_hours_left']
-            war_day_label = config['strings']['discord-war-label']
+        # elif current_war.state == 'warDay':
+        #     if config['discord']['nag_war_battle'] == False:
+        #         self.abort = True
+        #         return
+        #     war_end_timestamp = datetime.strptime(current_war.war_end_time.split('.')[0], '%Y%m%dT%H%M%S')
+        #     nag_threshold = config['discord']['nag_war_battle_hours_left']
+        #     war_day_label = config['strings']['discord-war-label']
 
-        war_end_time_delta = math.floor((war_end_timestamp - config['bstools']['timestamp']).seconds / 3600)
-        if war_end_time_delta > nag_threshold:
-            logger.debug('Nag threshold is {} hours, and there are {} hours left. Not nagging.'.format(nag_threshold, war_end_time_delta))
-            self.abort = True
-            return
+        # war_end_time_delta = math.floor((war_end_timestamp - config['bstools']['timestamp']).seconds / 3600)
+        # if war_end_time_delta > nag_threshold:
+        #     logger.debug('Nag threshold is {} hours, and there are {} hours left. Not nagging.'.format(nag_threshold, war_end_time_delta))
+        #     self.abort = True
+        #     return
 
         logger.debug('Compiling list of users to nag')
 
-        self._war_nag_get_naughty_member_list(current_war.participants, member_list)
+        self._war_nag_get_naughty_member_list(current_war.participants, members)
 
         self.nag_header = config['strings']['discord-header-war-nag'].format(war_end_time_delta, war_day_label)
 
-    def _war_nag_get_naughty_member_list(self, war_participants, member_list):
+    def _war_nag_get_naughty_member_list(self, war_participants, members):
         for member in war_participants:
             if member.battles_played < member.number_of_battles:
                 member_bullet = '- **{}**\n'.format(escape_markdown(member.name))
-                if is_member_in_club(member_list, member.tag):
+                if is_member_in_club(members, member.tag):
                     self.naughty_member_list += member_bullet
                 else:
                     self.quit_member_list += member_bullet
 
-def send_war_nag(config, current_war, member_list):
+def send_war_nag(config, current_war, members):
 
-    nag_config = WarNagConfig(config, current_war, member_list)
+    nag_config = WarNagConfig(config, current_war, members)
 
     if nag_config.abort or (nag_config.naughty_member_list == ''):
         return True
@@ -117,8 +117,8 @@ def escape_markdown(s):
         s = s.replace(search, replace)
     return s
 
-def is_member_in_club(member_list, member_tag):
-    for member in member_list:
+def is_member_in_club(members, member_tag):
+    for member in members:
         if member.tag == member_tag:
             return True
     return False
