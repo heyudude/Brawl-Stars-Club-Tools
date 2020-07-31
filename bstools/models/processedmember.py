@@ -23,3 +23,4 @@ class ProcessedMember():
         self.blacklist = False
         self.no_promote = False
         self.last_seen = 0 # TODO last seen not in member / player def as member.last_seen
+        self.time_in_club = 0

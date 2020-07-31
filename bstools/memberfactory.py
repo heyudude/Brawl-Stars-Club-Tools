@@ -42,7 +42,7 @@ class MemberFactory:
         if member.last_seen:
             last_seen = datetime.strptime(member.last_seen.split('.')[0], '%Y%m%dT%H%M%S')
         else:
-            last_seen = config['bstools']['timestamp']
+            last_seen = self.now
 
         member.last_seen_formatted = last_seen.strftime('%c')
 
@@ -87,7 +87,8 @@ class MemberFactory:
         if member.days_inactive > 7:
             member.donations_last_week = 0
 
-        member.total_donations = member.donations + member.donations_last_week
+        #member.total_donations = member.donations + member.donations_last_week # TODO
+        member.total_donations = 0
         if member.days_from_join > days_from_donation_reset + 7:
             days_from_donation_reset += 7
         else:
@@ -134,41 +135,43 @@ class MemberFactory:
         # for war in self.warlog.items:
         #     member.warlog.append(WarParticipation(self.config, member, war))
 
-        # score_calc = ScoreCalculator(self.config)
+        score_calc = ScoreCalculator(self.config)
 
-        # member.donation_score = score_calc.get_member_donations_score(member)
+        #member.donation_score = score_calc.get_member_donations_score(member) # TODO
+        member.donation_score = 0
 
-        # # calculate score based on war participation
-        # member.war_score = 0
+
+        # calculate score based on war participation # TODO
+        member.war_score = 0
         # for war in member.warlog:
         #     member.war_score += war.score
 
-        # # get member score
-        # member.score = member.war_score + member.donation_score
+        # get member score
+        member.score = member.war_score + member.donation_score
 
         # # members on the safe list can't have a score below zero
-        # if member.safe and member.score < 0:
-        #     member.score = 0
+        if member.safe and member.score < 0:
+             member.score = 0
 
         # # calculate the number of daily donations, and the donation status
         # # based on threshold set in config
-        # member.donation_status = self.calc_donation_status(member.donation_score, member.donations_daily, self.days_from_donation_reset)
+        #member.donation_status = self.calc_donation_status(member.donation_score, member.donations_daily, self.days_from_donation_reset)
 
-        # member.status = self.calc_member_status(member.score, member.no_promote)
+        member.status = self.calc_member_status(member.score, member.no_promote)
 
-        # member.activity_status = self.calc_activity_status(member.days_inactive)
+        member.activity_status = self.calc_activity_status(member.days_inactive)
 
-        # member.role_label = self.get_role_label(member.tag, member.role, member.days_inactive, member.activity_status, member.vacation, member.blacklist, member.no_promote)
+        member.role_label = self.get_role_label(member.tag, member.role, member.days_inactive, member.activity_status, member.vacation, member.blacklist, member.no_promote)
 
-        # if member.trophies >= self.club.required_trophies:
-        #     member.trophies_status = 'normal'
-        # else:
-        #     member.trophies_status = 'ok'
+        if member.trophies >= self.club.required_trophies:
+             member.trophies_status = 'normal'
+        else:
+             member.trophies_status = 'ok'
 
         # member.arena_league_label = self.config['strings']['league-' + member.arena_league['id']]
 
         # # Figure out whether member is on the leadership team by role
-        # member.leadership = member.role == 'leader' or member.role == 'coLeader'
+        member.leadership = member.role == 'leader' or member.role == 'coLeader'
 
         self.calc_recent_war_stats(member)
 
@@ -192,12 +195,12 @@ class MemberFactory:
 
         if no_promote:
             return self.config['strings']['roleNoPromote']
-
+        print(member_role)
         return {
-            'president'   : self.config['strings']['rolePresident'],
+            'president'     : self.config['strings']['rolePresident'],
             'vicePresident' : self.config['strings']['roleVicePresident'],
-            'senior'    : self.config['strings']['roleSenior'],
-            'member'   : self.config['strings']['roleMember'],
+            'senior'        : self.config['strings']['roleSenior'],
+            'member'        : self.config['strings']['roleMember'],
         }[member_role]
 
     def calc_recent_war_stats(self, member):
@@ -228,6 +231,7 @@ class MemberFactory:
     def calc_donation_status(self, donation_score, donations_daily, days_from_donation_reset):
         """ calculate the number of daily donations, and the donation status
         based on threshold set in config """
+        donation_score = 0  # TODO not defined yet
         if donation_score >= self.config['score']['max_donations_bonus']:
             return 'good'
 
@@ -267,5 +271,3 @@ class MemberFactory:
             return 'ok'
 
         return 'normal'
-
-
