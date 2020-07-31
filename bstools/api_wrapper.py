@@ -12,7 +12,7 @@ class ApiWrapper:
         api_config = pybrawl.Configuration()
         api_config.api_key['authorization'] = config['api']['api_key']
         api_config.access_token = config['api']['api_key'] # TODO document why this addition is needed! 
-
+        #print(api_config.api_key)
         if config['api']['proxy']:
             api_config.proxy = config['api']['proxy']
         if config['api']['proxy_headers']:

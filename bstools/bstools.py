@@ -40,6 +40,7 @@ def get_suggestions(config, processed_members, required_trophies):
 
     suggestions = []
     for index, member in enumerate(members_by_score):
+        member.score = 0 # TODO just temp
         if member.blacklist:
             suggestion = config['strings']['suggestionKickBlacklist'].format(name=member.name)
             logger.debug(suggestion)
@@ -96,12 +97,12 @@ def get_scoring_rules(config):
         else:
             return 'normal'
 
-    rules = [
-        {'name': config['strings']['ruleParticipate'],         'yes': config['score']['war_participation'],        'no': config['score']['war_non_participation'] },
-        {'name': config['strings']['ruleCollectionComplete'], 'yes': config['score']['collect_battle_played'],    'no': config['score']['collect_battle_incomplete']},
-        {'name': config['strings']['ruleCollectionWin'],      'yes': config['score']['collect_battle_won'],       'no': config['score']['collect_battle_lost']},
-        {'name': config['strings']['ruleWarDayComplete'],     'yes': config['score']['war_battle_played'],        'no': config['score']['war_battle_incomplete']},
-        {'name': config['strings']['ruleWarDayWin'],          'yes': config['score']['war_battle_won'],           'no': config['score']['war_battle_lost']}
+    rules = [ # TODO no rules defined yet
+    #    {'name': config['strings']['ruleParticipate'],        'yes': config['score']['war_participation'],        'no': config['score']['war_non_participation'] },
+    #    {'name': config['strings']['ruleCollectionComplete'], 'yes': config['score']['collect_battle_played'],    'no': config['score']['collect_battle_incomplete']},
+    #    {'name': config['strings']['ruleCollectionWin'],      'yes': config['score']['collect_battle_won'],       'no': config['score']['collect_battle_lost']},
+    #    {'name': config['strings']['ruleWarDayComplete'],     'yes': config['score']['war_battle_played'],        'no': config['score']['war_battle_incomplete']},
+    #    {'name': config['strings']['ruleWarDayWin'],          'yes': config['score']['war_battle_won'],           'no': config['score']['war_battle_lost']}
     ]
 
     for rule in rules:
@@ -204,7 +205,7 @@ def build_dashboard(config): # pragma: no coverage
         io.move_temp_to_output_dir(tempdir, output_path)
 
         # TODO discord.trigger_webhooks(config, members_processed)
-        specialization_object = Specialization.objects.get(name="My Test Specialization")
+        #specialization_object = Specialization.objects.get(name="My Test Specialization")
 
 
     # except Exception as e:

@@ -12,13 +12,8 @@
                     <small>{{member.tag}}</small>
                 </h2>
                 <div>
-                    <h3 class="xp-level">{{member.explevel}}</h3>
                     <h3 class="trophies">{{member.trophies}}</h3>
                 </div>
-
-                <figure class="arena-league {{member.arena_league}}">
-                    <figcaption>{{member.arena_league_label}}</figcaption>
-                </figure>
 
             </section>
             <h3><span>{{strings.dialogLabelPlayerStats}}</span></h3>
@@ -48,46 +43,6 @@
                         <dd>
                             {{member.last_seen_formatted}}
                             ({{member.last_seen_delta}})
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>{{strings.labelDonations}}</dt>
-                        <dd>{{member.donations}}</dd>
-                    </dl>
-                    <dl>
-                        <dt>{{strings.labelDonationsRecieved}}</dt>
-                        <dd>{{member.donations_received}}</dd>
-                    </dl>
-                {% if config.member_table.calc_war_readiness %}
-                    <dl>
-                        <dt>{{strings.labelWarReadiness}}</dt>
-                        <dd>
-                            <strong>{{member.war_readiness|round|int}}%</strong><br>
-                        </dd>
-                    </dl>
-                {% endif %}
-                    <dl>
-                        <dt>{{strings.labelWarWinRate}}</dt>
-                        <dd>
-                            <strong>{{member.war_win_rate}}%</strong><br>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>{{strings.labelCollectionWinRate}}</dt>
-                        <dd>
-                            <strong>{{member.war_collection_win_rate}}%</strong><br>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>{{strings.labelCollectionCardsWon}}</dt>
-                        <dd>
-                            <strong>{{member.war_collection_cards_average}} cards/war</strong><br>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>{{strings.labelWarScoreAverage}}</dt>
-                        <dd>
-                            <strong>{{member.war_score_average}} points</strong><br>
                         </dd>
                     </dl>
                 </div>

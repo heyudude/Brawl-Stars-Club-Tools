@@ -147,6 +147,7 @@ def __localize_strings(locale_id):
         'labelRequiredTrophies'     : _('Required Trophies'),
         'labelClubTag'              : _('Club Tag'),
         'labelClubRole'             : _('Club Role'),
+        'labelClubStats'             : _('Club Stats'),
         'labelLastUpdate'           : _('Last update'),
         'labelYes'                  : _('Yes'),
         'labelNo'                   : _('No'),
@@ -222,9 +223,9 @@ def __localize_strings(locale_id):
         'scoreRuleHeader'           : _('For each of the last 10 wars, did member...'),
         'ruleParticipate'           : _('...participate in the war?'),
 
-        'roleLeader'                : _('President'),
-        'roleVicePresident'              : _('Vice-President'),
-        'roleSenior'                 : _('Vice-President'),
+        'rolePresident'                : _('President'),
+        'roleVicePresident'         : _('Vice-President'),
+        'roleSenior'                : _('Senior'),
         'roleMember'                : _('Member'),
         'roleBlacklisted'           : _('Blacklisted. Kick!'),
         'roleVacation'              : _('On vacation'),
@@ -317,10 +318,11 @@ def __get_version_info(config):
                 latest_version = max(latest_version, ver)
 
         print('bstools v{}'.format(current_version))
-        if latest_version > current_version:
-            config['bstools']['latest_version'] = '{}'.format(latest_version)
-            config['bstools']['update_available'] = True
-            print('*** update available: bstools v{} ***'.format(latest_version))
+        if latest_version > current_version:  # TODO only when published
+            #config['bstools']['latest_version'] = '{}'.format(latest_version)
+            #config['bstools']['update_available'] = True
+            # print('*** update available: bstools v{} ***'.format(latest_version))
+            pass
     except:
         logger.debug('Could not contact PyPI. Continuing as normal.')
 

@@ -86,7 +86,7 @@ def parse_templates(config, history, tempdir, club, members, former_members, sug
         strings           = config['strings'],
         update_date       = datetime.now().strftime('%c'),
         members           = members,
-        Club              = Club,
+        club              = club,
         club_hero         = config['paths']['description_html_src'],
         suggestions       = suggestions,
         scoring_rules     = scoring_rules,

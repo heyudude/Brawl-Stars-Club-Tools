@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <meta name="description" content="Brawl Stars Dashboard for Club {{Club.name}} {{Club.tag}}. Here we post Club information, member standings, and war data." />
+    <meta name="description" content="Brawl Stars Dashboard for club {{club.name}} {{club.tag}}. Here we post club information, member standings, and war data." />
 
-    <meta name="generator" content="bstools {{version}} [https://github.com/AaronTraas/Clash-Royale-Club-Tools]" />
+    <meta name="generator" content="bstools {{version}} [https://github.com/heyudude/Brawl-Stars-club-Tools]" />
 
-    <title>{{Club.name}} Club Dashboard | bstools</title>
+    <title>{{club.name}} club Dashboard | bstools</title>
 
     <link rel="icon" href="favicon.ico"/>
 {% if config.www.canonical_url != False %}
@@ -29,21 +29,21 @@
 </head>
 <body data-active-dialog="none">
     <header><div class="inner">
-        <h1>{{strings.mainHeader.format(club_name=Club.name)}}</h1>
+        <h1>{{strings.mainHeader.format(club_name=club.name)}}</h1>
     </div></header>
     <main>
         <section id="hero">
             <div class="section-wrap">
 
-                <div id="Club-description">
+                <div id="club-description">
                 {% if club_hero %}
                     {{club_hero}}
                 {% else %}
-                    <h1>{{Club.name}} ({{Club.tag}})</h1>
-                    <h3>{{Club.description}}
+                    <h1>{{club.name}} ({{club.tag}})</h1>
+                    <h3>{{club.description}}
                 {% endif %}
                 </div>
-                <div id="Club-stats">
+                <div id="club-stats">
                     <div class="table-wrap">
                         <table>
                             <thead>
@@ -52,43 +52,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><th>{{strings.labelClubScore}}</th><td>{{Club.club_score}}</td></tr>
-                                <tr><th>{{strings.labelClubName}}</th><td>{{Club.name}}</td></tr>
+                                <tr><th>{{strings.labelClubScore}}</th><td>{{club.name}}</td></tr> # TODO no score!
+                                <tr><th>{{strings.labelClubName}}</th><td>{{club.name}}</td></tr>
                                 <tr>
-                                    <th>{{strings.labelCountry}}</th>
-                                {% if Club.location.is_country == true %}
-                                    <td>{{Club.location.name}}<img class="flag" src="static/images/flags/{{Club.location.country_code|lower}}.png" /></td>
-                                {% else %}
+                                    <th>{{strings.labelCountry}}</th> # TODO no location : default international
                                     <td>{{strings.labelInternational}}<img class="flag" src="static/images/flags/international.png" /></td>
-                                {% endif %}
                                 </td></tr>
-
-                                <tr><th>{{strings.labelDonationsPerWeek}}</th><td>{{Club.donations_per_week}}</td></tr>
-                                <tr><th>{{strings.labelRequiredTrophies}}</th><td>{{Club.required_trophies}}</td></tr>
-                                <tr>
-                                    <th>{{strings.labelWarTrophies}}</th>
-                                    <td>
-                                        {{Club.club_war_trophies}}
-                                        <img class="war-league" title="{{Club.war_league_name}}" src="static/images/war-league-{{Club.war_league}}.svg" />
-                                    </td>
-                                </tr>
-                                <tr><th>{{strings.labelClubTag}}</th><td>{{Club.tag}}</td></tr>
+                                <tr><th>{{strings.labelClubTag}}</th><td>{{club.tag}}</td></tr>
                             </tbody>
                         </table>
                     </div>
                     <p class="last-update">{{strings.labelLastUpdate}}: {{update_date}}</p>
-                    {% if Club.members < 50 %}
                     <div class="join-cta">
                         <h3>{{strings.ctaLookingForClub}}</h3>
-                        <a class="button join" href="https://link.clashroyale.com/invite/Club/en?tag={{Club.tag}}"><span>{{strings.buttonJoinUs}}</span></a>
+                        <a class="button join" href="https://link.brawlstars.com/invite/club/en?tag={{club.tag}}"><span>{{strings.buttonJoinUs}}</span></a>
                     </div>
-                    {% endif %}
                 </div>
             </div>
         </section>
         <section id="info">
             <div class="section-wrap">
-                {% include 'current-war.html.j2' %}
 
                 <article class="member-info">
                     <header>
@@ -106,9 +89,6 @@
                                     <option value="role-Vice-President">{{strings.filterRoleVP}}</option>
                                     <option value="role-member">{{strings.filterRoleMember}}</option>
                                     <option value="new">{{strings.filterNewMembers}}</option>
-                                {% if current_war.state in ['collectionDay', 'warDay'] %}
-                                    <option value="currentwar">{{strings.filterInCurrentWar}}</option>
-                                {% endif %}
                                     <option value="activity">{{strings.filterInactive}}</option>
                                     <option value="danger">{{strings.filterDanger}}</option>
                                 </select>
@@ -156,10 +136,6 @@
                             <h3>{{strings.sectionScoring}}:</h3>
                         </header>
                         <p>{{strings.scoreBreakdown}}</p>
-                        <h4>{{strings.scoreDonationLabel}}:</h4>
-                        <p>{{strings.scoreDonationBreakdown.format(min_donations_daily=config.score.min_donations_daily, donations_zero=config.score.donations_zero)}}</p>
-
-                        <h4>{{strings.scoreWarLabel}}:</h4>
                         <table class="rules">
                             <thead>
                                 <tr>
@@ -186,7 +162,7 @@
 
     <footer><div class="inner">
         <ul>
-            <li><a rel="external" target="_blank" href="https://github.com/AaronTraas/Clash-Royale-Club-Tools">Github</a></li>
+            <li><a rel="external" target="_blank" href="https://github.com/AaronTraas/Clash-Royale-club-Tools">Github</a></li>
             <li><a rel="external" target="_blank" href="https://developer.clashroyale.com/">Brawl Stars API</a></li>
         </ul>
         <a class="version {{ 'update-available' if config.bstools.update_available == True else '' }}" rel="external" target="_blank" href="https://pypi.org/project/bstools/">bstools {{config.bstools.version}}</a>
@@ -199,7 +175,7 @@
         </p>
     </div></footer>
 
-    <a class="github-fork-ribbon" target="_blank" href="https://github.com/AaronTraas/Clash-Royale-Club-Tools" title="Fork me on GitHub">Fork me on GitHub</a>
+    <a class="github-fork-ribbon" target="_blank" href="https://github.com/AaronTraas/Clash-Royale-club-Tools" title="Fork me on GitHub">Fork me on GitHub</a>
 
     <div class="dialog-shadow"></div>
     {% include 'dialog-old-members.html.j2' %}
