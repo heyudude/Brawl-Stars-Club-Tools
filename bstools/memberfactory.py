@@ -20,8 +20,8 @@ class MemberFactory:
         self.max_days_from_join = (self.now - datetime.fromtimestamp(self.history_start_timestamp)).days
 
 
-    def get_processed_member(self, member):
-        processed_member = ProcessedMember(member)
+    def get_processed_member(self, member, rank):
+        processed_member = ProcessedMember(member, rank)
 
         self.enrich_member_with_history(processed_member, self.member_history['members'][processed_member.tag])
         self.calc_special_status(processed_member)
@@ -205,10 +205,10 @@ class MemberFactory:
 
     def calc_recent_war_stats(self, member):
         pass
-        # war_wins = 0
-        # war_battles = 0
-        # collection_wins = 0
-        # collection_cards = 0
+        war_wins = 0
+        war_battles = 0
+        collection_wins = 0
+        collection_cards = 0
         # for war in member.warlog:
         #     if hasattr(war, 'wins'):
         #         war_wins += war.wins

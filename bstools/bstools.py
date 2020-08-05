@@ -21,7 +21,7 @@ from bstools import fankit
 from bstools import io
 from bstools import discord
 from bstools.memberfactory import MemberFactory
-from bstools.models import FormerMember, ProcessedClub
+from bstools.models import FormerMember, ProcessedClub, ProcessedPlayer
 
 MAX_CLAN_SIZE = 100
 
@@ -121,8 +121,10 @@ def process_members(config, club, member_history):
         club=club,
         member_history=member_history)
     members_processed = []
+    rank = 0
     for member_src in club.members:
-        members_processed.append(factory.get_processed_member(member_src))
+        rank = rank + 1
+        members_processed.append(factory.get_processed_member(member_src, rank))
         
     return members_processed
  
@@ -156,13 +158,12 @@ def build_dashboard(config): # pragma: no coverage
     print('- info: requesting info for Club id: {}'.format(config['api']['club_id']))
    
     api = ApiWrapper(config)
-    club = api.get_data_from_api()
+    club, player = api.get_data_from_api()
 
     # Create temporary directory. All file writes, until the very end,
     # will happen in this directory, so that no matter what we do, it
     # won't hose existing stuff.
     tempdir = tempfile.mkdtemp(config['paths']['temp_dir_name'])
-
     # Putting everything in a `try`...`finally` to ensure `tempdir` is removed
     # when we're done. We don't want to pollute the user's disk.
     try:
@@ -170,6 +171,7 @@ def build_dashboard(config): # pragma: no coverage
 
         # process data from API
         club_processed = ProcessedClub(club, config)
+        player_processed = ProcessedPlayer(player, config)
         member_history = history.get_member_history(club.members, config['bstools']['timestamp'], io.get_previous_history(output_path))
         members_processed = process_members(config, club, member_history)
         former_members = process_absent_members(config, member_history['members'])
@@ -192,6 +194,7 @@ def build_dashboard(config): # pragma: no coverage
                 {
                     'club'                  : club.to_dict(),
                     'club-processed'        : club_processed,
+                    'player-processed'      : player_processed,
                     'members-processed'     : members_processed,
                 }
             )
