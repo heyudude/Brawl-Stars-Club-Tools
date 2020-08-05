@@ -9,20 +9,43 @@
                     <th class="xp-level">{{strings.labelXpLevel}}</th>
                     <th class="score">{{strings.labelScore}}</th>
                     <th class="trophies">{{strings.labelTrophies}}</th>
+                    <th class="donations">{{strings.labelDonations}}</th>
+                    <th class="donations-received">{{strings.labelDonationsRecieved}}</th>
                     <th class="inactivity">{{strings.labelDaysInactive}}</th>
-                    <th class="time-in-Club">{{strings.labelTimeInClub}}</th>
+                    <th class="time-in-club">{{strings.labelTimeInClub}}</th>
                     <th class="last-seen">{{strings.labelLastSeen}}</th>
+                    <th class="war-win-rate">{{strings.labelWarWinRate}}</th>
                 </tr>
             </thead>
             <class="list">
             {% for member in members %}
                 <tr data-blacklist="{{ 'true' if member.blacklist else 'false' }}" data-nopromote="{{ 'true' if member.no_promote else 'false' }}" data-score="{{member.score}}" data-activity="{{member.activity_status}}" data-status="{{member.status}}" data-clubrole="{{member.role}}" data-leadership="{{member.leadership}}" data-vacation="{{member.vacation != False}}" data-new="{{ 'true' if member.new else 'false' }}">
+                    <td class="id rank" data-sort="{{member.rank}}">
+                        {% if member.rank < member.previous_rank %}
+                        <span class="rank-up">
+                        {% elif member.rank > member.previous_rank %}
+                        <span class="rank-down">
+                        {% else %}
+                        <span>
+                        {% endif %}
+                           <strong>{{member.rank}}</strong>
+                        </span>
+                    </td>
+                    <td class="rank previous" data-sort="{{member.previous_rank}}">
+                        <strong>{{member.previous_rank}}</strong>
+                    </td>
                     <td class="name" data-sort="{{member.name}}" data-role="dialog-show" data-target="member-detail" data-member-tag="{{member.tag}}">
                         <strong>{{member.name}}</strong><br />
                         <small class="member-role">{{member.role_label}}</small>
                     </td>
+                    <td class="score {{member.exp_level}}" data-sort="{{member.exp_level}}" data-tooltip="true">
+                        <strong>{{member.exp_level}}</strong>
+                    </td>
                     <td class="score {{member.status}}" data-sort="{{member.score}}" data-tooltip="true">
                         <strong>{{member.score}}</strong>
+                    </td>
+                    <td class="score {{member.trophies}}" data-sort="{{member.trophies}}" data-tooltip="true">
+                        <strong>{{member.trophies}}</strong>
                     </td>
                     <td class="inactivity {{member.activity_status}}" data-sort="{{member.days_inactive}}" >
                         <strong>{{member.days_inactive}}</strong><br /><small>{{strings.labelDays}}</small>

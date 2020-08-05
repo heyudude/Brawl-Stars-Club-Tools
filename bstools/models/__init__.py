@@ -5,4 +5,5 @@ from bstools.models.membercustomrecord import MemberCustomRecord
 from bstools.models.memberevent import MemberEvent
 from bstools.models.vacation import MemberVacation
 from bstools.models.club import ProcessedClub
+from bstools.models.player import ProcessedPlayer
 from bstools.models.processedmember import ProcessedMember
