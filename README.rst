@@ -130,6 +130,21 @@ the following to your config file:
   [google_docs]
   api_key=<YOUR-API-KEY>
   sheet_id=<YOUR-SHEET-ID>
+  
+==================================================  
+Using the Brawl Stars Official Fan Kit
+==================================================
+
+The design of this site is optionally enhanced by the fan kit provided by Supercell here. To enable automated downloading of the fan kit, add:
+
+use_fankit=True
+
+To the [Paths] section of your config file.
+
+NOTE: This requires about 5GB free in your temp forlder on the machine that crtools runs on. It will take 10-15 minutes to download and extract, but only the first time you run with the fankit enabled.
+
+If you have problems, you can manually install the fan kit. See Fan Kit Manual Install Instructions (TBD)
+See https://github.com/heyudude/BrawlStarsOfficial-FanKit
 
 ==================================================
 Other languages/locales
