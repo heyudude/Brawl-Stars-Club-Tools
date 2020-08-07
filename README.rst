@@ -36,7 +36,7 @@ Usage:
 .. code::
 
   bstools [-h] [--locale LOCALE] [--config CONFIG-FILE] [--api_key KEY]
-          [--Club TAG] [--out PATH] [--favicon PATH] [--club_logo PATH]
+          [--Club TAG] [--Player TAG] [--out PATH] [--favicon PATH] [--club_logo PATH]
           [--description PATH] [--canonical_url URL] [--debug]
           [--version]
 
@@ -45,7 +45,8 @@ optional arguments:
   --locale LOCALE      Locale if language other than English is desired (see `Other languages/locales`_).
   --config FILE        configuration file for this app.
   --api_key KEY        API key for developer.brawlstars.com
-  --Club Club          Club ID from Brawl Stars. If it starts with a '#', Club ID must be quoted.
+  --club_id TAG        Club ID from Brawl Stars. If it starts with a '#', Club ID must be quoted.
+  --player_id TAG      Optional player ID from Brawl Stars. If it starts with a '#', Player ID must be quoted.
   --out PATH           Output path for HTML.
   --favicon PATH       Source path for favicon.ico. If provided, we will copy to the output directory.
   --club_logo PATH     Source path for Club logo PNG. Recommended at least 64x64 pizels. If provided, we will copy to the output directory.
