@@ -44,12 +44,12 @@ optional arguments:
   -h, --help           show this help message and exit
   --locale LOCALE      Locale if language other than English is desired (see `Other languages/locales`_).
   --config FILE        configuration file for this app.
-  --api_key KEY        API key for developer.clashroyale.com
+  --api_key KEY        API key for developer.brawlstars.com
   --Club Club          Club ID from Brawl Stars. If it starts with a '#', Club ID must be quoted.
   --out PATH           Output path for HTML.
   --favicon PATH       Source path for favicon.ico. If provided, we will copy to the output directory.
   --club_logo PATH     Source path for Club logo PNG. Recommended at least 64x64 pizels. If provided, we will copy to the output directory.
-  --description PATH   Source path snippet of HTML to replace the Club description. Should not be a complete HTML document. Sample here: https://github.com/AaronTraas/bstools-agrassar-assets/blob/master/description.html If provided, we will copy to the output directory.
+  --description PATH   Source path snippet of HTML to replace the Club description. Should not be a complete HTML document. 
   --canonical_url URL  Canonical URL for this site. Used for setting the rel=canonical link in the web site, as well as generating the robots.txt and sitemap.xml
   --debug              Turns on debug mode
   --version            List the version of bstools.
@@ -102,7 +102,7 @@ parameter: api_key. The file should look like:
 For more details, see `samples/bstools.ini <https://github.com/heyudude/Brawl-Stars-Club-Tools/blob/master/samples/bstools.ini>`_
 
 ===================================================================
-Optional blacklist and vacation management using Google Sheets
+--> TBD WIP Optional blacklist and vacation management using Google Sheets
 ===================================================================
 
 You can optionally use a Google Sheets log to keep track of demerits
