@@ -2,7 +2,7 @@
 bstools - Brawl Stars Club Dashboard generator
 ==================================================
 
-This is a tool for creating a dashboard for Club participation in ClashRoyale.
+This is a tool for creating a dashboard for Club participation in Brawl Stars.
 See https://developer.brawlstars.com to sign up for a developer account and
 create an API key to use with this.
 
