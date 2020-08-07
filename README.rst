@@ -10,6 +10,9 @@ This tool is a static site generator -- it generates static HTML, JavaScript,
 and CSS used to render the dashboard. If you wish to use this, you should set
 it up to run once per hour on your web server.
 
+Note: Work in progress and help needed! The code will generate a website but very basic.
+It is extended in my spare time so be patient! 
+
 ==================================================
 Installation
 ==================================================
@@ -19,7 +22,7 @@ This requires Python 3 and pip on your machine. To install, use
 .. code::
 
   pip3 install bstools
-
+  
 If you have an older version installed, to upgrade to the latest version, run:
 
 .. code::
