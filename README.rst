@@ -73,6 +73,9 @@ parameter: api_key. The file should look like:
 
   # Your Club tag
   club_id=#XXXXXX
+  
+  # Your Player tag (optional)
+  player_id=#XXXXXX
 
   # Proxy URL -- URL for proxy server, if needed
   #proxy=https://my-proxy.com
