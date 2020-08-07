@@ -6,8 +6,6 @@ This is a tool for creating a dashboard for Club participation in ClashRoyale.
 See https://developer.brawlstars.com to sign up for a developer account and
 create an API key to use with this.
 
-For an example dashboard created for the Club Agrassar (#JY8YVV), see: https://agrassar.com/
-
 This tool is a static site generator -- it generates static HTML, JavaScript,
 and CSS used to render the dashboard. If you wish to use this, you should set
 it up to run once per hour on your web server.
@@ -68,12 +66,12 @@ parameter: api_key. The file should look like:
 .. code:: ini
 
   [API]
-  # API key provided for your account at https://developer.clashroyale.com
+  # API key provided for your account at https://developer.brawlstars.com
   # Note that the key is limited to a specific list of public IP addresses
   api_key=<YOUR-API-KEY>
 
   # Your Club tag
-  club_id=#JY8YVV
+  club_id=#XXXXXX
 
   # Proxy URL -- URL for proxy server, if needed
   #proxy=https://my-proxy.com
@@ -101,7 +99,7 @@ parameter: api_key. The file should look like:
   # and sitemap.xml
   canonical_url=https://yourclub.com/
 
-For more details, see `samples/bstools.ini <https://github.com/AaronTraas/Clash-Royale-Club-Tools/blob/master/samples/bstools.ini>`_
+For more details, see `samples/bstools.ini <https://github.com/heyudude/Brawl-Stars-Club-Tools/blob/master/samples/bstools.ini>`_
 
 ===================================================================
 Optional blacklist and vacation management using Google Sheets
@@ -128,26 +126,6 @@ the following to your config file:
   [google_docs]
   api_key=<YOUR-API-KEY>
   sheet_id=<YOUR-SHEET-ID>
-
-==================================================
-Using the ClashRoyale Official Fan Kit
-==================================================
-
-The design of this site is optionally enhanced by the fan kit provided by
-Supercell here. To enable automated downloading of the fan kit, add:
-
-.. code::
-
-  use_fankit=True
-
-To the :code:`[Paths]` section of your config file.
-
-NOTE: This requires about 5GB free in your temp forlder on the machine that
-bstools runs on. It will take 10-15 minutes to download and extract, but only
-the first time you run with the fankit enabled.
-
-If you have problems, you can manually install the fan kit. See
-`Fan Kit Manual Install Instructions <https://github.com/AaronTraas/Clash-Royale-Club-Tools/blob/master/fankit-manual-install.md>`_
 
 ==================================================
 Other languages/locales
@@ -194,7 +172,7 @@ Assuming root is going to be running the script:
 2. Install nginx or apache
 3. Find your document root (e.g., :code:`/var/www/html`)
 4. Create :code:`/root/.bstools` file as specified above, and add your
-   API key (from https://developer.clashroyale.com), output path (the
+   API key (from https://developer.brawlstars.com), output path (the
    document root), and Club tag
 5. Create the following entry in your crontab:
 
@@ -203,19 +181,9 @@ Assuming root is going to be running the script:
   0 * * * * bstools
 
 ==================================================
-Development links
-==================================================
-
-This project uses SonarQube for static analysis. The results of analysis
-are at `SonarCloud <https://sonarcloud.io/dashboard?id=AaronTraas_Clash-Royale-Club-Tools>`_.
-The code quality and test coverage are a work in progress.
-
-==================================================
 Support
 ==================================================
 
-If you need help getting this up and running, feel free to hop on the
-`bstools discord <https://discord.gg/K2UDCXU>`_.
 
 Keep in mind, this is a command-line utility that expects a working Python 3
 environment. It also assumes you will know how to configure a web server to
@@ -227,7 +195,7 @@ Contributors
 ==================================================
 
 All of the non-code contributors are listed in
-`CONTRIBUTORS.rst <https://github.com/AaronTraas/Clash-Royale-Club-Tools/blob/master/CONTRIBUTORS.rst>`_
+`CONTRIBUTORS.rst <https://github.com/heyudude/Brawl-Stars-Club-Tools/blob/master/CONTRIBUTORS.rst>`_
 
 ==================================================
 Image rights
