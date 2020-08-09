@@ -15,6 +15,8 @@ It is extended in my spare time so be patient!
 
 > See the first try out here: http://145.131.24.73/18plussersbs/
 
+Join the Discord server and tune in to get support or develop: https://discord.gg/gzz7Z7
+
 ==================================================
 Installation
 ==================================================
