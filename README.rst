@@ -212,6 +212,8 @@ environment. It also assumes you will know how to configure a web server to
 serve up HTML, as well as cron or similar on your given platform. There is no
 install wizard, GUI of any kind, etc.
 
+Join the Discord server and tune in to get support or develop: https://discord.gg/gzz7Z7
+
 ==================================================
 Contributors
 ==================================================
