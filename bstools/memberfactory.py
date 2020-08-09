@@ -20,8 +20,8 @@ class MemberFactory:
         self.max_days_from_join = (self.now - datetime.fromtimestamp(self.history_start_timestamp)).days
 
 
-    def get_processed_member(self, member, rank):
-        processed_member = ProcessedMember(member, rank)
+    def get_processed_member(self, member, rank, explevel):
+        processed_member = ProcessedMember(member, rank, explevel)
 
         self.enrich_member_with_history(processed_member, self.member_history['members'][processed_member.tag])
         self.calc_special_status(processed_member)
@@ -73,13 +73,13 @@ class MemberFactory:
             member.days_from_join = self.max_days_from_join + 1
 
         if member.days_from_join > 560:
-            member.time_in_clan = "{} {}".format(round(member.days_from_join/365), self.config['strings']['labelYears'])
+            member.time_in_club = "{} {}".format(round(member.days_from_join/365), self.config['strings']['labelYears'])
         elif member.days_from_join > 60:
-            member.time_in_clan = "{} {}".format(round(member.days_from_join/30), self.config['strings']['labelMonths'])
+            member.time_in_club = "{} {}".format(round(member.days_from_join/30), self.config['strings']['labelMonths'])
         else:
-            member.time_in_clan = "{} {}".format(member.days_from_join, self.config['strings']['labelDays'])
+            member.time_in_club = "{} {}".format(member.days_from_join, self.config['strings']['labelDays'])
         if member.days_from_join > self.max_days_from_join:
-            member.time_in_clan = "> " + member.time_in_clan
+            member.time_in_club = "> " + member.time_in_club
 
         if days_from_donation_reset > member.days_from_join:
             days_from_donation_reset = member.days_from_join
@@ -171,7 +171,7 @@ class MemberFactory:
         # member.arena_league_label = self.config['strings']['league-' + member.arena_league['id']]
 
         # # Figure out whether member is on the leadership team by role
-        member.leadership = member.role == 'leader' or member.role == 'coLeader'
+        member.leadership = member.role == 'president' or member.role == 'vicePresident'
 
         self.calc_recent_war_stats(member)
 

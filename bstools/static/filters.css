@@ -24,7 +24,7 @@
     display: none;
 }
 
-#member-table[data-filter="role-Vice-President"] tbody tr:not([data-clubrole="Vice-President"]) {
+#member-table[data-filter="role-senior"] tbody tr:not([data-clubrole="senior"]) {
     display: none;
 }
 

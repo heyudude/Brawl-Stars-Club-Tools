@@ -375,11 +375,11 @@ dialog#members-old .button.royaleapi > span:before {
 }
 
 dialog .button.statsroyale > span:before {
-	background-image: url(https://cdn.statsroyale.com/images/favicon/apple-touch-icon-precomposed.png)
+	background-image: url(https://brawlstats.com/logo-120.png)
 }
 
 dialog .button.royaleapi > span:before {
-	background-image: url(https://royaleapi.com/static/img/favicon/favicon-32x32.png)
+	background-image: url(https://brawlstats.com/logo-120.png)
 }
 
 dialog h1 {
