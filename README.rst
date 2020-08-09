@@ -10,10 +10,10 @@ This tool is a static site generator -- it generates static HTML, JavaScript,
 and CSS used to render the dashboard. If you wish to use this, you should set
 it up to run once per hour on your web server.
 
-Note: Work in progress and help needed! The code will generate a website but very basic.
+**Note: Work in progress and help needed!** The code will generate a website but very basic.
 It is extended in my spare time so be patient! 
 
-
+> See the first try out here: http://145.131.24.73/18plussersbs/
 
 ==================================================
 Installation
@@ -31,7 +31,6 @@ If you have an older version installed, to upgrade to the latest version, run:
 
   pip3 install -U bstools
 
-
 ==================================================
 Syntax
 ==================================================
@@ -46,7 +45,7 @@ Usage:
           [--version]
 
 optional arguments:
-  -h, --help           show this help message and exit
+  --help               Show this help message and exit
   --locale LOCALE      Locale if language other than English is desired (see `Other languages/locales`_).
   --config FILE        configuration file for this app.
   --api_key KEY        API key for developer.brawlstars.com
@@ -208,7 +207,6 @@ Assuming root is going to be running the script:
 Support
 ==================================================
 
-
 Keep in mind, this is a command-line utility that expects a working Python 3
 environment. It also assumes you will know how to configure a web server to
 serve up HTML, as well as cron or similar on your given platform. There is no
@@ -221,9 +219,9 @@ Contributors
 All of the non-code contributors are listed in
 `CONTRIBUTORS.rst <https://github.com/heyudude/Brawl-Stars-Club-Tools/blob/master/CONTRIBUTORS.rst>`_
 
-==================================================
+-------------------
 Image rights
-==================================================
+-------------------
 
 All images except the flags included in this repository were created by the
 team, and are included in the GPL license. The SVGs were all created in
