@@ -63,6 +63,7 @@
                         </table>
                     </div>
                     <p class="last-update">{{strings.labelLastUpdate}}: {{update_date}}</p>
+                    <a href="https://github.com/heyudude/Brawl-Stars-Club-Tools/">Github: Brawl Stars tools</a>
                     <div class="join-cta">
                         <h3>{{strings.ctaLookingForClub}}</h3>
                         <a class="button join" href="https://link.brawlstars.com/invite/club/en?tag={{club.tag}}"><span>{{strings.buttonJoinUs}}</span></a>
@@ -162,7 +163,7 @@
 
     <footer><div class="inner">
         <ul>
-            <li><a rel="external" target="_blank" href="https://github.com/heyudude/Brawl-Stars-Club-Tools">Github</a></li>
+            <li><a rel="external" target="_blank" href="https://github.com/heyudude/Brawl-Stars-club-Tools">Github</a></li>
             <li><a rel="external" target="_blank" href="https://developer.brawlstars.com/">Brawl Stars API</a></li>
         </ul>
         <a class="version {{ 'update-available' if config.bstools.update_available == True else '' }}" rel="external" target="_blank" href="https://pypi.org/project/bstools/">bstools {{config.bstools.version}}</a>
@@ -175,8 +176,7 @@
         </p>
     </div></footer>
 
-    <a class="github-fork-ribbon" target="_blank" href="https://github.com/heyudude/Brawl-Stars-Club-Tools" title="Fork me on GitHub">Fork me on GitHub</a>
-
+    <a class="github-fork-ribbon" target="_blank" href="https://github.com/heyudude/Brawl-Stars-club-Tools" title="Fork me on GitHub">Fork me on GitHub</a>
     <div class="dialog-shadow"></div>
     {% include 'dialog-old-members.html.j2' %}
     {% include 'dialog-member-detail.html.j2' %}
