@@ -11,8 +11,9 @@ AaronTraas <aaron@traas.org>
 	Crtools development (the source of this fork)
 
 
-
+==================================================
 Contributers to crtools:
+==================================================
 
 Eagle334 <Eagle334@gmail.com>
 	French translation and testing
