@@ -20,8 +20,10 @@ eggs/
 .eggs/
 lib/
 lib64/
+lib64
 parts/
 sdist/
+share/
 var/
 *.egg-info/
 .installed.cfg

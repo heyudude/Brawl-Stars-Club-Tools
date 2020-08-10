@@ -52,7 +52,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><th>{{strings.labelClubScore}}</th><td>{{club.name}}</td></tr> <!-- TODO no score! -->
                                 <tr><th>{{strings.labelClubName}}</th><td>{{club.name}}</td></tr>
                                 <tr>
                                     <th>{{strings.labelCountry}}</th> <!-- TODO no location : default international -->
@@ -63,6 +62,7 @@
                         </table>
                     </div>
                     <p class="last-update">{{strings.labelLastUpdate}}: {{update_date}}</p>
+                    <a href="https://github.com/heyudude/Brawl-Stars-Club-Tools/">Github: Brawl Stars tools</a>
                     <div class="join-cta">
                         <h3>{{strings.ctaLookingForClub}}</h3>
                         <a class="button join" href="https://link.brawlstars.com/invite/club/en?tag={{club.tag}}"><span>{{strings.buttonJoinUs}}</span></a>
@@ -86,7 +86,7 @@
                                 <select id="member-filter">
                                     <option value="none">{{strings.filterNone}}</option>
                                     <option value="leadership">{{strings.filterLeadership}}</option>
-                                    <option value="role-Vice-President">{{strings.filterLeadership}}</option>
+                                    <option value="role-senior">{{strings.filterRoleSenior}}</option>
                                     <option value="role-member">{{strings.filterRoleMember}}</option>
                                     <option value="new">{{strings.filterNewMembers}}</option>
                                     <option value="activity">{{strings.filterInactive}}</option>
@@ -162,8 +162,8 @@
 
     <footer><div class="inner">
         <ul>
-            <li><a rel="external" target="_blank" href="https://github.com/AaronTraas/Clash-Royale-club-Tools">Github</a></li>
-            <li><a rel="external" target="_blank" href="https://developer.clashroyale.com/">Brawl Stars API</a></li>
+            <li><a rel="external" target="_blank" href="https://github.com/heyudude/Brawl-Stars-club-Tools">Github</a></li>
+            <li><a rel="external" target="_blank" href="https://developer.brawlstars.com/">Brawl Stars API</a></li>
         </ul>
         <a class="version {{ 'update-available' if config.bstools.update_available == True else '' }}" rel="external" target="_blank" href="https://pypi.org/project/bstools/">bstools {{config.bstools.version}}</a>
 
@@ -175,7 +175,7 @@
         </p>
     </div></footer>
 
-    <a class="github-fork-ribbon" target="_blank" href="https://github.com/AaronTraas/Clash-Royale-club-Tools" title="Fork me on GitHub">Fork me on GitHub</a>
+    <a class="github-fork-ribbon" target="_blank" href="https://github.com/heyudude/Brawl-Stars-club-Tools" title="Fork me on GitHub">Fork me on GitHub</a>
 
     <div class="dialog-shadow"></div>
     {% include 'dialog-old-members.html.j2' %}
