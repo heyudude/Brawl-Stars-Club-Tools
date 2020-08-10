@@ -382,12 +382,12 @@ msgid "Player Stats and Info"
 msgstr "玩家信息"
 
 #: bstools/config.py:249
-msgid "See on StatsRoyale"
-msgstr "在 StatsRoyale 查询"
+msgid "See on BrawlStats"
+msgstr "在 BrawlStats 查询"
 
 #: bstools/config.py:250
-msgid "See on RoyaleAPI"
-msgstr "在 RoyaleAPI 查询"
+msgid "See on BrawlStats"
+msgstr "在 BrawlStats 查询"
 
 #: bstools/config.py:251
 msgid "Player History"

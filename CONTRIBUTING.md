@@ -18,7 +18,7 @@
 
 ## Do you intend to add a new feature or change an existing one
 
-- Suggest your change in the [community discord](https://discord.gg/tbd) and start writing code.
+- Suggest your change in the [community discord](https://discord.gg/V9ubm6) and start writing code.
 - When finished, submit a pull request
 
 bstools is a volunteer effort. We encourage you to pitch in!
