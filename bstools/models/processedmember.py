@@ -11,13 +11,13 @@ from bstools.scorecalc import ScoreCalculator
 logger = logging.getLogger(__name__)
 
 class ProcessedMember():
-    def __init__(self, member, rank):
+    def __init__(self, member, rank, explevel):
         self.rank = rank
         self.tag = member.tag
         self.name = escape(member.name)
-        #self.exp_level = player.exp_level # TODO
+        self.exp_level = explevel
         #self.exp_points = player.exp_points
-        self.exp_level = 1
+        #self.exp_level = 1
         self.exp_points = 1
         self.trophies = member.trophies
         self.role = member.role

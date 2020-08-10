@@ -116,6 +116,11 @@ def process_members(config, club, member_history):
     status in the Club member table. """
 
     # process members with results from the API
+    api_config = pybrawl.Configuration()
+    api_config.api_key['authorization'] = config['api']['api_key']
+    api_config.access_token = config['api']['api_key']
+    logger.debug("players instance")
+    players = pybrawl.PlayersApi(pybrawl.ApiClient(api_config))
     factory = MemberFactory(
         config=config,
         club=club,
@@ -123,8 +128,11 @@ def process_members(config, club, member_history):
     members_processed = []
     rank = 0
     for member_src in club.members:
+        playertag = member_src.tag
+        player = players.get_player(playertag)
+        explevel = player.exp_level
         rank = rank + 1
-        members_processed.append(factory.get_processed_member(member_src, rank))
+        members_processed.append(factory.get_processed_member(member_src, rank, explevel))
         
     return members_processed
  
