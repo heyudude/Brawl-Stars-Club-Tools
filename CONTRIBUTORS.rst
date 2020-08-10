@@ -1,7 +1,11 @@
 ==================================================
-Contributors to this project:
+Contributors to Brawl Stars Club tools project:
 ==================================================
-For bstools:
+
+Heyudude
+
+Tarundbz
+
 
 AaronTraas <aaron@traas.org>
 	Crtools development (the source of this fork)
