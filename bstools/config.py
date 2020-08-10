@@ -144,7 +144,7 @@ def __localize_strings(locale_id):
 
         'labelClubStats'            : _('Club Stats'),
         'labelClubName'             : _('Club Name'),
-        'labelClubScore'            : _('Club Score'),
+        'labelClubScore'            : _('Club Trophies'),
         'labelCountry'              : _('Country'),
         'labelInternational'        : _('International'),
         'labelDonationsPerWeek'     : _('Donations/week'),
@@ -223,8 +223,8 @@ def __localize_strings(locale_id):
 
         'dialogTitleMemberDetails'  : _('Member Details'),
         'dialogLabelPlayerStats'    : _('Player Stats and Info'),
-        'dialogMemberStatsRoyale'   : _('See on StatsRoyale'),
-        'dialogMemberRoyaleApi'     : _('See on RoyaleAPI'),
+        'dialogMemberStatsRoyale'   : _('See on BrawlStats'),
+        'dialogMemberRoyaleApi'     : _('See on BrawlStats'),
         'dialogLabelPlayerHistory'  : _('Player History'),
         'dialogMemberBlacklist'     : _('Member is on the blacklist. Kick member immediately.'),
         'dialogMemberNoPromote'     : _('Member has been tagged on the "No Promote" list for abusing privileges in the past. Never promote to Elder or higher.'),

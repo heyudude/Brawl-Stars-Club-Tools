@@ -43,7 +43,7 @@
                     <h3>{{club.description}}
                 {% endif %}
                 </div>
-                <div id="club-stats">
+                <div id="Club-stats">
                     <div class="table-wrap">
                         <table>
                             <thead>
@@ -52,7 +52,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><th>{{strings.labelClubScore}}</th><td>{{club.name}}</td></tr> <!-- TODO no score! -->
+                                <tr><th>{{strings.labelClubScore}}</th><td>{{club.trophies}}</td></tr>
                                 <tr><th>{{strings.labelClubName}}</th><td>{{club.name}}</td></tr>
                                 <tr>
                                     <th>{{strings.labelCountry}}</th> <!-- TODO no location : default international -->
@@ -86,10 +86,10 @@
                                 <select id="member-filter">
                                     <option value="none">{{strings.filterNone}}</option>
                                     <option value="leadership">{{strings.filterLeadership}}</option>
-                                    <option value="role-Vice-President">{{strings.filterLeadership}}</option>
+                                    <option value="role-senior">{{strings.filterRoleSenior}}</option>
                                     <option value="role-member">{{strings.filterRoleMember}}</option>
                                     <option value="new">{{strings.filterNewMembers}}</option>
-                                    <option value="activity">{{strings.filterInactive}}</option>
+                                    <!--<option value="activity">{{strings.filterInactive}}</option>-->
                                     <option value="danger">{{strings.filterDanger}}</option>
                                 </select>
                             </label>
@@ -104,7 +104,7 @@
                 </article>
 
                 <div class="row">
-                    {% include 'leaderboards.html.j2' %}
+                    <!--{% include 'leaderboards.html.j2' %}-->
 
                     <article id="suggestions">
                         <header>
@@ -119,10 +119,10 @@
                                 </ul>
                             </div>
                             <div class="info">
-                                <p>{{strings.suggestionKick}}</p>
+                                <!--<p>{{strings.suggestionKick}}</p>-->
                                 <p>{{strings.suggestionInactive.format(days_inactive=config.activity.threshold_kick)}}</p>
                                 <p>
-                                    {{strings.suggestionPromote.format(points=config.score.threshold_promote)}}
+                                    <!--{{strings.suggestionPromote.format(points=config.score.threshold_promote)}} -->
                                 {% if config.activity.min_days_to_promote > 0 %}
                                     {{ strings.suggestionPromoteMinDays.format(config.activity.min_days_to_promote) }}
                                 {% endif %}
@@ -131,7 +131,7 @@
                         </div>
                     </article>
 
-                    <article>
+                   <!-- <article>
                         <header>
                             <h3>{{strings.sectionScoring}}:</h3>
                         </header>
@@ -154,7 +154,7 @@
                             {% endfor %}
                             </tbody>
                         </table>
-                    </article>
+                    </article> -->
                 </div>
             </div>
         </section>
@@ -162,8 +162,8 @@
 
     <footer><div class="inner">
         <ul>
-            <li><a rel="external" target="_blank" href="https://github.com/AaronTraas/Clash-Royale-club-Tools">Github</a></li>
-            <li><a rel="external" target="_blank" href="https://developer.clashroyale.com/">Brawl Stars API</a></li>
+            <li><a rel="external" target="_blank" href="https://github.com/heyudude/Brawl-Stars-Club-Tools">Github</a></li>
+            <li><a rel="external" target="_blank" href="https://developer.brawlstars.com/">Brawl Stars API</a></li>
         </ul>
         <a class="version {{ 'update-available' if config.bstools.update_available == True else '' }}" rel="external" target="_blank" href="https://pypi.org/project/bstools/">bstools {{config.bstools.version}}</a>
 
@@ -175,7 +175,7 @@
         </p>
     </div></footer>
 
-    <a class="github-fork-ribbon" target="_blank" href="https://github.com/AaronTraas/Clash-Royale-club-Tools" title="Fork me on GitHub">Fork me on GitHub</a>
+    <a class="github-fork-ribbon" target="_blank" href="https://github.com/heyudude/Brawl-Stars-Club-Tools" title="Fork me on GitHub">Fork me on GitHub</a>
 
     <div class="dialog-shadow"></div>
     {% include 'dialog-old-members.html.j2' %}
@@ -205,7 +205,7 @@
 
                 var tooltip = new TooltipManager();
                 var memberFilter = new MemberTableFilter();
-                var leaderboardFilter = new LeaderboardFilter();
+                <!--var leaderboardFilter = new LeaderboardFilter(); -->
                 var dialogHandler = new DialogHandler();
 
                 new Tablesort(memberTable);
