@@ -7,6 +7,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+pyvenv.cfg
 makeb.sh
 bin/
 .Python
