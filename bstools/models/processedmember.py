@@ -4,7 +4,6 @@ from html import escape
 import logging
 
 from pybrawl import ClubMember
-from pybrawl import Player
 
 from bstools.scorecalc import ScoreCalculator
 

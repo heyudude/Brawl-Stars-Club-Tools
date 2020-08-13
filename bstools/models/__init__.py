@@ -7,3 +7,4 @@ from bstools.models.vacation import MemberVacation
 from bstools.models.club import ProcessedClub
 from bstools.models.player import ProcessedPlayer
 from bstools.models.processedmember import ProcessedMember
+from bstools.models.brawler import GetBrawlers

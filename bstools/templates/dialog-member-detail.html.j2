@@ -50,6 +50,14 @@
                     <a href="https://brawlstats.com/profile/{{member.tag | replace('#', '')}}" rel="external" target="_blank" class="button royaleapi"><span>{{config.strings.dialogMemberRoyaleApi}}</span></a>
                 </div>
             </section>
+            <h3><span>{{strings.dialogLabelPlayerDetails}}</span></h3>
+            <section>
+                <ul>
+                {% for brawler in player.brawlers %}
+                    <li>{{brawler.name}} - {{brawler.trophies}}</li>
+                {% endfor %}
+		</ul>
+            </section>
             <h3><span>{{strings.dialogLabelPlayerHistory}}</span></h3>
             <section>
                 <ul>

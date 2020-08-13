@@ -223,6 +223,7 @@ def __localize_strings(locale_id):
 
         'dialogTitleMemberDetails'  : _('Member Details'),
         'dialogLabelPlayerStats'    : _('Player Stats and Info'),
+        'dialogLabelPlayerDetails'  : _('Player Brawlers and Battles'),
         'dialogMemberStatsRoyale'   : _('See on BrawlStats'),
         'dialogMemberRoyaleApi'     : _('See on BrawlStats'),
         'dialogLabelPlayerHistory'  : _('Player History'),

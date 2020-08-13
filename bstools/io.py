@@ -67,7 +67,7 @@ def copy_static_assets(tempdir, club_logo_path, favicon_path):
     shutil.copyfile(favicon_path, os.path.join(tempdir, FAVICON_FILENAME))
 
 
-def parse_templates(config, history, tempdir, club, members, former_members, suggestions, scoring_rules): # pragma: no coverage
+def parse_templates(config, history, tempdir, club, members, player, brawlers, former_members, suggestions, scoring_rules): # pragma: no coverage
     # Create environment for template parser
     env = Environment(
         loader=PackageLoader('bstools', 'templates'),
@@ -86,6 +86,8 @@ def parse_templates(config, history, tempdir, club, members, former_members, sug
         strings           = config['strings'],
         update_date       = datetime.now().strftime('%c'),
         members           = members,
+        player            = player,
+        brawlers          = brawlers,
         club              = club,
         club_hero         = config['paths']['description_html_src'],
         suggestions       = suggestions,

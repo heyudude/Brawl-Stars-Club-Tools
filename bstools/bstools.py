@@ -21,7 +21,7 @@ from bstools import fankit
 from bstools import io
 from bstools import discord
 from bstools.memberfactory import MemberFactory
-from bstools.models import FormerMember, ProcessedClub, ProcessedPlayer
+from bstools.models import FormerMember, ProcessedClub, ProcessedPlayer, GetBrawlers
 
 MAX_CLAN_SIZE = 100
 
@@ -111,7 +111,7 @@ def get_scoring_rules(config):
 
     return rules
 
-def process_members(config, club, member_history):
+def process_members(config, club, player, member_history):
     """ Process member list, adding calculated meta-data for rendering of
     status in the Club member table. """
 
@@ -124,6 +124,7 @@ def process_members(config, club, member_history):
     factory = MemberFactory(
         config=config,
         club=club,
+        player=player,
         member_history=member_history)
     members_processed = []
     rank = 0
@@ -180,8 +181,9 @@ def build_dashboard(config): # pragma: no coverage
         # process data from API
         club_processed = ProcessedClub(club, config)
         player_processed = ProcessedPlayer(player, config)
+        brawler_processed = GetBrawlers(player)
         member_history = history.get_member_history(club.members, config['bstools']['timestamp'], io.get_previous_history(output_path))
-        members_processed = process_members(config, club, member_history)
+        members_processed = process_members(config, club, player, member_history)
         former_members = process_absent_members(config, member_history['members'])
 
         io.parse_templates(
@@ -190,6 +192,8 @@ def build_dashboard(config): # pragma: no coverage
             tempdir,
             club_processed,
             members_processed,
+            player_processed,
+            brawler_processed,
             former_members,
             get_suggestions(config, members_processed, club_processed.required_trophies),
             get_scoring_rules(config)
@@ -204,6 +208,7 @@ def build_dashboard(config): # pragma: no coverage
                     'club-processed'        : club_processed,
                     'player-processed'      : player_processed,
                     'members-processed'     : members_processed,
+                    'brawler-processed'     : brawler_processed,
                 }
             )
 

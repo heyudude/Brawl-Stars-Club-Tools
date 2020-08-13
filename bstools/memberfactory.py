@@ -1,18 +1,19 @@
 from datetime import datetime
 import logging
 
-from bstools.models import Demerit, ProcessedMember
+from bstools.models import Demerit, ProcessedMember, ProcessedPlayer, GetBrawlers
 from bstools import history
 from bstools.scorecalc import ScoreCalculator
 
 logger = logging.getLogger(__name__)
 
 class MemberFactory:
-    def __init__(self, config, club, member_history, days_from_donation_reset=0):
+    def __init__(self, config, club, player, member_history, days_from_donation_reset=0):
         self.config = config
         self.club = club
         # self.current_war = current_war
         # self.warlog = warlog
+        self.player = player
         self.member_history = member_history
         self.days_from_donation_reset = days_from_donation_reset
         self.now = config['bstools']['timestamp']
@@ -26,6 +27,7 @@ class MemberFactory:
         self.enrich_member_with_history(processed_member, self.member_history['members'][processed_member.tag])
         self.calc_special_status(processed_member)
         self.calc_derived_member_stats(processed_member)
+        self.get_brawlers(processed_member)
 
         return processed_member
 
@@ -271,3 +273,7 @@ class MemberFactory:
             return 'ok'
 
         return 'normal'
+
+    def get_brawlers(self, member):
+        pass
+# EOF

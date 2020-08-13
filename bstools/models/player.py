@@ -11,7 +11,6 @@ class ProcessedPlayer():
         self.trophies = player.trophies
         self.name_color = player.name_color
         self.icon = player.icon
-        self.trophies = player.trophies
         self.highest_trophies = player.highest_trophies
         self.highest_power_play_points = player.highest_power_play_points
         self.exp_level = player.exp_level
@@ -22,3 +21,6 @@ class ProcessedPlayer():
         self.duo_victories = player.duo_victories
         self.best_robo_rumble_time = player.best_robo_rumble_time
         self.best_time_as_big_brawler = player.best_time_as_big_brawler
+        self.brawlers = player.brawlers
+
+# EOF
