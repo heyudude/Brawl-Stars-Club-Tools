@@ -52,15 +52,28 @@
             </section>
             <h3><span>{{strings.dialogLabelPlayerDetails}}</span></h3>
             <section>
-                <ul>
+            <table style="width:100%">
+                <tr>
+                    <th>{{strings.dialogLabelPlayerBra}}</th>
+                    <th>{{strings.dialogLabelPlayerBtr}}</th>
+                    <th>{{strings.dialogLabelPlayerBht}}</th>
+                    <th>{{strings.dialogLabelPlayerBpo}}</th>
+                    <th>{{strings.dialogLabelPlayerBrn}}</th>
+                </tr>
+                
                 {% for brawler in player.brawlers %}
-                    <li>{{brawler.name}} - {{brawler.trophies}}</li>
+                <tr>
+                    <td>{{brawler.name}}</td>
+                    <td>{{brawler.trophies}}</td>
+                    <td>{{brawler.highest_trophies}}</td>
+                    <td>{{brawler.power}}</td>
+                    <td>{{brawler.rank}}</td>
+                </tr>
                 {% endfor %}
-		</ul>
+		    </table>
             </section>
             <h3><span>{{strings.dialogLabelPlayerHistory}}</span></h3>
             <section>
-                <ul>
                 {% for event in member.events %}
                     <li>{{event.date}} - {{event.message}}</li>
                 {% endfor %}

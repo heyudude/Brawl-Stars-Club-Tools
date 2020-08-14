@@ -9,7 +9,7 @@ class GetBrawlers():
 
         for brawler in player.brawlers:
             self.brawler = brawler.id
-            self.name = brawler.name
+            self.name = brawler.name.title()
             self.power = brawler.power
             self.rank = brawler.rank
             self.trophies = brawler.trophies
