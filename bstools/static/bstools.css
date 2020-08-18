@@ -667,7 +667,7 @@ table tr[data-blacklist="true"] td.name:after {
     text-align: center;
 }
 
-#member-table .xp-level strong {
+#member-table .exp-level strong {
     display: inline-block;
     background: url(images/burst.svg) no-repeat center;
     background-size: contain;
@@ -772,7 +772,7 @@ table tr[data-blacklist=true] td {
 
 #info table .war-readiness,
 #info table .war-win-rate,
-#member-table .xp-level {
+#member-table .exp-level {
     text-align: center;
 }
 

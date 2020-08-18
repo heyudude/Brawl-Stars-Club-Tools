@@ -19,7 +19,7 @@ MEMBER_TABLE_CSS_MAPPING = {
     'show_rank'                 : 'rank',
     'show_rank_previous'        : 'rank.previous',
     'show_name'                 : 'name',
-    'show_xp_level'             : 'xp-level',
+    'show_xp_level'             : 'exp-level',
     'show_score'                : 'score',
     'show_trophies'             : 'trophies',
     'show_last_seen'            : 'last-seen',
@@ -67,7 +67,7 @@ def copy_static_assets(tempdir, club_logo_path, favicon_path):
     shutil.copyfile(favicon_path, os.path.join(tempdir, FAVICON_FILENAME))
 
 
-def parse_templates(config, history, tempdir, club, members, former_members, suggestions, scoring_rules): # pragma: no coverage
+def parse_templates(config, history, tempdir, club, members, players, former_members, suggestions, scoring_rules): # pragma: no coverage
     # Create environment for template parser
     env = Environment(
         loader=PackageLoader('bstools', 'templates'),
@@ -86,6 +86,7 @@ def parse_templates(config, history, tempdir, club, members, former_members, sug
         strings           = config['strings'],
         update_date       = datetime.now().strftime('%c'),
         members           = members,
+        players           = players,
         club              = club,
         club_hero         = config['paths']['description_html_src'],
         suggestions       = suggestions,
@@ -111,6 +112,12 @@ def parse_templates(config, history, tempdir, club, members, former_members, sug
         write_object_to_file(os.path.join(tempdir, 'sitemap.xml'), sitemap_xml)
         write_object_to_file(os.path.join(tempdir, 'robots.txt'), robots_txt)
 
+        # test
+        # p_html = env.get_template('p.html.j2').render(
+        #     players = players
+        # )
+        # write_object_to_file(os.path.join(tempdir, 'p.html'), p_html)
+    
 def dump_debug_logs(tempdir, objects_to_dump):
     """ archive outputs of API and other objects for debugging """
     log_path = os.path.join(tempdir, 'log')

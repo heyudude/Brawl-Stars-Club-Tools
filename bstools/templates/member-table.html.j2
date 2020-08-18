@@ -6,10 +6,9 @@
                     <th class="rank" data-sort-default>#</th>
                     <th class="rank previous">{{strings.labelRankPrevious}}</th>
                     <th class="name">{{strings.labelMember}}</th>
-                    <th class="xp-level">{{strings.labelXpLevel}}</th>
+                    <th class="exp-level">{{strings.labelExpLevel}}</th>
                     <th class="trophies">{{strings.labelTrophies}}</th>
-                    <th class="donations-received">{{strings.labelDonationsRecieved}}</th>
-                    <th class="inactivity">{{strings.labelDaysInactive}}</th>-->
+                    <th class="inactivity">{{strings.labelDaysInactive}}</th>
                 </tr>
             </thead>
             <class="list">
@@ -28,28 +27,25 @@
                     </td>
                     <td class="rank previous" data-sort="{{member.previous_rank}}">
                         <strong>{{member.previous_rank}}</strong>
-                    </td>
+                    </td> 
                     <td class="name" data-sort="{{member.name}}" data-role="dialog-show" data-target="member-detail" data-member-tag="{{member.tag}}">
-                        <strong>{{member.name}}</strong><br />
+                        <strong>{{member.name}}</strong><br>
                         <small class="member-role">{{member.role_label}}</small>
                     </td>
-                    <td class="xp-level" data-sort="{{member.exp_level}}">
-                        <strong>{{member.exp_level}}</strong>
-                    </td>
-                   <!-- <td class="score {{member.status}}" data-sort="{{member.score}}" data-tooltip="true">
-                        <strong>{{member.score}}</strong> -->
+                     <td class="score {{member.status}}" data-sort="{{member.score}}" data-tooltip="true">
+                        <strong>{{member.score}}</strong>
                     </td>
                     <td class="trophies {{member.trophies}}" data-sort="{{member.trophies}}" data-tooltip="true">
                         <strong>{{member.trophies}}</strong>
                     </td>
-                    <!--<td class="inactivity {{member.activity_status}}" data-sort="{{member.days_inactive}}">
-                        <strong>{{member.days_inactive}}</strong><br /><small>{{strings.labelDays}}</small>-->
+                    <!-- <td class="inactivity {{member.activity_status}}" data-sort="{{member.days_inactive}}">
+                        <strong>{{member.days_inactive}}</strong><br /><small>{{strings.labelDays}}</small> -->
                     </td>
                     <td class="time-in-Club" data-sort="{{member.days_from_join}}">
                         {{member.time_in_club}}
                     </td>
-                    <!--<td class="last-seen" data-sort="{{member.last_seen}}">
-                        {{member.last_seen_delta}}-->
+                    <!-- <td class="last-seen" data-sort="{{member.last_seen}}">
+                        {{member.last_seen_delta}} -->
                     </td>
                 </tr>
             {% endfor %}

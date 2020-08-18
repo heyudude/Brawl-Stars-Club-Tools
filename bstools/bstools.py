@@ -20,8 +20,8 @@ from bstools import history
 from bstools import fankit
 from bstools import io
 from bstools import discord
-from bstools.memberfactory import MemberFactory
-from bstools.models import FormerMember, ProcessedClub, ProcessedPlayer
+from bstools.factory import MemberFactory, PlayerFactory, BrawlerFactory
+from bstools.models import FormerMember, ProcessedClub, ProcessedPlayer, ProcessedBrawler
 
 MAX_CLAN_SIZE = 100
 
@@ -119,9 +119,8 @@ def process_members(config, club, member_history):
     api_config = pybrawl.Configuration()
     api_config.api_key['authorization'] = config['api']['api_key']
     api_config.access_token = config['api']['api_key']
-    logger.debug("players instance")
-    players = pybrawl.PlayersApi(pybrawl.ApiClient(api_config))
-    factory = MemberFactory(
+ 
+    mfactory = MemberFactory(
         config=config,
         club=club,
         member_history=member_history)
@@ -129,13 +128,41 @@ def process_members(config, club, member_history):
     rank = 0
     for member_src in club.members:
         playertag = member_src.tag
-        player = players.get_player(playertag)
-        explevel = player.exp_level
         rank = rank + 1
-        members_processed.append(factory.get_processed_member(member_src, rank, explevel))
+        members_processed.append(mfactory.get_processed_member(member_src, rank))
         
     return members_processed
- 
+
+def process_players(config, club):
+    """ Process player and brawlers list """
+
+    # process player with results from the API
+    api_config = pybrawl.Configuration()
+    api_config.api_key['authorization'] = config['api']['api_key']
+    api_config.access_token = config['api']['api_key']
+    api = ApiWrapper(config)
+
+
+    # bfactory = BrawlerFactory(
+    #     config=config,
+    #     brawler=brawler)
+
+    players_processed = []
+    for player_src in club.members:
+        logger.debug("Process player: {}".format(player_src.name))
+        player = api.get_player_from_api(player_src.tag)
+        pfactory = PlayerFactory(
+            config=config,
+            player=player)
+        players_processed.append(pfactory.get_processed_player(player))
+        # for brawler_src in player.brawlers:
+        #     logger.debug("Process brawler: {}".format(brawler_src.name))
+        #     #player_tag = player_src.tag
+        #     brawler_tag = brawler_src.name
+        #     brawlers_processed.append(bfactory.get_processed_brawler(brawler_src))
+
+    return players_processed
+
 def process_absent_members(config, historical_members):
     absent_members = []
 
@@ -166,7 +193,7 @@ def build_dashboard(config): # pragma: no coverage
     print('- info: requesting info for Club id: {}'.format(config['api']['club_id']))
    
     api = ApiWrapper(config)
-    club, player = api.get_data_from_api()
+    club = api.get_club_from_api()
 
     # Create temporary directory. All file writes, until the very end,
     # will happen in this directory, so that no matter what we do, it
@@ -179,7 +206,8 @@ def build_dashboard(config): # pragma: no coverage
 
         # process data from API
         club_processed = ProcessedClub(club, config)
-        player_processed = ProcessedPlayer(player, config)
+        players_processed = process_players(config, club)
+    
         member_history = history.get_member_history(club.members, config['bstools']['timestamp'], io.get_previous_history(output_path))
         members_processed = process_members(config, club, member_history)
         former_members = process_absent_members(config, member_history['members'])
@@ -190,6 +218,7 @@ def build_dashboard(config): # pragma: no coverage
             tempdir,
             club_processed,
             members_processed,
+            players_processed,
             former_members,
             get_suggestions(config, members_processed, club_processed.required_trophies),
             get_scoring_rules(config)
@@ -202,8 +231,9 @@ def build_dashboard(config): # pragma: no coverage
                 {
                     'club'                  : club.to_dict(),
                     'club-processed'        : club_processed,
-                    'player-processed'      : player_processed,
+                    'players-processed'     : players_processed,
                     'members-processed'     : members_processed,
+                    'former-members'        : former_members,
                 }
             )
 
