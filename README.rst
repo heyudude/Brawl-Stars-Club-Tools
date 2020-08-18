@@ -9,6 +9,8 @@ This is a tool for creating a dashboard for Club participation in Brawl Stars.
 See https://developer.brawlstars.com to sign up for a developer account and
 create an API key to use with this.
 
+**See the Wiki how it looks like in this early stage!**
+
 This tool is a static site generator -- it generates static HTML, JavaScript,
 and CSS used to render the dashboard. If you wish to use this, you should set
 it up to run once per hour on your web server.
