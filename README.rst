@@ -68,7 +68,7 @@ optional arguments:
 Optional config file
 ==================================================
 
-bstools looks for a config file in your home directory called .bstools
+bstools looks by default for a config file in your home directory called /home/<name>/myclub/bstools.ini
 
 This is an INI file. As of current version, there's only one possible
 parameter: api_key. The file should look like:

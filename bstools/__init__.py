@@ -7,7 +7,7 @@ import sys
 from ._version import __version__
 from .bstools import build_dashboard
 from .config import load_config_file
-from .memberfactory import MemberFactory
+from .factory import MemberFactory, PlayerFactory, BrawlerFactory
 from .scorecalc import ScoreCalculator
 
 logger = logging.getLogger(__name__)
@@ -58,7 +58,7 @@ def parse_args(argv):
 
     return parser.parse_args(argv)
 
-def get_config_from_args(args, check_config_file=True, config_default='~/.bstools'):
+def get_config_from_args(args, check_config_file=True, config_default='~/myclub/bstools.ini'):
     if args.version:
         print(__version__)
         exit(0)

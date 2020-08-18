@@ -3,9 +3,10 @@ import logging
 import math
 
 from pybrawl import Player
+logger = logging.getLogger(__name__)
 
 class ProcessedPlayer():
-    def __init__(self, player, config):
+    def __init__(self, player):
         self.tag = player.tag
         self.name = player.name
         self.trophies = player.trophies

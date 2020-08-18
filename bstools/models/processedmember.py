@@ -5,19 +5,15 @@ import logging
 
 from pybrawl import ClubMember
 
-from bstools.scorecalc import ScoreCalculator
-
 logger = logging.getLogger(__name__)
 
 class ProcessedMember():
-    def __init__(self, member, rank, explevel):
+    def __init__(self, member, rank):
         self.rank = rank
         self.tag = member.tag
         self.name = escape(member.name)
-        self.exp_level = explevel
-        #self.exp_points = player.exp_points
-        #self.exp_level = 1
-        self.exp_points = 1
+        # self.exp_level = member.exp_level # TODO Exp level from player
+        self.exp_points = 1 # TODO player.exp_points
         self.trophies = member.trophies
         self.role = member.role
         self.score = 'int'
@@ -28,3 +24,5 @@ class ProcessedMember():
         self.last_seen = 0          # TODO last seen not in member / player def as member.last_seen
         self.time_in_club = 0
         self.previous_rank = self.rank
+
+# EOF

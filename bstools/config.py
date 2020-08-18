@@ -171,7 +171,7 @@ def __localize_strings(locale_id):
         'labelMemberLastActivity'   : _('Last Active'),
         'labelBeforeHistory'        : _('Before recorded history'),
         'labelArena'                : _('Arena'),
-        'labelXpLevel'              : _('XP Level'),
+        'labelExpLevel'             : _('Exp Level'),
         'labelScore'                : _('Score'),
         'labelRank'                 : _('Rank'),
         'labelTrophies'             : _('Trophies'),

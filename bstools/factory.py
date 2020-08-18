@@ -1,19 +1,17 @@
+from bstools.models import ProcessedPlayer
 from datetime import datetime
 import logging
 
-from bstools.models import Demerit, ProcessedMember, ProcessedPlayer, GetBrawlers
+from bstools.models import Demerit, ProcessedMember, ProcessedPlayer, ProcessedBrawler
 from bstools import history
 from bstools.scorecalc import ScoreCalculator
 
 logger = logging.getLogger(__name__)
 
 class MemberFactory:
-    def __init__(self, config, club, player, member_history, days_from_donation_reset=0):
+    def __init__(self, config, club, member_history, days_from_donation_reset=0):
         self.config = config
         self.club = club
-        # self.current_war = current_war
-        # self.warlog = warlog
-        self.player = player
         self.member_history = member_history
         self.days_from_donation_reset = days_from_donation_reset
         self.now = config['bstools']['timestamp']
@@ -21,14 +19,13 @@ class MemberFactory:
         self.max_days_from_join = (self.now - datetime.fromtimestamp(self.history_start_timestamp)).days
 
 
-    def get_processed_member(self, member, rank, explevel):
-        processed_member = ProcessedMember(member, rank, explevel)
+    def get_processed_member(self, member, rank):
+        processed_member = ProcessedMember(member, rank)
 
         self.enrich_member_with_history(processed_member, self.member_history['members'][processed_member.tag])
         self.calc_special_status(processed_member)
         self.calc_derived_member_stats(processed_member)
-        self.get_brawlers(processed_member)
-
+    
         return processed_member
 
     def enrich_member_with_history(self, member, historical_member):
@@ -141,7 +138,6 @@ class MemberFactory:
 
         #member.donation_score = score_calc.get_member_donations_score(member) # TODO
         member.donation_score = 0
-
 
         # calculate score based on war participation # TODO
         member.war_score = 0
@@ -274,6 +270,28 @@ class MemberFactory:
 
         return 'normal'
 
-    def get_brawlers(self, member):
-        pass
+# Process Players brawlers / battles
+class PlayerFactory:
+    def __init__(self, config, player):
+        self.config = config
+        self.player = player
+
+    def get_processed_player(self, player):
+
+        processed_player = ProcessedPlayer(player)
+
+        return processed_player
+
+# Process Players brawlers / battles 
+class BrawlerFactory:
+    def __init__(self, config, brawler):
+        self.config = config
+        self.brawler = brawler
+
+    def get_processed_brawler(self, brawler):
+
+        processed_brawler = ProcessedBrawler(brawler)
+
+        return processed_brawler
+   
 # EOF

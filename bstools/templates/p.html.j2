@@ -1,0 +1,24 @@
+   <header>
+        <h1>test player / brawlers</h1>
+    </header>
+            <table style="width:100%">
+                <tr>
+                    <th>brawler</th>
+                    <th>PlayerBtr</th>
+                    <th>PlayerBht</th>
+                    <th>PlayerBpo</th>
+                    <th>PlayerBrn</th>
+                </tr>
+                 {% for player in players %}
+                    {% set tagsave is sameas player.tag %}
+                    {% for brawlers in player.brawlers %}
+                    {% if player.tag=tagsave %}
+                	<tr>
+                     	<td>{{brawlers.name}}</td>
+                        <td>{{brawlers.trophies}}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                {% endfor %}
+	        </table>
+
