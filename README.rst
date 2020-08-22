@@ -9,7 +9,7 @@ This is a tool for creating a dashboard for Club participation in Brawl Stars.
 See https://developer.brawlstars.com to sign up for a developer account and
 create an API key to use with this.
 
-**See the Wiki how it looks like in this early stage!**
+** >> See the Wiki how it looks like in this early stage! << **
 
 This tool is a static site generator -- it generates static HTML, JavaScript,
 and CSS used to render the dashboard. If you wish to use this, you should set
@@ -21,6 +21,24 @@ It is extended in my spare time so be patient!
 > See the first try out here: http://145.131.24.73/18plussersbs/
 
 Join the Discord server and tune in to get support or develop: https://discord.gg/gzz7Z7
+
+==================================================
+Version log
+==================================================
+
+**Released**
+0.0.1 Very eraly try out for the API test
+0.0.2 Intermediate version with a working Dashboard
+0.0.3 Working Player details but a less attractive main screen
+
+**Work in progress:**
+0.0.4 Nicer dashboard and some sorting on the player details
+
+**Future plans:**
+> Add brawler ranking lists per country / brawler etc
+> Add battles to the player screens (probably accessible from the main screen)
+> Translations are needed for other than English --> HELP needed ;)
+> What else? Depends on your input. Send me a message or jpin the discord
 
 ==================================================
 Installation

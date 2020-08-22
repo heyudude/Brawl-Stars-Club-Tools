@@ -136,16 +136,11 @@ def process_members(config, club, member_history):
 def process_players(config, club):
     """ Process player and brawlers list """
 
-    # process player with results from the API
+    # process all players within the club with results from the API
     api_config = pybrawl.Configuration()
     api_config.api_key['authorization'] = config['api']['api_key']
     api_config.access_token = config['api']['api_key']
     api = ApiWrapper(config)
-
-
-    # bfactory = BrawlerFactory(
-    #     config=config,
-    #     brawler=brawler)
 
     players_processed = []
     for player_src in club.members:
@@ -155,11 +150,6 @@ def process_players(config, club):
             config=config,
             player=player)
         players_processed.append(pfactory.get_processed_player(player))
-        # for brawler_src in player.brawlers:
-        #     logger.debug("Process brawler: {}".format(brawler_src.name))
-        #     #player_tag = player_src.tag
-        #     brawler_tag = brawler_src.name
-        #     brawlers_processed.append(bfactory.get_processed_brawler(brawler_src))
 
     return players_processed
 

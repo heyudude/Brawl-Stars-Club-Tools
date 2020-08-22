@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>    
+<header>
+    <h1>Test brawler</h1>
+</header>
+<link href='static/style.css' rel='stylesheet'>
+<link href='static/tablesort.css' rel='stylesheet'>
+<script src='static/tablesort.js'></script>
+<script src='static/sorts/tablesort.date.js'></script>
+<script src='static/sorts/tablesort.dotsep.js'></script>
+<script src='static/sorts/tablesort.filesize.js'></script>
+<script src='static/sorts/tablesort.number.js'></script>
+<script>
+  new Tablesort(document.getElementById('brawler'));
+</script>
+</head>
+<body>
+        <header class='inner'>
+            {% for member in members %}
+            member.tag
+                <table id="brawler" class="sort">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Brawler</th>
+                        <th>Btrophies</th>
+                        <th>Bht</th>
+                        <th>Bpo</th>
+                        <th>Brn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 {% for player in players %}
+                    {% set existingTags = player.tag %}
+                    {% for brawlers in player.brawlers %}
+                        {% if existingTags is equalto member.tag %}
+               	        <tr>
+                        <td>{{loop.index}}</td>
+                     	<td class="name {{brawlers.name}} data-sort="{{brawlers.name}}">{{brawlers.name|capitalize}}</td>
+                        <td class="trophies {{brawlers.trophies}}" data-sort="{{brawlers.trophies}}">{{brawlers.trophies}}</td>
+                        <td class="trophies {{brawlers.highest_trophies}}" data-sort="{{brawlers.highest_trophies}}">{{brawlers.highest_trophies}}</td>
+                        <td data-sort="{{brawlers.power}}">{{brawlers.power}}</td> 
+                        <td data-sort="{{brawlers.rank}}">{{brawlers.rank}}</td>
+                        </tr>
+                        {% endif %}
+                   {% endfor %}
+                {% endfor %}
+                </tbody>
+	        </table>
+            {% endfor %}
+        </header>
+    </body>
+</html>
+EOF

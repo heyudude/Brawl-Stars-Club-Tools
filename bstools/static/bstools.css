@@ -278,12 +278,14 @@ table thead th[role=columnheader]:not([data-sort-method=none]),
     padding-right: 14px;
 }
 
+/* css for tablesort */
 th[role=columnheader]:not([data-sort-method=none]):after {
     content: '▼';
+    float: right;
+    margin-top: -4px;
     position: absolute;
     right: 4px;
     top: 50%;
-    margin-top: -4px;
     font-size: 8px;
     line-height: 8px;
     visibility: hidden;
@@ -308,8 +310,8 @@ th[role=columnheader]:not([data-sort-method=none]):hover:after {
     opacity: 1;
 }
 
-/* Forms
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* EOF css  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 label {
     display: inline-block;
 }

@@ -113,10 +113,11 @@ def parse_templates(config, history, tempdir, club, members, players, former_mem
         write_object_to_file(os.path.join(tempdir, 'robots.txt'), robots_txt)
 
         # test
-        # p_html = env.get_template('p.html.j2').render(
-        #     players = players
-        # )
-        # write_object_to_file(os.path.join(tempdir, 'p.html'), p_html)
+        p_html = env.get_template('test.html.j2').render(
+            members=members,
+            players = players
+         )
+        write_object_to_file(os.path.join(tempdir, 'p.html'), p_html)
     
 def dump_debug_logs(tempdir, objects_to_dump):
     """ archive outputs of API and other objects for debugging """

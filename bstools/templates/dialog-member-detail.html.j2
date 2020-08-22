@@ -48,34 +48,44 @@
                     </dl>
                 </div>
                 <div>
-                    <a href="https://brawlstats.com/profile/{{member.tag | replace('#', '')}}" rel="external" target="_blank" class="button royaleapi"><span>{{config.strings.dialogMemberRoyaleApi}}</span></a>
+                  <a href="https://brawlstats.com/profile/{{member.tag | replace('#', '')}}" rel="external" target="_blank" class="button royaleapi"><span>{{config.strings.dialogMemberRoyaleApi}}</span></a>
                 </div>
             </section>
             <h3><span>{{strings.dialogLabelPlayerDetails}}</span></h3>
             <section>
-            <table style="width:100%">
-                <tr>
-                    <th>{{strings.dialogLabelPlayerBra}}</th>
-                    <th>{{strings.dialogLabelPlayerBtr}}</th>
-                    <th>{{strings.dialogLabelPlayerBht}}</th>
-                    <th>{{strings.dialogLabelPlayerBpo}}</th>
-                    <th>{{strings.dialogLabelPlayerBrn}}</th>
-                </tr>
+            <div class="table-scroll">
+                <div id="member-table-sortable" class="table-scroll-inner">
+                <table id="brawler-table" class="sort" width="100%" data-filter="none">
+                <thead>
+                    <tr>
+                        <th class="rank" data-sort-default>#</th>
+                        <th>{{strings.dialogLabelPlayerBra}}</th>
+                        <th>{{strings.dialogLabelPlayerBtr}}</th>
+                        <th>{{strings.dialogLabelPlayerBht}}</th>
+                        <th>{{strings.dialogLabelPlayerBpo}}</th>
+                        <th>{{strings.dialogLabelPlayerBrn}}</th>
+                    </tr>
+                </thead>
+                <class="list">
+                <tbody>
                  {% for player in players %}
                     {% set existingTags = player.tag %}
                     {% for brawlers in player.brawlers %}
                         {% if existingTags is equalto member.tag %}
                	        <tr>
-                     	<td>{{brawlers.name|capitalize}}</td>
-                        <td>{{brawlers.trophies}}</td>
-                        <td>{{brawlers.highest_trophies}}</td>
-                        <td>{{brawlers.power}}</td> 
-                        <td>{{brawlers.rank}}</td>
+                        <td>{{loop.index}}</td>
+                     	<td class="name {{brawlers.name}} data-sort="{{brawlers.name}}">{{brawlers.name|capitalize}}</td>
+                        <td class="trophies {{brawlers.trophies}}" data-sort="{{brawlers.trophies}}">{{brawlers.trophies}}</td>
+                        <td class="trophies {{brawlers.highest_trophies}}" data-sort="{{brawlers.highest_trophies}}">{{brawlers.highest_trophies}}</td>
+                        <td data-sort="{{brawlers.power}}">{{brawlers.power}}</td> 
+                        <td data-sort="{{brawlers.rank}}">{{brawlers.rank}}</td>
                         </tr>
                         {% endif %}
                    {% endfor %}
                 {% endfor %}
+                </tbody>
 	        </table>
+            </div>
             </section>
             <h3><span>{{strings.dialogLabelPlayerHistory}}</span></h3>
             <section>
